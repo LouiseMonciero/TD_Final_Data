@@ -11,9 +11,9 @@ url = "https://cert.ssi.gouv.fr/avis/feed/"
 if hasattr(ssl, '_create_unverified_context'):
     ssl._create_default_https_context = ssl._create_unverified_context
 rss_feed = feedparser.parse(url)
-print(len(rss_feed.entries))
+#print(len(rss_feed.entries))
 
-for i in range(39, len(rss_feed.entries)):
+for i in range(0, len(rss_feed.entries)):
 
     url_avis = rss_feed.entries[i].link
     response = requests.get(url_avis.rstrip('/') + '/json/')

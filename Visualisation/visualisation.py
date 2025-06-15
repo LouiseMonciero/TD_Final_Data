@@ -76,13 +76,28 @@ plt.show()
 # Count top 10 most frequently affected editors
 top_editors = df['Éditeur'].value_counts().head(10)
 
-
-# Plot horizontal bar chart
+# Plot
 plt.figure(figsize=(10, 5))
 top_editors.plot(kind='barh', color='steelblue')
 plt.title('Top 10 éditeurs les plus affectés')
 plt.xlabel('Nombre de vulnérabilités')
 plt.gca().invert_yaxis()
 plt.tight_layout()
+plt.savefig("Visualisation/top_affected_editors.png")
+plt.show()
+
+# 5. Top affected products
+
+# Count top 10 most frequently affected products
+top_products = df['Produit'].value_counts().head(10)
+
+# Plot
+plt.figure(figsize=(10, 5))
+top_products.plot(kind='barh', color='steelblue')
+plt.title('Top 10 produits les plus affectés')
+plt.xlabel('Nombre de vulnérabilités')
+plt.gca().invert_yaxis()
+plt.tight_layout()
 plt.savefig("Visualisation/top_affected_products.png")
 plt.show()
+

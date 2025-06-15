@@ -1,0 +1,163 @@
+{
+    "$ref": "https://www.cert.ssi.gouv.fr/openapi.json",
+    "affected_systems": [
+        {
+            "description": "FortiProxy versions antérieures à 7.0.10",
+            "product": {
+                "name": "FortiProxy",
+                "vendor": {
+                    "name": "Fortinet",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "FortiOS versions 6.0.x antérieures à 6.0.17",
+            "product": {
+                "name": "FortiOS",
+                "vendor": {
+                    "name": "Fortinet",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "FortiOS versions 6.2.x antérieures à 6.2.14",
+            "product": {
+                "name": "FortiOS",
+                "vendor": {
+                    "name": "Fortinet",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "FortiOS-6K7K versions 6.0.x antérieures à 6.0.17",
+            "product": {
+                "name": "FortiOS",
+                "vendor": {
+                    "name": "Fortinet",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "FortiOS versions 7.2.x antérieures à 7.2.5",
+            "product": {
+                "name": "FortiOS",
+                "vendor": {
+                    "name": "Fortinet",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "FortiOS-6K7K versions 6.2.x antérieures à 6.2.15",
+            "product": {
+                "name": "FortiOS",
+                "vendor": {
+                    "name": "Fortinet",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "FortiOS-6K7K versions 6.4.x antérieures à 6.4.13",
+            "product": {
+                "name": "FortiOS",
+                "vendor": {
+                    "name": "Fortinet",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "FortiProxy versions 7.2.x antérieures à 7.2.4",
+            "product": {
+                "name": "FortiProxy",
+                "vendor": {
+                    "name": "Fortinet",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "FortiOS-6K7K versions 7.0.x antérieures à 7.0.12",
+            "product": {
+                "name": "FortiOS",
+                "vendor": {
+                    "name": "Fortinet",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "FortiOS versions 6.4.x antérieures à 6.4.13",
+            "product": {
+                "name": "FortiOS",
+                "vendor": {
+                    "name": "Fortinet",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "FortiOS versions 7.0.x antérieures à 7.0.12",
+            "product": {
+                "name": "FortiOS",
+                "vendor": {
+                    "name": "Fortinet",
+                    "scada": false
+                }
+            }
+        }
+    ],
+    "affected_systems_content": null,
+    "closed_at": "2023-09-11",
+    "content": "## Solution\n\nL'application seule des correctifs n'est pas suffisante. Il est\nfortement recommandé :\n\n-   d'effectuer une analyse des systèmes, en cas de suspicion de\n    compromission, il est recommandé de continuer les investigations\n    afin de déterminer les actions prises par un éventuel attaquant\n    \\[2\\];\n-   d'appliquer les mesures de durcissement fournies par l'éditeur et de\n    respecter les bonnes pratiques de sécurité.\n\nSe référer au bulletin de sécurité de l'éditeur pour l'obtention des\ncorrectifs (cf. section Documentation).\n",
+    "cves": [
+        {
+            "name": "CVE-2023-27997",
+            "url": "https://www.cve.org/CVERecord?id=CVE-2023-27997"
+        }
+    ],
+    "links": [
+        {
+            "title": "[2] Les bons réflexes en cas d’intrusion sur un système d’information",
+            "url": "https://www.cert.ssi.gouv.fr/les-bons-reflexes-en-cas-dintrusion-sur-un-systeme-dinformation/"
+        },
+        {
+            "title": "Avis CERT-FR CERTFR-2023-AVI-0451 du 13 juin 2023",
+            "url": "https://www.cert.ssi.gouv.fr/avis/CERTFR-2023-AVI-0451/"
+        },
+        {
+            "title": "[1] Communication de Fortinet sur la vulnérabilité CVE-2023-27997 du 12 juin 2023",
+            "url": "https://www.fortinet.com/blog/psirt-blogs/analysis-of-cve-2023-27997-and-clarifications-on-volt-typhoon-campaign"
+        }
+    ],
+    "reference": "CERTFR-2023-ALE-004",
+    "revisions": [
+        {
+            "description": "Version initiale",
+            "revision_date": "2023-06-13T00:00:00.000000"
+        },
+        {
+            "description": "Clôture de l'alerte. Cela ne signifie pas la fin d'une menace. Seule l'application de la mise à jour permet de vous prémunir contre l'exploitation de la vulnérabilité correspondante.",
+            "revision_date": "2023-09-11T00:00:00.000000"
+        }
+    ],
+    "risks": [
+        {
+            "description": "Exécution de code arbitraire à distance"
+        }
+    ],
+    "summary": "Le 12 juin 2023, Fortinet a publié un avis de sécurité concernant la\nvulnérabilité CVE-2023-27997. Celle-ci permet à un attaquant non\nauthentifié d'exécuter du code arbitraire à distance sur des produits\nFortinet qui proposent une fonctionnalité de *VPN SSL*.\n\nDans une communication supplémentaire (cf. section Documentation),\nFortinet indique que cette vulnérabilité n'est exploitable que si la\nfonctionnalité *VPN SSL* est activée. De plus, celle-ci serait\nactivement exploitée dans le cadre d'attaques ciblées.\n\nLe CERT-FR a connaissance d'une preuve de concept disponible\npubliquement. En l'état, le code permet uniquement un déni de service à\ndistance. Le CERT-FR recommande donc d'appliquer le correctif,\ndisponible depuis le 9 juin 2023, dans les meilleurs délais.\n\nLa communication supplémentaire \\[1\\] de Fortinet contient également des\nrecommandations utiles concernant la recherche de marqueurs de\ncompromission, le durcissement de l'équipement ainsi que le rappel de\nbonnes pratiques de sécurité.\n",
+    "title": "Vulnérabilité dans les produits Fortinet",
+    "vendor_advisories": [
+        {
+            "published_at": null,
+            "title": "Bulletin de sécurité FG-IR-23-097 du 12 juin 2023",
+            "url": "https://www.fortiguard.com/psirt/FG-IR-23-097"
+        }
+    ]
+}

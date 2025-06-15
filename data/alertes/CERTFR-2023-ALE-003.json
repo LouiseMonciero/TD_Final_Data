@@ -1,0 +1,84 @@
+{
+    "$ref": "https://www.cert.ssi.gouv.fr/openapi.json",
+    "affected_systems": [
+        {
+            "description": "Application de bureau 3CX (application Electron pour macOS) versions 18.11.1213, 18.12.402, 18.12.407 et 18.12.416",
+            "product": {
+                "name": "macOS",
+                "vendor": {
+                    "name": "Apple",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Application de bureau 3CX (application Electron pour Windows) versions 18.12.407 et 18.12.416",
+            "product": {
+                "name": "Windows",
+                "vendor": {
+                    "name": "Microsoft",
+                    "scada": false
+                }
+            }
+        }
+    ],
+    "affected_systems_content": "",
+    "closed_at": "2023-04-12",
+    "content": "## Solution\n\n<span style=\"color: #ff0000;\">\\[Mise à jour du 11 avril 2023\\] </span>Le\n31 mars, l'éditeur a publié une nouvelle version de son application de\nbureau 3CX \\[5\\]. Cette version, 18.12.425, ne comprend plus le cheval\nde Troie. Néanmoins, l'éditeur ne recommande pas le déploiement de cette\nnouvelle version et préconise plutôt l'utilisation de l'application web\n*PWA*.\n\nPour plus d'informations, se référer au bulletin de sécurité de\nl'éditeur pour l'obtention des correctifs (cf. section Documentation).\n",
+    "cves": [],
+    "links": [
+        {
+            "title": "[3] Rapport SentinelOne",
+            "url": "https://www.sentinelone.com/blog/smoothoperator-ongoing-campaign-trojanizes-3cx-software-in-software-supply-chain-attack/"
+        },
+        {
+            "title": "[5] Publication liée à la sortie de la version 18.12.425 de l'application de bureau 3CX",
+            "url": "https://www.3cx.com/blog/releases/v18u7-desktop-app-electron/"
+        },
+        {
+            "title": "[2] Rapport CrowdStrike du 29 mars 2023",
+            "url": "https://www.crowdstrike.com/blog/crowdstrike-detects-and-prevents-active-intrusion-campaign-targeting-3cxdesktopapp-customers/"
+        },
+        {
+            "title": "[1] Manuel d'utilisation 3CX Web Client (PWA)",
+            "url": "https://www.3cx.com/user-manual/web-client/"
+        },
+        {
+            "title": "Avis ENISA EU",
+            "url": "https://github.com/enisaeu/CNW/blob/main/advisories/CVE-2023-XXXXX_3CX-DesktopApp.md"
+        },
+        {
+            "title": "[4] Les bons réflexes en cas d’intrusion sur un système d’information",
+            "url": "https://www.cert.ssi.gouv.fr/les-bons-reflexes-en-cas-dintrusion-sur-un-systeme-dinformation/"
+        }
+    ],
+    "reference": "CERTFR-2023-ALE-003",
+    "revisions": [
+        {
+            "description": "Version initiale",
+            "revision_date": "2023-03-31T00:00:00.000000"
+        },
+        {
+            "description": "Ajout concernant la nouvelle version d'application de bureau 3CX",
+            "revision_date": "2023-04-11T00:00:00.000000"
+        },
+        {
+            "description": "Ajout du lien vers la version 18.12.425 de l'application de bureau 3CX",
+            "revision_date": "2023-04-12T00:00:00.000000"
+        }
+    ],
+    "risks": [
+        {
+            "description": "Déploiement d'une charge utile malveillante sur le système"
+        }
+    ],
+    "summary": "Le 30 mars 2023, l'éditeur a publié un communiqué concernant la\ncompromission de leur application de bureau 3CX (*3CX Desktop App*).\nCette application de conférence vocale et vidéo, dans certaines\nversions, est infectée par un cheval de Troie qui rend possible le\ndéploiement d'une charge utile à des fins malveillantes.\n\nLe CERT-FR ne peut pas confirmer, à ce stade, si d'autres versions que\ncelles mentionnées dans la section *Systèmes affectés* sont compromises.\nIl est donc très fortement recommandé, quelle que soit la version, de\ndésinstaller l'application de bureau 3CX et de suivre la recommandation\nde l'éditeur consistant à utiliser l'application web *PWA*. L'éditeur\npropose un manuel d'utilisation qui peut simplifier cette transition\n\\[1\\].\n\nPar ailleurs, <strong>il est aussi indispensable de procéder à une\nvérification des postes qui disposaient de cette application</strong> afin de\ns'assurer qu'ils n'ont pas été compromis. Pour cela, plusieurs rapports\nen source ouverte proposent des marqueurs de compromission à vérifier\n\\[2\\]\\[3\\]. En cas de suspicion de compromission, il est recommandé de\ncontinuer les investigations (cf. *bons réflexes en cas d'intrusion sur\nvotre système d'information* \\[4\\]).\n",
+    "title": "[MàJ] Compromission de l'application 3CX Desktop App",
+    "vendor_advisories": [
+        {
+            "published_at": "2023-03-30",
+            "title": "Alerte de sécurité de l'éditeur 3CX",
+            "url": "https://www.3cx.com/blog/news/desktopapp-security-alert/"
+        }
+    ]
+}

@@ -1,0 +1,65 @@
+{
+    "$ref": "https://www.cert.ssi.gouv.fr/openapi.json",
+    "affected_systems": [
+        {
+            "description": "Roundcube Webmail versions 1.6.x antérieures à 1.6.11",
+            "product": {
+                "name": "Roundcube Webmail",
+                "vendor": {
+                    "name": "Roundcube",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Roundcube Webmail versions antérieures à 1.5.10",
+            "product": {
+                "name": "Roundcube Webmail",
+                "vendor": {
+                    "name": "Roundcube",
+                    "scada": false
+                }
+            }
+        }
+    ],
+    "affected_systems_content": "",
+    "closed_at": null,
+    "content": "## Solutions\n\nLes versions correctives 1.5.10 et 1.6.11 ont été publiées par l'éditeur.\n\n\nSe référer au bulletin de sécurité de l'éditeur pour l'obtention des correctifs (cf. section Documentation).",
+    "cves": [
+        {
+            "name": "CVE-2025-49113",
+            "url": "https://www.cve.org/CVERecord?id=CVE-2025-49113"
+        }
+    ],
+    "links": [
+        {
+            "title": "Avis CERT-FR CERTFR-2025-AVI-0468 du 02 juin 2025",
+            "url": "https://cert.ssi.gouv.fr/avis/CERTFR-2025-AVI-0468/"
+        }
+    ],
+    "reference": "CERTFR-2025-ALE-008",
+    "revisions": [
+        {
+            "description": "Version initiale",
+            "revision_date": "2025-06-05T00:00:00.000000"
+        },
+        {
+            "description": "Une preuve de concept est publiquement disponible.",
+            "revision_date": "2025-06-06T00:00:00.000000"
+        }
+    ],
+    "risks": [
+        {
+            "description": "Exécution de code arbitraire à distance"
+        }
+    ],
+    "summary": "<span class=\"important-content\"><b>[Mise à jour du 06 juin 2025]</b></span></br>\nUne preuve de concept est publiquement disponible.\n\n[Publication initiale]</br>\nLe 01 juin 2025, Roundcube a publié des correctifs concernant une vulnérabilité critique affectant son portail de messagerie ainsi que tous les produits l'incluant (par exemple cPanel et Plesk).\n\nCette vulnérabilité permet à un utilisateur authentifié d'exécuter du code arbitraire à distance.\n\nL'éditeur ne mentionne pas d'identifiant CVE.\n\nDes détails techniques sur cette vulnérabilité ont été publiés avec l'identifiant CVE-2025-49113. Le CERT-FR anticipe la disponibilité imminente de codes d'exploitation et recommande fortement de mettre à jour dans les plus brefs délais au vu du nombre important de produits exposés.",
+    "title": "[MàJ] Vulnérabilité dans Roundcube",
+    "vendor_advisories": [
+        {
+            "published_at": "2025-06-01",
+            "title": "Bulletin de sécurité Roundcube security-updates-1.6.11-and-1.5.10",
+            "url": "https://roundcube.net/news/2025/06/01/security-updates-1.6.11-and-1.5.10"
+        }
+    ]
+}

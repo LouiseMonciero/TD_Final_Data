@@ -1,0 +1,76 @@
+{
+    "$ref": "https://www.cert.ssi.gouv.fr/openapi.json",
+    "affected_systems": [
+        {
+            "description": "Roundcube Webmail versions 1.5.x antérieures à 1.5.8",
+            "product": {
+                "name": "Roundcube Webmail",
+                "vendor": {
+                    "name": "Roundcube",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Roundcube Webmail versions 1.6.x antérieures à 1.6.8",
+            "product": {
+                "name": "Roundcube Webmail",
+                "vendor": {
+                    "name": "Roundcube",
+                    "scada": false
+                }
+            }
+        }
+    ],
+    "affected_systems_content": "",
+    "closed_at": "2024-10-07",
+    "content": "## Solutions\n\nLes versions correctives 1.6.8 et 1.5.8 LTS ont été publiées. \n\nDe plus, l'exploitation des vulnérabilités nécessite l'ouverture des courriels voire de cliquer sur des éléments qu'ils contiennent. Le CERT-FR recommande donc de limiter au maximum l'interaction avec des messages d'origine non vérifiée. ",
+    "cves": [
+        {
+            "name": "CVE-2024-42009",
+            "url": "https://www.cve.org/CVERecord?id=CVE-2024-42009"
+        },
+        {
+            "name": "CVE-2024-42008",
+            "url": "https://www.cve.org/CVERecord?id=CVE-2024-42008"
+        },
+        {
+            "name": "CVE-2024-42010",
+            "url": "https://www.cve.org/CVERecord?id=CVE-2024-42010"
+        }
+    ],
+    "links": [
+        {
+            "title": "Avis CERTFR-2024-AVI-0647 du 5 août 2024",
+            "url": "https://www.cert.ssi.gouv.fr/avis/CERTFR-2024-AVI-0647/"
+        }
+    ],
+    "reference": "CERTFR-2024-ALE-010",
+    "revisions": [
+        {
+            "description": "Version initiale",
+            "revision_date": "2024-08-09T00:00:00.000000"
+        },
+        {
+            "description": "Clôture de l'alerte. Cela ne signifie pas la fin d'une menace. Seule l'application de la mise à jour permet de vous prémunir contre l'exploitation de la vulnérabilité correspondante.",
+            "revision_date": "2024-10-07T00:00:00.000000"
+        }
+    ],
+    "risks": [
+        {
+            "description": "Injection de code indirecte à distance (XSS)"
+        },
+        {
+            "description": "Atteinte à la confidentialité des données"
+        }
+    ],
+    "summary": "Le 4 août 2024, Roundcube a publié des correctifs concernant les vulnérabilités critiques CVE-2024-42008 et CVE-2024-42009 affectant son serveur de courriel.\n\nCes vulnérabilités permettent des injections de code indirectes à distance (XSS) qui peuvent, par exemple, conduire à la récupération du contenu des courriels de l'utilisateur. De plus, l’attaquant peut également être en mesure d’envoyer des courriels en se faisant passer pour la victime.\n\nLa vulnérabilité CVE-2024-42009 peut être exploitée par une simple ouverture du courriel piégé tandis que la vulnérabilité CVE-2024-42008 nécessite que l’utilisateur effectue une action supplémentaire.\n\nRoundcube est un produit en source ouverte et les correctifs sont accessibles publiquement. Le CERT-FR anticipe donc la publication à court terme de codes d’exploitation publics.\nDes vulnérabilités de ce type ont été activement exploitées sur des serveurs Roundcube Webmail par le passé.",
+    "title": "Multiples vulnérabilités dans Roundcube",
+    "vendor_advisories": [
+        {
+            "published_at": "2024-08-04",
+            "title": "Bulletin de sécurité Roundcube",
+            "url": "https://roundcube.net/news/2024/08/04/security-updates-1.6.8-and-1.5.8"
+        }
+    ]
+}

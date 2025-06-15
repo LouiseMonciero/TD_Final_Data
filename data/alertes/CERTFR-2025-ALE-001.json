@@ -1,0 +1,108 @@
+{
+    "$ref": "https://www.cert.ssi.gouv.fr/openapi.json",
+    "affected_systems": [
+        {
+            "description": "Neurons for ZTA gateways versions 22.7R2.x antérieures à 22.7R2.5.",
+            "product": {
+                "name": "Neurons for Zero Trust Access (ZTA) gateways",
+                "vendor": {
+                    "name": "Ivanti",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Policy Secure (IPS) toutes versions 22.7R1.x",
+            "product": {
+                "name": "Policy Secure (IPS)",
+                "vendor": {
+                    "name": "Ivanti",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Connect Secure (ICS) versions 22.7R2.x antérieures à 22.7R2.5",
+            "product": {
+                "name": "Connect Secure (ICS)",
+                "vendor": {
+                    "name": "Ivanti",
+                    "scada": false
+                }
+            }
+        }
+    ],
+    "affected_systems_content": "L'éditeur indique que les correctifs pour Policy Secure et Neurons for ZTA gateways seront disponibles le 21 janvier.",
+    "closed_at": "2025-05-07",
+    "content": "## Solutions\n\n<span class=\"important-content\">**\\[Mise à jour du 01 avril 2025\\]** </span>\n\nLa CISA [5] fournit des indicateurs de compromission ainsi qu'une règle de détection *YARA*, servant à déterminer si un équipement est compromis par le maliciel *RESURGE*.<br />\n<em>Note : Ces éléments n'ont pas été qualifiés par le CERT-FR.</em>\n\n**\\[Mise à jour du 14 janvier 2025\\]**\n\nL'éditeur a indiqué avoir publié une nouvelle version externe de l'outil Integrity Check Tool, ICT-V22725 (build 3819), compatible avec les versions 22.x R2. \n\n**[Publication initiale]**\n\nLes étapes suivantes doivent être suivies indépendamment d'une mise à jour précédemment réalisée vers une version corrective. Dans son billet de blogue [3], Mandiant précise avoir observé une compromission du processus de mise à jour de l'équipement.\n\n* En cas d'utilisation d'une appliance virtuelle, réaliser un instantané ;\n* Exécuter les versions internes et externes du script Integrity Check Tool (ICT) publié par Ivanti : \n    * l'éditeur indique que la dernière version (ICT-V22725) du script externe ICT est uniquement compatible avec les versions 22.7R2.5 et ultérieures. Il est donc nécessaire d'utiliser une version antérieure de l'outil ;\n    * il est nécessaire d'exécuter la version externe d'ICT même en cas de résultat négatif de l'outil interne ;\n    * dans son billet de blogue [3], Mandiant précise qu'il est nécessaire de vérifier que l'ensemble des étapes de l'outil sont réalisées (dix étapes) et de ne pas se fier uniquement au résultat final présenté.\n* Effectuer une recherche de compromission au niveau de l'équipement :\n    * effectuer une recherche sur les indicateurs de compromissions présentés par Mandiant [3] ; <br>*Note : Ces indicateurs n'ont pas été qualifiés par le CERT-FR.*\n    * rechercher toutes traces de latéralisation sur le reste du système d’information, notamment :\n        * en cherchant les connexions ou tentatives de connexion vers Internet depuis l'équipement ;\n        * puis en cherchant ces adresses IP de destination pour vérifier si d’autres machines ont tenté une connexion.\n\n* Si aucune mise à jour correctrice n'est disponible, l'équipement est à risque de compromission; contactez le service d'assistance Ivanti et, dans la mesure du possible, déconnectez l'équipement d'Internet.\n\n* En cas d'absence de compromission :\n    * procéder à une montée de version du micrologiciel (*firmware*) si le correctif est disponible ;\n    * surveiller l'activité des comptes et des services liés à l'équipement, notamment le compte de service LDAP, si celui a été configuré.\n\n* En cas de compromission détectée :\n    * signaler l’événement auprès du CERT-FR en mettant en copie vos éventuels CSIRTs métier et consulter les bons réflexes en cas d'intrusion sur votre système d'information [4] ;\n    * isoler l'équipement du réseau et sauvegarder les journaux liés à l'équipement ;\n    * effectuer une remise à la configuration de sortie d'usine (*Factory Reset*) [1] ET procéder à une montée de version du micrologiciel (*firmware*) si le correctif est disponible ;\n        * si aucune mise à jour correctrice n'est disponible, contactez le service d'assistance Ivanti et, dans la mesure du possible, déconnectez l'équipement d'Internet.\n    * suivre les étapes listées dans le bulletin technique d'Ivanti [2] et en particulier :\n        * révoquer et réémettre tous les certificats présents sur les équipements affectés :\n            * certificats utilisés pour les machines et/ou pour l’authentification utilisateur (coté client et serveur) ;\n            * certificats de signature de code et les certificats TLS pour l’interface exposée.\n        * réinitialiser le mot de passe d'administration ;\n        * réinitialiser les clés d’API stockées sur l’équipement ;\n        * réinitialiser les mots de passe de tout compte local défini sur la passerelle, y compris les comptes de service utilisés dans la configuration liée aux serveurs d’authentification ;\n            * révoquer l'ensemble des moyens d'authentification (tickets Kerberos...) des comptes de services utilisés.\n        * réinitialiser les authentifications des serveurs de licence.\n",
+    "cves": [
+        {
+            "name": "CVE-2025-0282",
+            "url": "https://www.cve.org/CVERecord?id=CVE-2025-0282"
+        }
+    ],
+    "links": [
+        {
+            "title": "[3] Billet de blogue Mandiant du 08 janvier 2025",
+            "url": "https://cloud.google.com/blog/topics/threat-intelligence/ivanti-connect-secure-vpn-zero-day"
+        },
+        {
+            "title": "[1] Bulletin technique Ivanti relatif à la réinitialisation de l'équipement",
+            "url": "https://forums.ivanti.com/s/article/KB22964?language=en_US"
+        },
+        {
+            "title": "Avis CERTFR-2025-AVI-0014 du 09 janvier 2025",
+            "url": "https://www.cert.ssi.gouv.fr/avis/CERTFR-2025-AVI-0014/"
+        },
+        {
+            "title": "[2] Bulletin technique Ivanti relatif à la remédiation d'un équipement compromis",
+            "url": "https://forums.ivanti.com/s/article/Recovery-Steps?language=en_US"
+        },
+        {
+            "title": "[5] La CISA publie un rapport d'analyse sur le logiciel malveillant RESURGE associé à Ivanti Connect Secure ",
+            "url": "https://www.cisa.gov/news-events/alerts/2025/03/28/cisa-releases-malware-analysis-report-resurge-malware-associated-ivanti-connect-secure"
+        },
+        {
+            "title": "[4] Les bons réflexes en cas d’intrusion sur un système d’information",
+            "url": "https://www.cert.ssi.gouv.fr/les-bons-reflexes-en-cas-dintrusion-sur-un-systeme-dinformation/"
+        }
+    ],
+    "reference": "CERTFR-2025-ALE-001",
+    "revisions": [
+        {
+            "description": "Version initiale",
+            "revision_date": "2025-01-09T00:00:00.000000"
+        },
+        {
+            "description": "     Clôture de l'alerte. Cela ne signifie pas la fin d'une menace. Seule l'application de la mise à jour permet de vous prémunir contre l'exploitation de la vulnérabilité correspondante.",
+            "revision_date": "2025-05-07T00:00:00.000000"
+        },
+        {
+            "description": "Ajout de précisions concernant l'outil Integrity Check Tool",
+            "revision_date": "2025-01-14T00:00:00.000000"
+        },
+        {
+            "description": "Ajout d'une référence d'un rapport d'analyse de la CISA",
+            "revision_date": "2025-04-01T00:00:00.000000"
+        }
+    ],
+    "risks": [
+        {
+            "description": "Exécution de code arbitraire à distance"
+        }
+    ],
+    "summary": "Une vulnérabilité jour-zéro de type débordement de pile a été découverte dans Ivanti Connect Secure (ICS), Policy Secure (IPS), Neurons for Zero Trust Access (ZTA) gateways. Cette vulnérabilité, d'identifiant CVE-2025-0282, permet à un attaquant non authentifié de provoquer une exécution de code arbitraire à distance.\n\nIvanti indique que cette vulnérabilité est activement exploitée. ",
+    "title": "[MàJ] Vulnérabilité dans les produits Ivanti",
+    "vendor_advisories": [
+        {
+            "published_at": "2025-01-08",
+            "title": "Bulletin de sécurité Ivanti Security-Advisory-Ivanti-Connect-Secure-Policy-Secure-ZTA-Gateways-CVE-2025-0282-CVE-2025-0283",
+            "url": "https://forums.ivanti.com/s/article/Security-Advisory-Ivanti-Connect-Secure-Policy-Secure-ZTA-Gateways-CVE-2025-0282-CVE-2025-0283"
+        },
+        {
+            "published_at": "2025-01-08",
+            "title": "Bulletin de sécurité Ivanti security-update-ivanti-connect-secure-policy-secure-and-neurons-for-zta-gateways",
+            "url": "https://www.ivanti.com/blog/security-update-ivanti-connect-secure-policy-secure-and-neurons-for-zta-gateways"
+        }
+    ]
+}

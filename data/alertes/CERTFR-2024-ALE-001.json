@@ -1,0 +1,217 @@
+{
+    "$ref": "https://www.cert.ssi.gouv.fr/openapi.json",
+    "affected_systems": [
+        {
+            "description": "Ivanti Connect Secure (ICS, anciennement Pulse Connect Secure) toutes versions",
+            "product": {
+                "name": "N/A",
+                "vendor": {
+                    "name": "Ivanti",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Ivanti Neurons pour passerelles ZTA, toutes versions, en cours d'installation et non connecté à un contrôleur ZTA",
+            "product": {
+                "name": "N/A",
+                "vendor": {
+                    "name": "Ivanti",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Ivanti Policy Secure gateways (IPS) toutes versions",
+            "product": {
+                "name": "N/A",
+                "vendor": {
+                    "name": "Ivanti",
+                    "scada": false
+                }
+            }
+        }
+    ],
+    "affected_systems_content": "",
+    "closed_at": "2024-04-15",
+    "content": "<h2>Contournement provisoire</h2>\n<p><span style=\"color: #000000;\"><strong>[Mise à jour du 01 février 2024]</strong> Fusion de la partie solution et contournement provisoire</span></p> <p>Suite à la mise à jour de la documentation de l'éditeur ainsi que de la mise à disposition de nouveaux correctifs, la procédure à suivre a été déplacée dans la section Solution.</p> <p><strong>[Mise à jour du 31 janvier 2024] </strong>Ajout d'informations sur la nouvelle mesure de contournement</p> <p>L'éditeur a publié une nouvelle mesure de contournement <span class=\"test-id__field-value slds-form-element__static slds-grow slds-form-element_separator is-read-only iv-cad-fld\" data-aura-rendered-by=\"27:298;a\"> <em>mitigation.release.20240126.5.xml</em> [15]. Celle-ci permet de se prémunir des vulnérabilités CVE-2024-21888 et CVE-2024-21893 ainsi que des vulnérabilités CVE-2023-46805 et CVE-2024-21887.</span></p> <p>Des correctifs sont présentés dans la section Solution, la mesure de contournement ne doit être appliquée que si les correctifs ne sont pas disponibles pour les produits concernés.</p> <p><strong>[Version du 23 Janvier 2024]</strong></p> <p>L’éditeur indique avoir connaissance d'exploitations publiques sur internet et une exploitation en masse des deux vulnérabilités à la suite. Tout équipement dont le contournement provisoire initial (import du fichier <em>xml</em>) n'aurait pas déjà été appliqué doit être considéré comme compromis.<br/> Si les résultats de l’<strong>ICT indiquent une compromission</strong> (résultats non nuls aux étapes 8 et 9) ou si le contournement provisoire initial (import du fichier <em>xml</em>) n’a pas été réalisé, le CERT-FR recommande fortement de suivre la procédure documentée par l'éditeur [4] pour la remise en production d'un équipement compromis.</p> <p> </p> <h2>Recommandations supplémentaires du cert-fr</h2> <p>Du fait de la compromission des équipements et de la possibilité que l'attaquant ait injecté du code malveillant afin de récupérer des noms d'utilisateur et des mots de passe, le CERT-FR recommande de :</p> <ol> <li><strong>Réinitialiser tous les secrets</strong> (de façon générale) <u>configurés sur les équipements affectés ;<br/> </u></li> <li><strong>Réinitialiser tous les secrets d’authentification</strong> <u>susceptibles d’avoir transités sur les équipements affectés ;<br/> </u></li> <li><strong>Rechercher toutes traces de latéralisation</strong> sur le reste du système d’information.</li> </ol> \n\n<h2>Solution</h2>\n<p><span style=\"color: #ff0000;\"><strong>[Mise à jour du 4 mars 2024]</strong> Ivanti recommande aux clients utilisant Ivanti Connect Secure ou Policy Secure en machine virtuelle de ne plus effectuer de remise en état d'usine mais plutôt repartir d'une image (<em>template</em>).</span></p> <p><span style=\"color: #ff0000;\">Procédure de résolution pour les Ivanti Connect Secure ou Policy Secure en machine virtuelle :</span></p> <ol style=\"color: #ff0000;\"> <li><span style=\"color: #ff0000;\">Effectuer une sauvegarde de la configuration</span></li> <li><span style=\"color: #ff0000;\">Deployer une nouvelle machine à partir d'une image (<em>template</em>) du site de l'éditeur</span></li> <li><span style=\"color: #ff0000;\">Restaurer la configuration à partir de la sauvegarde</span></li> <li><span style=\"color: #ff0000;\">Effectuer une rotation des secrets</span></li> </ol> <p><strong>[Mise à jour du 15 février 2024] </strong>P<span class=\"mx_EventTile_body markdown-body\" dir=\"auto\">ublication de nouveaux correctifs sécurité. Ivanti a publié un correctif pour la vulnérabilité CVE-2024-22024 pour les produits suivants :</span></p> <ul> <li>Ivanti Connect Secure versions 9.1R14.5, 9.1R15.3, 9.1R16.3, 9.1R17.3, 9.1R18.4, 22.1R6.1, 22.2R4.1, 22.3R1.1, 22.4R1.1, 22.4R2.3, 22.5R1.2, 22.5R2.3 et 22.6R2.2</li> <li>Ivanti Policy Secure versions 9.1R16.3, 9.1R17.3, 9.1R18.4, 22.4R1.1, 22.5R1.2 et 22.6R1.1</li> <li>ZTA gateways versions 22.5R1.6, 22.6R1.5 et 22.6R1.7</li> </ul> <p><strong>[Mise à jour du 09 février 2024] Ajout de la vulnérabilité CVE-2024-22024</strong><span style=\"color: #ff0000;\"><strong><br/> </strong></span></p> <p>Si un patch a été appliqué avec les versions du 31/01 au 01/02, le CERT-FR recommande d'effectuer les actions suivantes avant l'application du correctif :</p> <ul> <li>Effectuer une sauvegarde</li> <li>Effectuer un scan de l'ICS externe <ul> <li>En cas de scan positif à l'ICS externe avant la mise à jour, la remise en état d'usine est nécessaire.</li> </ul> </li> </ul> <p>Ensuite,<strong> une fois le correctif appliqué</strong>, si <span class=\"mx_EventTile_body markdown-body\" dir=\"auto\">une remise à la configuration d'usine (<em><strong>Factory Reset</strong></em>) a déjà été effectuée lors de l'application du correctif du 31 janvier ou 01 février, l'éditeur indique qu'une nouvelle remise à la configuration d'usine n'est pas nécessaire.</span></p> <p><span class=\"mx_EventTile_body markdown-body\" dir=\"auto\">Enfin, pour les équipements vulnérables ne bénéficiant pas encore de correctif, l'éditeur recommande d'appliquer la mesure de contournement publiée le 31 janvier (fichier mitigation.release.20240126.5.xml).</span></p> <p><strong>[Mise à jour du 04 février 2024] Ajout de recommandations pour une configuration en grappe</strong></p> <p><span class=\"mx_EventTile_body\" dir=\"auto\"><strong>Recommandation additionnelle pour les configurations en grappe (clusters) :</strong> </span></p> <p><span class=\"mx_EventTile_body\" dir=\"auto\">Se référer à la documentation de l’éditeur à la section « Additionnal Detail for Recovering Clusters » </span></p> <p><span class=\"mx_EventTile_body\" dir=\"auto\"><a class=\"linkified\" href=\"https://forums.ivanti.com/s/article/Recovery-Steps-Related-to-CVE-2023-46805-and-CVE-2024-21887?language=en_US\" rel=\"noreferrer noopener\" target=\"_blank\">https://forums.ivanti.com/s/article/Recovery-Steps-Related-to-CVE-2023-46805-and-CVE-2024-21887?language=en_US</a> </span></p> <p><strong>[Mise à jour du 02 février 2024] </strong>L'éditeur continue de publier des versions correctives. Des correctifs sont désormais disponibles pour les versions Ivanti Connect Secure 22.5R2.2 et Ivanti Policy Secure 22.5R1.1</p> <p><strong>[Mise à jour du 01 février 2024]</strong> Fusion de la partie solution et contournement provisoire</p> <p>L'éditeur a publié des correctifs pour Ivanti Connect Secure dans les versions 9.1R14.4, 9.1R17.2, 9.1R18.3, 22.4R2.2 et 22.5R1.1 et pour ZTA dans la version 22.6R1.3 [0][15].</p> <p>La procédure suivante, proposée par l'éditeur, peut être suivie quelle que soit la disponibilité du correctif pour l'équipement. En cas d'indisponibilité d'un correctif, le fichier de contournement doit être installé.</p> <ol> <li><strong>Sauvegarder la configuration de l’<span class=\"mx_EventTile_body\" dir=\"auto\">équipement</span> ;<br/> </strong></li> <li><span style=\"color: #000000;\">Effectuer une remise à la configuration de sortie d'usine (<em><strong>Factory Reset</strong></em>) <strong>ET</strong> procéder à une montée de version du micrologiciel<em> (firmware</em>) si le correctif est disponible :</span><em><br/> </em> <ul> <li>la procédure est documentée dans le bulletin de l'éditeur [7],</li> <li>Une montée de version va supprimer/écraser les fichiers ajoutés/modifiés par l’attaquant,</li> <li>Les versions des firmwares peuvent être téléchargées sur la page de l'éditeur [8],</li> <li>NOTE : Un retour arrière (<em>rollback</em>) sur la version compromise va rendre le boîtier vulnérable. Deux montées de version suppriment la version compromise puisqu’une seule version de <em>rollback</em> est conservée sur l’équipement ;</li> </ul> </li> <li>S'il n'est pas possible d'installer une version disposant du correctif, une fois la remise à la configuration de sortie d'usine terminée, <strong>effectuer une mise à jour vers la version installée <em>précédemment </em></strong>;</li> <li>Restaurer la configuration de l’équipement à partir de la sauvegarde : [9] [10] ; <ul> <li>Si vous avez appliqué la mesure de contournement XML et que vous avez appliqué la version corrigée du micrologiciel, retirer le XML (How to Add and Remove XML files to your Ivanti Connect Secure and Ivanti Policy Secure Appliances : <a class=\"linkified\" href=\"https://forums.ivanti.com/s/article/Download-Links-Related-to-CVE-2023-46805-anownload-Links-Related-to-CVE-2023-46805-and-CVE-2024-21887\" rel=\"noreferrer noopener\" target=\"_blank\">https://forums.ivanti.com/s/article/Download-Links-Related-to-CVE-2023-46805-and-CVE-2024-21887</a>)</li> </ul> </li> <li><strong>Révoquer et réémettre</strong> tous les certificats présents sur les équipements affectés : <ul> <li>Certificats utilisés pour les machines et/ou pour l’authentification utilisateur (coté client et serveur),</li> <li>Certificats de signature de code et les certificats TLS pour l’interface exposée ;</li> </ul> </li> <li><strong>Réinitialiser le mot de passe d'administration ;<br/> </strong></li> <li><strong>Réinitialiser les clés d’API stockées sur l’équipement ;<br/> </strong></li> <li><strong>Réinitialiser les mots de passe de tout compte local</strong> défini sur la passerelle, y compris les comptes de service utilisés dans la configuration liée aux serveurs d’authentification.</li> <li><strong>Réinitialiser les authentifications des serveurs de licence ;<br/> </strong></li> <li><span class=\"mx_EventTile_body markdown-body\" dir=\"auto\" style=\"color: #000000;\"><strong>Si votre micrologiciel n’est pas sur une version corrigée, Installer le fichier de contournement </strong>(fichier .xml) sur l’équipement sain. Sinon, l’installation du fichier xml n’est pas nécessaire.</span></li> </ol> <p><strong>Une fois le contournement installé, plus aucune configuration ne doit être poussée sur l'équipement jusqu'à l'application du correctif de sécurité. En effet, l'éditeur indique que cela entraîne le malfonctionnement de certains services internes ce qui conduit à rendre le contournement inefficace.</strong></p> <p>L'utilisation de mesures de contournement n'est pas nécessaire après la mise à jour de l'équipement vers une <strong>version non vulnérable</strong>. L'éditeur propose un outil de suppression de contournement si ce dernier a été appliqué avant la mise à jour.</p> ",
+    "cves": [
+        {
+            "name": "CVE-2023-46805",
+            "url": "https://www.cve.org/CVERecord?id=CVE-2023-46805"
+        },
+        {
+            "name": "CVE-2024-21887",
+            "url": "https://www.cve.org/CVERecord?id=CVE-2024-21887"
+        },
+        {
+            "name": "CVE-2024-21893",
+            "url": "https://www.cve.org/CVERecord?id=CVE-2024-21893"
+        },
+        {
+            "name": "CVE-2024-21888",
+            "url": "https://www.cve.org/CVERecord?id=CVE-2024-21888"
+        },
+        {
+            "name": "CVE-2024-22024",
+            "url": "https://www.cve.org/CVERecord?id=CVE-2024-22024"
+        }
+    ],
+    "links": [
+        {
+            "title": "[15] Portail de téléchargement de l'éditeur",
+            "url": "https://forums.ivanti.com/s/product-downloads"
+        },
+        {
+            "title": "[6] Page du CERT-FR relative aux scans",
+            "url": "https://www.cert.ssi.gouv.fr/scans/"
+        },
+        {
+            "title": "[13] Liste d'indicateurs de compromission publiée par HarfangLab du 22 janvier 2024",
+            "url": "https://raw.githubusercontent.com/HarfangLab/iocs/main/iv_lastauthserverused_js/20240122_lastauthserverused_js.txt"
+        },
+        {
+            "title": "[4] Bulletin technique Ivanti du 16 janvier mis à jour le 19 janvier 2024",
+            "url": "https://forums.ivanti.com/s/article/Recovery-Steps-Related-to-CVE-2023-46805-and-CVE-2024-21887?language=en_US"
+        },
+        {
+            "title": "[14] Alerte de sécurité de JPCert du 11 janvier 2024",
+            "url": "https://www.jpcert.or.jp/at/2024/at240002.html"
+        },
+        {
+            "title": "Détails de la vulnérabilité CVE-2024-22024",
+            "url": "https://forums.ivanti.com/s/article/CVE-2024-22024-XXE-for-Ivanti-Connect-Secure-and-Ivanti-Policy-Secure?language=en_US"
+        },
+        {
+            "title": "[9] Bulletin technique Ivanti relatif à la restauration des données",
+            "url": "https://forums.ivanti.com/s/article/KB44759"
+        },
+        {
+            "title": "[16] Billet de blog Ivanti sur Enhanced External Integrity Checker Tool",
+            "url": "https://www.ivanti.com/blog/enhanced-external-integrity-checking-tool-to-provide-additional-visibility-and-protection-for-customers-against-evolving-threat-actor-techniques-in-relation-to-previously-disclosed-vulnerabilities"
+        },
+        {
+            "title": "[5] Bulletin technique Ivanti relatif à Integrity Check Tool",
+            "url": "https://forums.ivanti.com/s/article/KB44755"
+        },
+        {
+            "title": "Avis CERT-FR CERTFR-2024-AVI-0085 du 31 janvier 2024",
+            "url": "https://www.cert.ssi.gouv.fr/avis/CERTFR-2024-AVI-0085/"
+        },
+        {
+            "title": "[11] Publication Twitter du 22 janvier 2024",
+            "url": "https://twitter.com/felixaime/status/1749454051601776979"
+        },
+        {
+            "title": "[7] Bulletin technique Ivanti relatif à la réinitialisation de l'équipement",
+            "url": "https://forums.ivanti.com/s/article/KB22964"
+        },
+        {
+            "title": "[3] Billet de blogue Mandiant du 12 janvier 2024",
+            "url": "https://www.mandiant.com/resources/blog/suspected-apt-targets-ivanti-zero-day"
+        },
+        {
+            "title": "[2] Les bons réflexes en cas d'intrusion sur un système d'information",
+            "url": "https://www.cert.ssi.gouv.fr/les-bons-reflexes-en-cas-dintrusion-sur-un-systeme-dinformation/"
+        },
+        {
+            "title": "[1] Billet de blogue Volexity du 10 janvier 2024",
+            "url": "https://www.volexity.com/blog/2024/01/10/active-exploitation-of-two-zero-day-vulnerabilities-in-ivanti-connect-secure-vpn/"
+        },
+        {
+            "title": "Recommandation supplémentaires pour les configurations en grappe",
+            "url": "https://forums.ivanti.com/s/article/Recovery-Steps-Related-to-CVE-2023-46805-and-CVE-2024-21887?language=en_US"
+        },
+        {
+            "title": "Bulletin de sécurité Ivanti du 08 février 2024",
+            "url": "https://www.ivanti.com/blog/security-update-for-ivanti-connect-secure-and-ivanti-policy-secure-gateways-282024"
+        },
+        {
+            "title": "[10] Bulletin technique Ivanti relatif à la restauration des données",
+            "url": "https://forums.ivanti.com/s/article/KB44172"
+        },
+        {
+            "title": "[8] Bulletin technique Ivanti relatif au téléchargement des firmwares",
+            "url": "https://forums.ivanti.com/s/article/Post-Factory-Reset-Legacy-Package-Download"
+        },
+        {
+            "title": "Avis CERT-FR CERTFR-2024-AVI-0109 du 09 février 2024",
+            "url": "https://www.cert.ssi.gouv.fr/avis/CERTFR-2024-AVI-0109/"
+        },
+        {
+            "title": "[12] Billet de blogue Volexity du 18 janvier 2024",
+            "url": "https://www.volexity.com/blog/2024/01/18/ivanti-connect-secure-vpn-exploitation-new-observations/"
+        }
+    ],
+    "reference": "CERTFR-2024-ALE-001",
+    "revisions": [
+        {
+            "description": "Version initiale",
+            "revision_date": "2024-01-11T00:00:00.000000"
+        },
+        {
+            "description": "Ajout de recommandations",
+            "revision_date": "2024-01-17T00:00:00.000000"
+        },
+        {
+            "description": "MaJ ordre de la mise en oeuvre des mesures de contournement",
+            "revision_date": "2024-01-19T00:00:00.000000"
+        },
+        {
+            "description": "Mise à jour des recommandations CERT-FR",
+            "revision_date": "2024-01-23T00:00:00.000000"
+        },
+        {
+            "description": "Information sur les correctifs et les nouvelles vulnérabilités",
+            "revision_date": "2024-01-31T00:00:00.000000"
+        },
+        {
+            "description": "Fusion de la partie solution et contournement provisoire",
+            "revision_date": "2024-02-01T00:00:00.000000"
+        },
+        {
+            "description": "Nouveaux correctifs disponibles et clarification de la procédure",
+            "revision_date": "2024-02-02T00:00:00.000000"
+        },
+        {
+            "description": "Ajout de recommandations pour une configuration en grappe",
+            "revision_date": "2024-02-05T00:00:00.000000"
+        },
+        {
+            "description": "Ajout de la vulnérabilité CVE-2024-22024",
+            "revision_date": "2024-02-09T00:00:00.000000"
+        },
+        {
+            "description": "Nouveaux correctifs disponibles",
+            "revision_date": "2024-02-15T00:00:00.000000"
+        },
+        {
+            "description": "Ajout d'une procédure de résolution pour les Ivanti Connect Secure ou Policy Secure en machine virtuelle",
+            "revision_date": "2024-03-04T00:00:00.000000"
+        },
+        {
+            "description": "Clôture de l'alerte. Cela ne signifie pas la fin d'une menace. Seule l'application de la mise à jour permet de vous prémunir contre l'exploitation de la vulnérabilité correspondante.",
+            "revision_date": "2024-04-15T00:00:00.000000"
+        }
+    ],
+    "risks": [
+        {
+            "description": "Exécution de code arbitraire à distance"
+        },
+        {
+            "description": "Élévation de privilèges"
+        },
+        {
+            "description": "Contournement de la politique de sécurité"
+        }
+    ],
+    "summary": "<p><span style=\"color: #ff0000;\"><strong>[Mise à jour du 4 mars 2024]</strong> Ivanti a publié le 29 février des recommandations de résolution pour les Ivanti Connect Secure ou Policy Secure en machine virtuelle [16].<br /> </span></p> <p><strong>[Mise à jour du 15 février 2024] </strong><span class=\"mx_EventTile_body markdown-body\" dir=\"auto\">l'éditeur a publié le 15 février des correctifs pour les versions suivantes, qui n'en disposaient pas encore jusque-là :</span><strong><br /> </strong></p> <ul> <li><span class=\"mx_EventTile_body markdown-body\" dir=\"auto\">Ivanti Connect Secure versions 9.1R15.3, 9.1R16.3, 22.1R6.1, 22.2R4.1, 22.3R1.1 et 22.4R1.1</span></li> <li><span class=\"mx_EventTile_body markdown-body\" dir=\"auto\">Ivanti Policy Secure versions 9.1R16.3, 22.4R1.1 et 22.6R1.1</span></li> </ul> <p><strong>[Mise à jour du 09 février 2024] Ajout de la vulnérabilité CVE-2024-22024</strong><span style=\"color: #ff0000;\"><strong><br /> </strong></span></p> <p><span class=\"mx_EventTile_body\" dir=\"auto\">La publication des premières vulnérabilités a fait suite à la découverte par l'éditeur de leur exploitation ciblée, probablement depuis 2023. L'exploitation de ces vulnérabilités aurait permis aux attaquants de se latéraliser et de récupérer des identifiants sur les équipements Ivanti compromis. Ensuite, des codes d'exploitation, puis de nouvelles vulnérabilités, ont été publiés mi-janvier. L'ensemble de ces vulnérabilités est exploité massivement.</span></p> <p>Le 08 février 2024, Ivanti a publié un bulletin de sécurité concernant la vulnérabilité <span class=\"mx_EventTile_body\" dir=\"auto\">CVE-2024-22024, affectant les produits </span><span class=\"test-id__field-value slds-form-element__static slds-grow slds-form-element_separator is-read-only iv-cad-fld\" data-aura-rendered-by=\"34:347;a\"><span data-aura-rendered-by=\"35:347;a\">Ivanti Connect Secure, Ivanti Policy Secure et ZTA gateways. Le détail des versions vulnérables est disponible dans la section solution. Elle permet à un attaquant non authentifié d'accéder à des ressources restreintes. Les chercheurs ayant découvert cette vulnérabilité ont publié une preuve de concept.<br /> </span></span></p> <p><strong>[Mise à jour du 04 février 2024] Ajout de recommandations pour une configuration en grappe</strong></p> <p><strong>[Mise à jour du 02 février 2024] Correctifs disponibles pour les versions Ivanti Connect Secure 22.5R2.2 et Ivanti Policy Secure 22.5R1.1. Clarification de la procédure.<br /> </strong></p> <p><span style=\"color: #000000;\"><strong>[Mise à jour du 01 février 2024]</strong> Fusion de la partie solution et contournement provisoire</span></p> <p><strong>[Version du 31 janvier 2024]</strong> Ajout d’informations sur les correctifs et des nouvelles vulnérabilités</p> <p>L'éditeur a publié des informations concernant deux nouvelles vulnérabilités. La vulnérabilité CVE-2024-21888 permet une élévation de privilège sur le composant web. La vulnérabilité CVE-2024-21893 permet à un attaquant non authentifié de forger des requêtes côté serveur (SSRF) au travers du composant SAML. Cette dernière est activement exploitée.</p> <p>Des correctifs sont disponibles, veuillez vous référer à la section Solution. Le CERT-FR a connaissance de tentatives de contournement de l'outil ICT même si la version externe est utilisée.</p> <p><strong>[Version du 23 janvier 2024]</strong></p> <p>Des acteurs malveillants exploitent massivement les vulnérabilités dans le but d’extorquer les comptes et les mots de passe ayant pu transiter sur les équipements vulnérables.</p> <p>La vulnérabilité CVE-2023-46805 permet à un attaquant de contourner l'authentification, tandis que la vulnérabilité CVE-2024-21887 permet à un administrateur distant et authentifié d'exécuter des commandes arbitraires. Un attaquant qui exploite ces deux vulnérabilités peut par conséquent prendre le contrôle complet de l’équipement.</p> <p>Ivanti indique que ces vulnérabilités sont activement exploitées dans le cadre d'attaques ciblées. Le CERT-FR a connaissance de nombreux équipements compromis. Différentes sources ont mentionné l'exploitation de ces vulnérabilités afin de mettre en place des méthodes de persistance sur l'équipement [1][3].</p> <p>Des codes d'exploitations publics sont disponibles sur Internet afin d'exploiter les deux vulnérabilités à la suite.</p> <h2>Détection</h2> <p><strong>[Version du 23 janvier 2024]</strong></p> <p align=\"justify\">Pour savoir si vous êtes concernés par ces attaques, le CERT-FR vous propose les actions suivantes :</p> <ol> <li> <p align=\"justify\">Exécuter le script <i>Integrity Check Tool </i>publié par IVANTI [5] sur tous les équipements composant la grappe (<i>cluster)</i>. En cas de résultats non nuls aux étapes 8 et 9, l’équipement est compromis ;</p> </li> <li> <p align=\"justify\">L'attaquant peut tenter de contourner les contrôles effectués par l'<em>ICT</em>, il est donc également nécessaire de rechercher dans les journaux toute trace des marqueurs publiés par les sources publiques [1] [3] [11] [12] [13] [14]<em>. Note : Ces indicateurs n'ont pas été qualifiés par le CERT-FR.<br /> </em></p> </li> </ol> <p align=\"justify\">En cas de détection positive :</p> <ol> <li> <p align=\"justify\">Réaliser un gel de données (instantanés pour les <i>Appliances</i> virtuelles, isolement de l’équipement s’il s’agit d’un équipement physique). Une fois le gel des données effectué ou en cas d’impossibilité de maintenir un isolement des équipements physiques, procéder aux mesures de contournements et recommandations mentionnées dans la section suivante.</p> </li> <li> <p align=\"justify\">Signaler l’événement auprès du CERT-FR en mettant en copie vos éventuels CSIRT métiers. Le CERT-FR vous recontactera si nécessaire pour le traitement de l’incident ou vous communiquera des éléments supplémentaires.</p> </li> </ol> <p align=\"justify\">Par ailleurs, le CERT-FR réalise régulièrement des scans à partir des IP mentionnées dans la page associée [6] et contacte les entités identifiées comme vulnérables ou compromises.</p> ",
+    "title": "[MàJ] Multiples vulnérabilités dans Ivanti Connect Secure et Policy Secure Gateways",
+    "vendor_advisories": [
+        {
+            "published_at": "2024-01-10",
+            "title": "[0] Bulletin de sécurité Ivanti 000090123",
+            "url": "https://forums.ivanti.com/s/article/KB-CVE-2023-46805-Authentication-Bypass-CVE-2024-21887-Command-Injection-for-Ivanti-Connect-Secure-and-Ivanti-Policy-Secure-Gateways"
+        }
+    ]
+}

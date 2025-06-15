@@ -1,0 +1,71 @@
+{
+    "$ref": "https://www.cert.ssi.gouv.fr/openapi.json",
+    "affected_systems": [],
+    "affected_systems_content": "<ul> <li>NetScaler ADC et NetScaler Gateway versions 14.1.x antérieures à 14.1-8.50</li> <li>NetScaler ADC et NetScaler Gateway versions 13.1.x antérieures à  13.1-49.15</li> <li>NetScaler ADC et NetScaler Gateway versions 13.0.x antérieures à 13.0-92.19</li> <li>NetScaler ADC 13.1-FIPS versions antérieures à 13.1-37.164</li> <li>NetScaler ADC 12.1-FIPS versions antérieures à 12.1-55.300</li> <li>NetScaler ADC 12.1-NDcPP versions antérieures à 12.1-55.300</li> </ul> <p>Citrix indique que NetScaler ADC et NetScaler Gateway versions 12.1 sont obsolètes.</p> ",
+    "closed_at": "2024-02-16",
+    "content": "## Solution\n\nSe référer au bulletin de sécurité de l'éditeur pour l'obtention des\ncorrectifs (cf. section Documentation).\n",
+    "cves": [
+        {
+            "name": "CVE-2023-4966",
+            "url": "https://www.cve.org/CVERecord?id=CVE-2023-4966"
+        }
+    ],
+    "links": [
+        {
+            "title": "[4] Avis de sécurité de la CISA du 21 novembre 2023",
+            "url": "https://www.cisa.gov/news-events/cybersecurity-advisories/aa23-325a"
+        },
+        {
+            "title": "[5] Les bons réflexes en cas d'intrusion sur un système d'information",
+            "url": "https://www.cert.ssi.gouv.fr/les-bons-reflexes-en-cas-dintrusion-sur-un-systeme-dinformation/"
+        },
+        {
+            "title": "[2] Billet de blogue Mandiant du 17 octobre 2023",
+            "url": "https://www.mandiant.com/resources/blog/remediation-netscaler-adc-gateway-cve-2023-4966"
+        },
+        {
+            "title": "Avis CERT-FR CERTFR-2023-AVI-0823 du 11 octobre 2023",
+            "url": "https://www.cert.ssi.gouv.fr/avis/CERTFR-2023-AVI-0823/"
+        },
+        {
+            "title": "[3] Billet de blogue NetScaler du 20 novembre 2023",
+            "url": "https://www.netscaler.com/blog/news/netscaler-investigation-recommendations-for-cve-2023-4966/"
+        }
+    ],
+    "reference": "CERTFR-2023-ALE-012",
+    "revisions": [
+        {
+            "description": "Version initiale",
+            "revision_date": "2023-10-23T00:00:00.000000"
+        },
+        {
+            "description": "Publication de détails techniques",
+            "revision_date": "2023-10-24T00:00:00.000000"
+        },
+        {
+            "description": "Mise à jour : publications de l'éditeur et de la CISA",
+            "revision_date": "2023-11-22T00:00:00.000000"
+        },
+        {
+            "description": "Clôture de l'alerte. Cela ne signifie pas la fin d'une menace. Seule l'application de la mise à jour permet de vous prémunir contre l'exploitation de la vulnérabilité correspondante.",
+            "revision_date": "2024-02-16T00:00:00.000000"
+        }
+    ],
+    "risks": [
+        {
+            "description": "Atteinte à la confidentialité des données"
+        },
+        {
+            "description": "Exécution de code arbitraire à distance"
+        }
+    ],
+    "summary": "<span style=\"color: #ff0000;\"><strong>\\[Mise à jour du 22 novembre\n2023\\]</strong></span>\n\nL'éditeur a publié un document \\[3\\] le 20 novembre 2023 listant les\ndifférents journaux à analyser ainsi que les éléments à rechercher pour\nidentifier une activité pouvant être liée à une compromission.\n\nPar ailleurs, la CISA a publié un avis de sécurité le 21 novembre 2023\n\\[4\\] indiquant que, comme anticipé le 24 octobre, des <span\nstyle=\"text-decoration: underline;\">campagnes d'exploitation</span>\nmassives sont en cours notamment pour le <span\nstyle=\"text-decoration: underline;\">déploiement de rançongiciels</span>.\n\n<span style=\"color: #ff0000;\"><strong>Le CERT-FR rappelle que tout équipement\nqui n'aurait pas été mis à jour doit être considéré comme compromis. Il\nest impératif de réaliser des investigations sans délai \\[5\\] en\ns'appuyant sur l'ensemble des recommandations fournies dans les\ndifférentes publications \\[2\\]\\[3\\]\\[4\\].</strong></span>\n\n \n\n<span style=\"color: #000000;\"><strong>\\[Mise à jour du 24 octobre 2023\\]</strong>\n</span>Des chercheurs ont publiés des détails techniques sur la\nvulnérabilité ce jour. <span style=\"text-decoration: underline;\">Le\nCERT-FR anticipe l'apparition de codes d'exploitation publics suivie\nd'une augmentation des tentatives d'exploitation de cette\nvulnérabilité</span>.\n\n<strong>\\[Publication initiale\\]</strong>\n\nLe 10 octobre 2023, Citrix a publié un avis de sécurité \\[1\\] concernant\nla vulnérabilité CVE-2023-4966 affectant NetScaler ADC et NetScaler\nGateway. L'éditeur lui a donné un score de 9,4 et indiqué qu'elle permet\nune atteinte à la confidentialité des données.\n\nLe 17 octobre 2023, Citrix a mis son avis à jour pour déclarer avoir\nconnaissance d'exploitations actives de la vulnérabilité CVE-2023-4966.\n\nLe même jour, Mandiant a publié un billet de blogue \\[2\\] dans lequel\nl'entreprise déclare avoir connaissance d'exploitations actives de cette\nvulnérabilité depuis fin août 2023.  Mandiant précise que l’exploitation\nde cette vulnérabilité permet à l'attaquant de prendre le contrôle de\nsessions actives avec le niveau de privilèges des utilisateurs\nconcernés. Cela permet de contourner l'authentification à multiples\nfacteurs et le seul fait d'appliquer la mise à jour ne bloque pas\nl'accès à l'attaquant.\n\nSur la base des informations fournies par Mandiant dans son rapport (cf.\nle rapport détaillé référencé dans son billet \\[2\\]), le CERT-FR\nrecommande de réaliser les actions suivantes :\n\n-   appliquer la mise à jour <span\n    style=\"text-decoration: underline;\">sans délai</span> ;\n-   couper toutes les sessions existantes <span\n    style=\"text-decoration: underline;\">sans délai</span> ;\n-   renouveler les mots de passe des comptes déclarés sur les\n    passerelles vulnérables ;\n-   mener des investigations pour identifier les actions prises par un\n    potentiel attaquant.\n\n \n",
+    "title": "[MàJ] Vulnérabilité dans Citrix NetScaler ADC et NetScaler Gateway",
+    "vendor_advisories": [
+        {
+            "published_at": null,
+            "title": "[1] Bulletin de sécurité Citrix CTX579459 du 10 octobre 2023",
+            "url": "https://support.citrix.com/article/CTX579459/netscaler-adc-and-netscaler-gateway-security-bulletin-for-cve20234966-and-cve20234967"
+        }
+    ]
+}

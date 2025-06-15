@@ -1,0 +1,89 @@
+{
+    "$ref": "https://www.cert.ssi.gouv.fr/openapi.json",
+    "affected_systems": [
+        {
+            "description": "Cisco Adaptive Security Appliance (ASA) sans les derniers correctifs de sécurité, se référer au bulletin de sécurité de l'éditeur pour les versions vulnérables (cf. section Documentation)",
+            "product": {
+                "name": "N/A",
+                "vendor": {
+                    "name": "Cisco",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Cisco Firepower Threat Defense (FTD) sans les derniers correctifs de sécurité, se référer au bulletin de sécurité de l'éditeur pour les versions vulnérables (cf. section Documentation)",
+            "product": {
+                "name": "N/A",
+                "vendor": {
+                    "name": "Cisco",
+                    "scada": false
+                }
+            }
+        }
+    ],
+    "affected_systems_content": "",
+    "closed_at": "2024-07-01",
+    "content": "## Solution\n\nSe référer au bulletin de sécurité de l'éditeur pour l'obtention des\ncorrectifs (cf. section Documentation).\n",
+    "cves": [
+        {
+            "name": "CVE-2024-20353",
+            "url": "https://www.cve.org/CVERecord?id=CVE-2024-20353"
+        },
+        {
+            "name": "CVE-2024-20359",
+            "url": "https://www.cve.org/CVERecord?id=CVE-2024-20359"
+        }
+    ],
+    "links": [
+        {
+            "title": "Communication Cisco",
+            "url": "https://sec.cloudapps.cisco.com/security/center/resources/asa_ftd_attacks_event_response"
+        },
+        {
+            "title": "[2] Procédure d'investigation de Cisco sur les équipements ASA",
+            "url": "https://sec.cloudapps.cisco.com/security/center/resources/forensic_guides/asa_forensic_investigation.html"
+        },
+        {
+            "title": "[1] Billet de blogue Cisco Talos du 24 avril 2024",
+            "url": "https://blog.talosintelligence.com/arcanedoor-new-espionage-focused-campaign-found-targeting-perimeter-network-devices/"
+        },
+        {
+            "title": "Avis CERTFR-2024-AVI-0307 du 15 avril 2024",
+            "url": "https://www.cert.ssi.gouv.fr/avis/CERTFR-2024-AVI-0347/"
+        }
+    ],
+    "reference": "CERTFR-2024-ALE-007",
+    "revisions": [
+        {
+            "description": "Version initiale",
+            "revision_date": "2024-04-25T00:00:00.000000"
+        },
+        {
+            "description": "Clôture de l'alerte. Cela ne signifie pas la fin d'une menace. Seule l'application de la mise à jour permet de vous prémunir contre l'exploitation de la vulnérabilité correspondante.",
+            "revision_date": "2024-07-01T00:00:00.000000"
+        }
+    ],
+    "risks": [
+        {
+            "description": "Exécution de code arbitraire"
+        },
+        {
+            "description": "Déni de service à distance"
+        }
+    ],
+    "summary": "Le 24 avril 2024, Cisco a publié trois avis de sécurité concernant des\nvulnérabilités affectant les équipements de sécurité ASA et FTD.\n\nDeux d'entre eux concernent les vulnérabilités CVE-2024-20353 et\nCVE-2024-20359 qui sont activement exploitées dans le cadre d'attaques\nciblées.\n\nLa vulnérabilité CVE-2024-20359 permet à un utilisateur authentifié avec\ndes droits administrateur d'exécuter du code arbitraire avec les\nprivilèges *root*.\n\nEn effet, si l'attaquant parvient à écrire un fichier malveillant sur le\nsystème de fichier du *disk0:*, cela lui permet d'exécuter son code au\nprochain redémarrage de l'équipement. Cisco indique que l'attaquant peut\nexploiter la vulnérabilité CVE-2024-20353 pour déclencher son\nredémarrage.\n\nDans son billet de blogue \\[1\\], Cisco Talos détaille l'historique des\nexploitations et indique que les premières infections constatées\nremontent à début janvier 2024.\n\nL'éditeur indique ne pas avoir connaissance du vecteur initial\nd'infection. Toutefois une fois sur l'équipement, l'attaquant exploite\nces deux vulnérabilités pour mettre en place un implant, nommé *Line\nRunner* par Talos, qui est une porte dérobée persistante.\n\nLa présence d'un autre implant, *Line Dancer,* a été constaté sur des\néquipements compromis.\n\nCelui-ci est présent uniquement en mémoire et permet à l'attaquant :\n\n-   de désactiver les journaux d'activité système ;\n-   de récupérer des élements de configuration ;\n-   d'effectuer et d'exfiltrer des captures réseaux ;\n-   d'exécuter des commandes arbitraires ;\n-   de s'insérer dans le processus de vidage après erreur (*crash dump*)\n    afin de réduire la trace de son activité ;\n-   de s'insérer dans le processus d'authentification, authaurisation et\n    tracabilité (*Authentication, Authorization and Accounting, AAA*)\n    afin de contourner ces mécanismes.\n\nCisco conseille dans un premier temps d'appliquer les mises à jour de\nsécurité. Avant de mener les actions d'investigations et de remédiations\npréconisées par Talos \\[1\\]\\[2\\], le CERT-FR recommande de déconnecter\nl'équipement d'Internet.\n\nTalos insiste sur le fait de ne pas redémarrer l'équipement ou tenter de\nrécupérer une image mémoire si les investigations initiales montrent une\nmodification des droits d'exécution de certaines zones mémoire.\n\n \n",
+    "title": "Multiples vulnérabilités dans les produits Cisco",
+    "vendor_advisories": [
+        {
+            "published_at": "2024-04-24",
+            "title": "Bulletin de sécurité Cisco cisco-sa-asaftd-websrvs-dos-X8gNucD2",
+            "url": "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-asaftd-websrvs-dos-X8gNucD2"
+        },
+        {
+            "published_at": "2024-04-24",
+            "title": "Bulletin de sécurité Cisco cisco-sa-asaftd-persist-rce-FLsNXF4h",
+            "url": "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-asaftd-persist-rce-FLsNXF4h"
+        }
+    ]
+}

@@ -1,0 +1,100 @@
+{
+    "$ref": "https://www.cert.ssi.gouv.fr/openapi.json",
+    "affected_systems": [
+        {
+            "description": "FortiOS versions 7.0.x antérieures à 7.0.17",
+            "product": {
+                "name": "FortiOS",
+                "vendor": {
+                    "name": "Fortinet",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "FortiOS versions 7.4.x antérieures à 7.4.7",
+            "product": {
+                "name": "FortiOS",
+                "vendor": {
+                    "name": "Fortinet",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "FortiOS versions 7.6.x antérieures à 7.6.2",
+            "product": {
+                "name": "FortiOS",
+                "vendor": {
+                    "name": "Fortinet",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "FortiOS versions 7.2.x antérieures à 7.2.11",
+            "product": {
+                "name": "FortiOS",
+                "vendor": {
+                    "name": "Fortinet",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "FortiOS versions antérieures à 6.4.16",
+            "product": {
+                "name": "FortiOS",
+                "vendor": {
+                    "name": "Fortinet",
+                    "scada": false
+                }
+            }
+        }
+    ],
+    "affected_systems_content": "L'éditeur indique que les clients qui n'ont jamais activé la fonctionnalité de SSL-VPN ne sont pas impactés.",
+    "closed_at": null,
+    "content": "## Solutions\n\nL'éditeur a publié des versions correctives pour les branches 6.4.x, 7.0.x, 7.2.x, 7.4.x et 7.6.x. La mise à jour vers une de ces versions supprime les fichiers malveillants. Dans le cas de l'utilisation d'une version qui n'est plus supportée, le CERT-FR recommande fortement de migrer vers une version corrective.\n\nPour les utilisateurs avec un contrat de support et une licence IPS activée, l'éditeur a supprimé automatiquement les fichiers malveillants. Le CERT-FR a connaissance de nombreux équipements pour lesquels ces conditions ne sont pas réunies.\n\nL'éditeur a indiqué avoir contacté les clients avec des équipements compromis. Le CERT-FR invite les propriétaires d'équipements à consulter les adresses de messageries pouvant avoir été contactées par Fortinet ou à relayer cette demande aux gestionnaires de l'équipement si cela est applicable.\n\n**Cependant, la simple suppression de ces éléments et l'application des mises à jour n'est pas suffisante en cas de compromission**. Dans cette situation:\n1. isoler les équipements compromis du réseau et réaliser un gel de données (instantané pour les machines virtuelles, isolement de l’équipement s’il s’agit d’un équipement physique) à des fins d’investigations approfondies ;\n2. réinitialiser tous les secrets de façon générale (mot de passe, certificat, etc.) configurés sur les équipements affectés ; \n3. réinitialiser tous les secrets d’authentification susceptibles d’avoir transités sur les équipements affectés (si applicable) : mots de passe, jetons d'identité, clés cryptographiques...;\n4. rechercher toutes traces de latéralisation sur le reste du système d’information, notamment :\n    * en cherchant les connexions ou tentatives de connexion vers Internet depuis l'équipement compromis ;\n    * puis en cherchant ces adresses IP de destination pour vérifier si d’autres machines ont tenté une connexion ;\n    * en analysant les journaux des EDR ou les journaux Windows pour identifier des connexions depuis l'équipement compromis. \n5. identifier les comptes du domaine Active Directory qui seraient configurés sur l'équipement suspecté puis :\n    * vérifier l'activité réalisée à partir de ce compte ;\n    * réinitialiser les secrets associés à ces comptes afin d'éviter que l'attaquant ne puisse réutiliser ailleurs les identifiants éventuellement obtenus sur l'équipement.\n\nLe CERT-FR vous recontactera si nécessaire pour le traitement de l’incident ou vous communiquera des éléments supplémentaires. En cas de suspicion de compromission, il est recommandé de consulter les [bons réflexes en cas d'intrusion sur votre système d'information](https://www.cert.ssi.gouv.fr/les-bons-reflexes-en-cas-dintrusion-sur-un-systeme-dinformation/) [5].",
+    "cves": [],
+    "links": [
+        {
+            "title": "[3] Alerte CERTFR-2023-ALE-004",
+            "url": "https://www.cert.ssi.gouv.fr/alerte/CERTFR-2023-ALE-004/"
+        },
+        {
+            "title": "[4] Alerte CERTFR-2024-ALE-004",
+            "url": "https://www.cert.ssi.gouv.fr/alerte/CERTFR-2024-ALE-004/"
+        },
+        {
+            "title": "[1] Billet de blogue Fortinet du 10 avril 2025",
+            "url": "https://www.fortinet.com/blog/psirt-blogs/analysis-of-threat-actor-activity"
+        },
+        {
+            "title": "[5] Les bons réflexes en cas d’intrusion sur un système d’information",
+            "url": "https://www.cert.ssi.gouv.fr/les-bons-reflexes-en-cas-dintrusion-sur-un-systeme-dinformation/"
+        },
+        {
+            "title": "[2] Alerte CERTFR-2022-ALE-012",
+            "url": "https://www.cert.ssi.gouv.fr/alerte/CERTFR-2022-ALE-012/"
+        },
+        {
+            "title": "Documentation 230694 relative aux actions à suivre en cas de compromission",
+            "url": "https://community.fortinet.com/t5/FortiGate/Technical-Tip-Recommended-steps-to-execute-in-case-of-a/ta-p/230694"
+        }
+    ],
+    "reference": "CERTFR-2025-ALE-004",
+    "revisions": [
+        {
+            "description": "Version initiale",
+            "revision_date": "2025-04-11T00:00:00.000000"
+        }
+    ],
+    "risks": [
+        {
+            "description": "Atteinte à la confidentialité des données"
+        }
+    ],
+    "summary": "Fortinet a publié le 10 avril 2025 un billet de blogue [1] indiquant l'utilisation d'une technique de post-exploitation qui permet une atteinte à la confidentialité des données de l'ensemble du système des équipements Fortigate affectés.\nCette technique repose sur l'utilisation d'un lien symbolique déposé sur le système à la suite d'une compromission de l'équipement par exploitation, entre autres, des vulnérabilités CVE-2022-42475 [2], CVE-2023-27997 [3] ou CVE-2024-21762 [4]. \n\nLe CERT-FR a connaissance d'une campagne massive, avec de nombreux équipements compromis en France. Lors d'opérations de réponse à incident, le CERT-FR a pris connaissance de compromissions ayant eu lieu dès le début de l'année 2023.",
+    "title": "Activités de post-exploitation dans Fortinet FortiGate",
+    "vendor_advisories": []
+}

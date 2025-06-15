@@ -1,0 +1,462 @@
+{
+    "$ref": "https://www.cert.ssi.gouv.fr/openapi.json",
+    "affected_systems": [
+        {
+            "description": "Windows Server 2019",
+            "product": {
+                "name": "Windows",
+                "vendor": {
+                    "name": "Microsoft",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Windows 10 Version 21H1 for ARM64-based Systems",
+            "product": {
+                "name": "Windows",
+                "vendor": {
+                    "name": "Microsoft",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Windows 10 Version 1809 for x64-based Systems",
+            "product": {
+                "name": "Windows",
+                "vendor": {
+                    "name": "Microsoft",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Windows Server 2022 Azure Edition Core Hotpatch",
+            "product": {
+                "name": "Windows",
+                "vendor": {
+                    "name": "Microsoft",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Windows 10 Version 20H2 for x64-based Systems",
+            "product": {
+                "name": "Windows",
+                "vendor": {
+                    "name": "Microsoft",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Windows 10 Version 21H1 for x64-based Systems",
+            "product": {
+                "name": "Windows",
+                "vendor": {
+                    "name": "Microsoft",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Windows 7 for x64-based Systems Service Pack 1",
+            "product": {
+                "name": "Windows",
+                "vendor": {
+                    "name": "Microsoft",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Windows 10 Version 20H2 for 32-bit Systems",
+            "product": {
+                "name": "Windows",
+                "vendor": {
+                    "name": "Microsoft",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Windows 10 Version 21H2 for 32-bit Systems",
+            "product": {
+                "name": "Windows",
+                "vendor": {
+                    "name": "Microsoft",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Windows 10 Version 21H2 for ARM64-based Systems",
+            "product": {
+                "name": "Windows",
+                "vendor": {
+                    "name": "Microsoft",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Windows Server 2012",
+            "product": {
+                "name": "Windows",
+                "vendor": {
+                    "name": "Microsoft",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Windows Server 2012 R2",
+            "product": {
+                "name": "Windows",
+                "vendor": {
+                    "name": "Microsoft",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Windows Server 2012 (Server Core installation)",
+            "product": {
+                "name": "Windows",
+                "vendor": {
+                    "name": "Microsoft",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Windows Server 2022 (Server Core installation)",
+            "product": {
+                "name": "Windows",
+                "vendor": {
+                    "name": "Microsoft",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Windows Server 2016 (Server Core installation)",
+            "product": {
+                "name": "Windows",
+                "vendor": {
+                    "name": "Microsoft",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Windows 8.1 for 32-bit systems",
+            "product": {
+                "name": "Windows",
+                "vendor": {
+                    "name": "Microsoft",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Windows 10 Version 21H2 for x64-based Systems",
+            "product": {
+                "name": "Windows",
+                "vendor": {
+                    "name": "Microsoft",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Windows 7 for 32-bit Systems Service Pack 1",
+            "product": {
+                "name": "Windows",
+                "vendor": {
+                    "name": "Microsoft",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Windows 11 for ARM64-based Systems",
+            "product": {
+                "name": "Windows",
+                "vendor": {
+                    "name": "Microsoft",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Windows RT 8.1",
+            "product": {
+                "name": "Windows",
+                "vendor": {
+                    "name": "Microsoft",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Windows 8.1 for x64-based systems",
+            "product": {
+                "name": "Windows",
+                "vendor": {
+                    "name": "Microsoft",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Windows Server 2019 (Server Core installation)",
+            "product": {
+                "name": "Windows",
+                "vendor": {
+                    "name": "Microsoft",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Windows Server 2008 for x64-based Systems Service Pack 2",
+            "product": {
+                "name": "Windows",
+                "vendor": {
+                    "name": "Microsoft",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Windows Server 2012 R2 (Server Core installation)",
+            "product": {
+                "name": "Windows",
+                "vendor": {
+                    "name": "Microsoft",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Windows 10 Version 1607 for x64-based Systems",
+            "product": {
+                "name": "Windows",
+                "vendor": {
+                    "name": "Microsoft",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Windows Server 2008 for 32-bit Systems Service Pack 2 (Server Core installation)",
+            "product": {
+                "name": "Windows",
+                "vendor": {
+                    "name": "Microsoft",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Windows 10 Version 1607 for 32-bit Systems",
+            "product": {
+                "name": "Windows",
+                "vendor": {
+                    "name": "Microsoft",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Windows Server 2022",
+            "product": {
+                "name": "Windows",
+                "vendor": {
+                    "name": "Microsoft",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Windows Server 2008 for x64-based Systems Service Pack 2 (Server Core installation)",
+            "product": {
+                "name": "Windows",
+                "vendor": {
+                    "name": "Microsoft",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Windows Server 2008 R2 for x64-based Systems Service Pack 1",
+            "product": {
+                "name": "Windows",
+                "vendor": {
+                    "name": "Microsoft",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Windows 10 Version 20H2 for ARM64-based Systems",
+            "product": {
+                "name": "Windows",
+                "vendor": {
+                    "name": "Microsoft",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Windows 10 for 32-bit Systems",
+            "product": {
+                "name": "Windows",
+                "vendor": {
+                    "name": "Microsoft",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Windows 10 Version 21H1 for 32-bit Systems",
+            "product": {
+                "name": "Windows",
+                "vendor": {
+                    "name": "Microsoft",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Windows Server 2008 for 32-bit Systems Service Pack 2",
+            "product": {
+                "name": "Windows",
+                "vendor": {
+                    "name": "Microsoft",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Windows 10 Version 1809 for ARM64-based Systems",
+            "product": {
+                "name": "Windows",
+                "vendor": {
+                    "name": "Microsoft",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Windows 10 Version 1809 for 32-bit Systems",
+            "product": {
+                "name": "Windows",
+                "vendor": {
+                    "name": "Microsoft",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Windows Server 2016",
+            "product": {
+                "name": "Windows",
+                "vendor": {
+                    "name": "Microsoft",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Windows Server 2008 R2 for x64-based Systems Service Pack 1 (Server Core installation)",
+            "product": {
+                "name": "Windows",
+                "vendor": {
+                    "name": "Microsoft",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Windows 11 for x64-based Systems",
+            "product": {
+                "name": "Windows",
+                "vendor": {
+                    "name": "Microsoft",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Windows 10 for x64-based Systems",
+            "product": {
+                "name": "Windows",
+                "vendor": {
+                    "name": "Microsoft",
+                    "scada": false
+                }
+            }
+        }
+    ],
+    "affected_systems_content": null,
+    "closed_at": "2023-03-14",
+    "content": "## Solution\n\nSe référer au bulletin de sécurité de l'éditeur pour l'obtention des\ncorrectifs (cf. section Documentation).\n",
+    "cves": [
+        {
+            "name": "CVE-2022-34718",
+            "url": "https://www.cve.org/CVERecord?id=CVE-2022-34718"
+        },
+        {
+            "name": "CVE-2022-34721",
+            "url": "https://www.cve.org/CVERecord?id=CVE-2022-34721"
+        },
+        {
+            "name": "CVE-2022-34722",
+            "url": "https://www.cve.org/CVERecord?id=CVE-2022-34722"
+        }
+    ],
+    "links": [],
+    "reference": "CERTFR-2022-ALE-007",
+    "revisions": [
+        {
+            "description": "Version initiale",
+            "revision_date": "2022-09-16T00:00:00.000000"
+        },
+        {
+            "description": "Une preuve de concept est publiquement disponible.",
+            "revision_date": "2022-10-31T00:00:00.000000"
+        },
+        {
+            "description": "Clôture de l'alerte. Cela ne signifie pas la fin d'une menace. Seule l'application de la mise à jour permet de vous prémunir contre l'exploitation de la vulnérabilité correspondante.",
+            "revision_date": "2023-03-14T00:00:00.000000"
+        }
+    ],
+    "risks": [
+        {
+            "description": "Exécution de code arbitraire à distance"
+        }
+    ],
+    "summary": "\\[MàJ du 31 octobre 2022\\]\n\nUne preuve de concept est publiquement disponible.\n\n\\[Publication initiale\\]\n\nDans le cadre de son *Patch Tuesday*, en date du 13 septembre 2022,\nMicrosoft a indiqué l'existence de multiples vulnérabilités au sein de\nplusieurs versions de Windows. Trois d'entre elles doivent faire l'objet\nd'une attention particulière car considérées comme critiques. Elles\npossèdent un score CVSSv3 de 9.8 et sont respectivement référencées par\nles numéros suivants : CVE-2022-34718, CVE-2022-34721 et CVE-2022-34722.\n\nLa vulnérabilité CVE-2022-34718 permet à un attaquant non authentifié\nd'envoyer un paquet IPv6 spécialement conçu à destination d'un nœud\nWindows, provoquant une exécution de code arbitraire à distance.\n\nLes vulnérabilités CVE-2022-34721 et CVE-2022-34722 affectent les\nextensions du protocole Windows Internet Key Exchange (IKE). Elles\npermettent à un attaquant non authentifié de provoquer une exécution de\ncode arbitraire à distance. D'après l'éditeur, bien que ces deux\nvulnérabilités n'affectent que le protocole IKEv1, tous les serveurs\nWindows seraient concernés car ils acceptent par défaut les paquets des\nversions 1 et 2.\n\nPar ailleurs, il est à noter que Microsoft a également mis à disposition\ndes correctifs de sécurité pour des systèmes qui ne sont plus supportés\n(Windows 7 et Windows Server 2008R2).\n\nLe CERT-FR a connaissance de références publiques mettant en exergue des\ntravaux ayant potentiellement débouché sur l'élaboration d'un code\nd'exploitation pour l'une de ces vulnérabilités, et citant une intention\nde publication prochaine d'un article. Le CERT-FR recommande fortement\nd'appliquer les correctifs et, le cas échéant, de mettre en œuvre les\nmoyens d'atténuation proposés par l'éditeur.\n",
+    "title": "Multiples vulnérabilités dans Microsoft Windows",
+    "vendor_advisories": [
+        {
+            "published_at": null,
+            "title": "Bulletin de sécurité Microsoft CVE-2022-34722 du 13 septembre 2022",
+            "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-34722"
+        },
+        {
+            "published_at": null,
+            "title": "Bulletin de sécurité Microsoft CVE-2022-34718 du 13 septembre 2022",
+            "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-34718"
+        },
+        {
+            "published_at": null,
+            "title": "Bulletin de sécurité Microsoft CVE-2022-34721 du 13 septembre 2022",
+            "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-34721"
+        }
+    ]
+}

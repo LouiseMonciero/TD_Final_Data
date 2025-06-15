@@ -1,0 +1,122 @@
+{
+    "$ref": "https://www.cert.ssi.gouv.fr/openapi.json",
+    "affected_systems": [
+        {
+            "description": "MOVEit Transfer versions 2021.1.x antérieures à 2021.1.6 (13.1.6)",
+            "product": {
+                "name": "MOVEit Transfer",
+                "vendor": {
+                    "name": "Progress",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "MOVEit Transfer versions 2021.0.x antérieures à 2021.0.8 (13.0.8)",
+            "product": {
+                "name": "MOVEit Transfer",
+                "vendor": {
+                    "name": "Progress",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "MOVEit Cloud versions antérieures à 14.4.6.97 ou 14.0.5.45 (production)",
+            "product": {
+                "name": "MOVEit Transfer",
+                "vendor": {
+                    "name": "Progress",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "MOVEit Transfer versions antérieures à 2020.1.10 (12.1.10)",
+            "product": {
+                "name": "MOVEit Transfer",
+                "vendor": {
+                    "name": "Progress",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "MOVEit Transfer versions 2022.0.x antérieures à 2022.0.6 (14.0.6)",
+            "product": {
+                "name": "MOVEit Transfer",
+                "vendor": {
+                    "name": "Progress",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "MOVEit Transfer versions 2022.1.x antérieures à 2022.1.7 (14.1.7)",
+            "product": {
+                "name": "MOVEit Transfer",
+                "vendor": {
+                    "name": "Progress",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "MOVEit Transfer versions 2023.x antérieures à 2023.0.3 (15.0.3)",
+            "product": {
+                "name": "MOVEit Transfer",
+                "vendor": {
+                    "name": "Progress",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "MOVEit Cloud versions antérieures à 15.0.2.39 (test)",
+            "product": {
+                "name": "MOVEit Transfer",
+                "vendor": {
+                    "name": "Progress",
+                    "scada": false
+                }
+            }
+        }
+    ],
+    "affected_systems_content": "",
+    "closed_at": "2023-09-11",
+    "content": "## Solution\n\nSe référer au document PDF joint à cette alerte.\n",
+    "cves": [
+        {
+            "name": "CVE-2023-34362",
+            "url": "https://www.cve.org/CVERecord?id=CVE-2023-34362"
+        },
+        {
+            "name": "CVE-2023-35036",
+            "url": "https://www.cve.org/CVERecord?id=CVE-2023-35036"
+        },
+        {
+            "name": "CVE-2023-35708",
+            "url": "https://www.cve.org/CVERecord?id=CVE-2023-35708"
+        }
+    ],
+    "links": [],
+    "reference": "CERTFR-2023-ALE-005",
+    "revisions": [
+        {
+            "description": "Version initiale",
+            "revision_date": "2023-07-05T00:00:00.000000"
+        },
+        {
+            "description": "Clôture de l'alerte. Cela ne signifie pas la fin d'une menace. Seule l'application de la mise à jour permet de vous prémunir contre l'exploitation de la vulnérabilité correspondante.",
+            "revision_date": "2023-09-11T00:00:00.000000"
+        }
+    ],
+    "risks": [
+        {
+            "description": "Exécution de code arbitraire à distance"
+        }
+    ],
+    "summary": "La découverte d'une vulnérabilité affectant le logiciel MOVEit Transfer\nde Progress Software, le 31 mai 2023, avait conduit le CERT-FR à publier\ndes éléments d'information dans le bulletin d'actualité\nCERTFR-2023-ACT-025.\n\nL'objet de cette alerte CERTFR-2023-ALE-005 est de faire le point sur\nl'exploitation de cette vulnérabilité par le groupe cybercriminel CL0P\nainsi que de synthétiser les mesures de remédiation et de correction à\nappliquer par les utilisateurs du logiciel MOVEit Transfer.\n\n<a href=\"/uploads/CERTFR-2023-ALE-005.pdf\"\nstyle=\"display: block; text-align: center; padding: 5px 8px 5px 8px; background-color: #c4322c; width: 1200px; height: 32px; margin: 0 auto; color: #ffffff;\"\ndata-darkreader-inline-bgcolor=\"\"\ndata-darkreader-inline-color=\"\">Télécharger le rapport : Exploitation\nd'une vulnérabilité dans MOVEit Transfer par le groupe cybercriminel\nCL0P</a>\n",
+    "title": "Synthèse sur l'exploitation d'une vulnérabilité dans MOVEit Transfer",
+    "vendor_advisories": []
+}

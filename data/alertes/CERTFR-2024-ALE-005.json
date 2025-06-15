@@ -1,0 +1,108 @@
+{
+    "$ref": "https://www.cert.ssi.gouv.fr/openapi.json",
+    "affected_systems": [
+        {
+            "description": "Microsoft Office LTSC 2021",
+            "product": {
+                "name": "Office",
+                "vendor": {
+                    "name": "Microsoft",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Microsoft Office 2019",
+            "product": {
+                "name": "Office",
+                "vendor": {
+                    "name": "Microsoft",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Microsoft Office 2016",
+            "product": {
+                "name": "Office",
+                "vendor": {
+                    "name": "Microsoft",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Microsoft 365 Apps",
+            "product": {
+                "name": "N/A",
+                "vendor": {
+                    "name": "Microsoft",
+                    "scada": false
+                }
+            }
+        }
+    ],
+    "affected_systems_content": "<p>La vulnérabilité affecte en particulier Microsoft Outlook qui est inclus dans la suite Microsoft Office. L'interface <span class=\"mx_EventTile_body\" dir=\"auto\">OWA (Outlook Web Application), version web de la messagerie Outlook, n’est pas affectée par cette vulnérabilité selon l’éditeur. </span></p> ",
+    "closed_at": "2024-04-15",
+    "content": "## Solution\n\n<span style=\"color: red;\">**\\[Mise à jour du 15 mars 2024\\] Ajout de\nprécision concernant les défi-réponses NTLM**</span>\n\n**\\[Mise à jour du 22 février 2024\\] Ajout de\nrecommandations.**\n\nAfin de prévenir l'exploitation à distance de cette vulnérabilité, le\nCERT-FR recommande:\n\n-   D’appliquer la mise à jour fournie par Microsoft dans les meilleurs\n    délais. Se référer au bulletin de sécurité de l'éditeur pour\n    l'obtention des correctifs (cf. section Documentation).\n-   De limiter l'utilisation de NTLMv2 et d'activer les mesures de\n    protection contre les attaques relais préconisées par l'éditeur\n    \\[2\\] ainsi que les recommandations (R71 à R77) relatives à\n    l'administration sécurisée des systèmes d'information reposant sur\n    microsoft active directory \\[3\\]\n-   D'interdire les flux SMB <span\n    style=\"text-decoration: underline;\">en sortie du système\n    d'information</span> (TCP/445). Cette règle s'impose également aux\n    postes nomades, dont les flux doivent être sécurisés.\n-   De détecter des liens malveillants dans les courriels reçus, par\n    exemple en utilisant une expression régulière (voir la règle Yara\n    \\[1\\]). Le CERT-FR n'est pas en mesure de garantir les résultats\n    obtenus par cette règle de détection, qui devront donc être\n    qualifiés.\n\n**\\[Publication initiale\\]**\n\nLe CERT-FR recommande fortement d’appliquer la mise à jour fournie par\nMicrosoft. Se référer au bulletin de sécurité de l'éditeur pour\nl'obtention des correctifs (cf. section Documentation).\n",
+    "cves": [
+        {
+            "name": "CVE-2024-21413",
+            "url": "https://www.cve.org/CVERecord?id=CVE-2024-21413"
+        }
+    ],
+    "links": [
+        {
+            "title": "[1] Règle Yara de détection de la vulnérabilité CVE-2024-21413 proposée par X__Junior et Florian Roth",
+            "url": "https://github.com/Neo23x0/signature-base/blob/master/yara/expl_outlook_cve_2024_21413.yar"
+        },
+        {
+            "title": "Avis CERTFR-2024-AVI-0127 du 14 février 2024",
+            "url": "https://www.cert.ssi.gouv.fr/avis/CERTFR-2024-AVI-0127/"
+        },
+        {
+            "title": "[2] Base de connaissance Microsoft",
+            "url": "https://support.microsoft.com/fr-fr/topic/kb5005413-att%C3%A9nuation-des-attaques-de-relais-ntlm-sur-les-services-de-certificats-active-directory-ad-cs-3612b773-4043-4aa9-b23d-b87910cd3429"
+        },
+        {
+            "title": "[3] Recommandations relatives à l'administration sécurisée des systèmes d'information reposant sur microsoft active directory. Document ANSSI-PA-099 version 1.0 du 02 octobre 2023",
+            "url": "https://cyber.gouv.fr/publications/recommandations-pour-ladministration-securisee-des-si-reposant-sur-ad"
+        }
+    ],
+    "reference": "CERTFR-2024-ALE-005",
+    "revisions": [
+        {
+            "description": "Version initiale",
+            "revision_date": "2024-02-15T00:00:00.000000"
+        },
+        {
+            "description": "Ajout de recommandations et de précisions sur le fonctionnement de la vulnérabilité",
+            "revision_date": "2024-02-22T00:00:00.000000"
+        },
+        {
+            "description": "Ajout de recommandations concernant l'utilisation de NTLM",
+            "revision_date": "2024-03-15T00:00:00.000000"
+        },
+        {
+            "description": "Clôture de l'alerte. Cela ne signifie pas la fin d'une menace. Seule l'application de la mise à jour permet de vous prémunir contre l'exploitation de la vulnérabilité correspondante.",
+            "revision_date": "2024-04-15T00:00:00.000000"
+        }
+    ],
+    "risks": [
+        {
+            "description": "Atteinte à la confidentialité des données"
+        },
+        {
+            "description": "Exécution de code arbitraire à distance"
+        }
+    ],
+    "summary": "<span style=\"color: red;\"><strong>\\[Mise à jour du 15 mars 2024\\] Ajout de\nprécision concernant les défi-réponses NTLM</strong></span>\n\n<strong>\\[Mise à jour du 22 février 2024\\] <span\nclass=\"mx_EventTile_body markdown-body\" dir=\"auto\">Ajout de\nrecommandations et de précisions sur le fonctionnement de la\nvulnérabilité.</span></strong>\n\nLa vulnérabilité CVE-2024-21413 permet à un attaquant de contourner les\nmesures de sécurité de la suite Office, dont la solution de messagerie\nOutlook. Plus précisément, son exploitation permet de contourner\ncertaines mesures de sécurité de la suite Office qui empêchent l'accès à\nune ressource externe sans validation de l'utilisateur.\n\nAinsi, en utilisant un lien malveillant dans un courriel, un attaquant\nest en mesure :\n\n-   d'obtenir la réponse à un défi-réponse lié à l'authentification de\n    l'utilisateur, par exemple *via* le protocole SMB. Ce défi-réponse\n    dépend de la configuration système et est communément au format\n    NTLMv2. Ce comportement combiné à une attaque de type \"relais NTLM\"\n    permettrait à un attaque de réaliser une coercition\n    d'authentification.\n-   si la cible du lien est un document Office, de provoquer l'ouverture\n    du document sans que le mode protégé de Microsoft Office ne soit\n    activé, permettant *in fine* une exécution de code arbitraire à\n    distance.\n\n<strong>\\[Publication initiale\\]</strong>\n\nLe 13 février 2024, Microsoft a publié un correctif pour la\nvulnérabilité <span class=\"css-200\">CVE-2024-21413</span> affectant le\nproduit Outlook pour Windows.  \nElle permet à un attaquant non authentifié <span\nclass=\"mx_EventTile_body\" dir=\"auto\">de divulguer le condensat\n</span>*NTLM* (*new technology LAN manager*) local et potentiellement\nune exécution de code arbitraire à distance.  \nSon exploitation nécessite une intervention de l'utilisateur.\n\nUne preuve de concept partielle ainsi qu'un descriptif de la\nvulnérabilité ont été publiés par le chercheur auteur de sa découverte.\n\nLe CERT-FR n'a pas connaissance d'exploitation pour le moment. En\nfonction de l'évolution de la situation, cette alerte est susceptible\nd'être mise à jour.\n",
+    "title": "[MàJ] Vulnérabilité dans Microsoft Outlook",
+    "vendor_advisories": [
+        {
+            "published_at": "2024-02-13",
+            "title": "Bulletin de sécurité Microsoft",
+            "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2024-21413"
+        }
+    ]
+}

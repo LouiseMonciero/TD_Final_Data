@@ -1,0 +1,79 @@
+{
+    "$ref": "https://www.cert.ssi.gouv.fr/openapi.json",
+    "affected_systems": [
+        {
+            "description": "OpenSSH versions 8.5p1 à 9.7p1 antérieures à 9.8 et 9.8p1",
+            "product": {
+                "name": "N/A",
+                "vendor": {
+                    "name": "OpenSSH",
+                    "scada": false
+                }
+            }
+        }
+    ],
+    "affected_systems_content": "",
+    "closed_at": "2024-10-07",
+    "content": "## Solutions\n\nSe référer au bulletin de sécurité de l'éditeur pour l'obtention des correctifs (cf. section Documentation).",
+    "cves": [
+        {
+            "name": "CVE-2024-6387",
+            "url": "https://www.cve.org/CVERecord?id=CVE-2024-6387"
+        }
+    ],
+    "links": [
+        {
+            "title": "Bulletin de sécurité Debian",
+            "url": "https://security-tracker.debian.org/tracker/DSA-5724-1"
+        },
+        {
+            "title": "Billet de blogue Qualys du 01 juillet 2024",
+            "url": "https://blog.qualys.com/vulnerabilities-threat-research/2024/07/01/regresshion-remote-unauthenticated-code-execution-vulnerability-in-openssh-server"
+        },
+        {
+            "title": "Avis de sécurité CERT-FR CERTFR-2024-AVI-0531 du 1 juillet 2024",
+            "url": "https://www.cert.ssi.gouv.fr/avis/CERTFR-2024-AVI-0531/"
+        },
+        {
+            "title": "Avis de sécurité CERT-FR CERTFR-2024-AVI-0539 du 3 juillet 2024",
+            "url": "https://www.cert.ssi.gouv.fr/avis/CERTFR-2024-AVI-0539/"
+        },
+        {
+            "title": "Bulletin de sécurité Red Hat du 01 juillet 2024",
+            "url": "https://access.redhat.com/security/cve/cve-2024-6387"
+        }
+    ],
+    "reference": "CERTFR-2024-ALE-009",
+    "revisions": [
+        {
+            "description": "Version initiale",
+            "revision_date": "2024-07-01T00:00:00.000000"
+        },
+        {
+            "description": "Rectification de la date de publication de l'avis de sécurité OpenSSH.",
+            "revision_date": "2024-07-10T00:00:00.000000"
+        },
+        {
+            "description": "Clôture de l'alerte. Cela ne signifie pas la fin d'une menace. Seule l'application de la mise à jour permet de vous prémunir contre l'exploitation de la vulnérabilité correspondante.",
+            "revision_date": "2024-10-07T00:00:00.000000"
+        },
+        {
+            "description": "Ajout d'un lien vers l'avis CERT-FR CERTFR-2024-AVI-0539.",
+            "revision_date": "2024-07-03T00:00:00.000000"
+        }
+    ],
+    "risks": [
+        {
+            "description": "Exécution de code arbitraire à distance"
+        }
+    ],
+    "summary": "Le 1 juillet 2024, OpenSSH a publié un avis de sécurité concernant la vulnérabilité critique CVE-2024-6387.\n\nCette vulnérabilité permet à un attaquant non authentifié d'exécuter du code arbitraire à distance avec les privilèges *root*.\n\nL'éditeur précise que les versions 8.5p1 à 9.7p1 sont vulnérables, de manière confirmée, sur des systèmes Linux 32 bits avec la *glibc* et l'*ASLR* activé. Toutefois, il est précisé que l'exploitation nécessite entre six et huit heures de connexions continues. De plus, il spécule que ces attaques pourraient être optimisées pour être plus rapides, à plus forte raison lorsque l'*ASLR* est désactivé.\n\nL'éditeur ajoute que l'exploitation sur des systèmes 64 bits ou sans *glibc* semble possible mais n'a pas été démontrée.\n\nCette vulnérabilité a été découverte par des chercheurs de Qualys. Dans leur billet de blogue (cf. section Documentation), ceux-ci précisent que les versions antérieures à 4.4p1 d'OpenSSh sont également vulnérables. \nDe plus, ils conseillent de vérifier la présence de très nombreuses lignes \"*Timeout before authentication*\" dans les journaux pour détecter de potentielles tentatives d'exploitations.\n\nEn date du 1 juillet 2024, certaines distributions Linux ont proposé des correctifs pour des versions vulnérables (cf. section Documentation).\n\nDans l'attente de la disponibilité de correctifs, Qualys conseille de modifier la valeur de *LoginGraceTime* à 0 dans le fichier de configuration. Cette mesure de contournement permet d'empêcher une exécution de code arbitraire à distance, mais rend la machine vulnérable à un déni de service à distance.",
+    "title": "Vulnérabilité dans OpenSSH",
+    "vendor_advisories": [
+        {
+            "published_at": "2024-07-01",
+            "title": "Bulletin de sécurité OpenSSH",
+            "url": "https://www.openssh.com/txt/release-9.8"
+        }
+    ]
+}

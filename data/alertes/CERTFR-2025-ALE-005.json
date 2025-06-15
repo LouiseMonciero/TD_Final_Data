@@ -1,0 +1,79 @@
+{
+    "$ref": "https://www.cert.ssi.gouv.fr/openapi.json",
+    "affected_systems": [
+        {
+            "description": "NetWeaver (Visual Composer development server) versions VCFRAMEWORK 7.50 sans le dernier correctif de sécurité",
+            "product": {
+                "name": "NetWeaver",
+                "vendor": {
+                    "name": "SAP",
+                    "scada": false
+                }
+            }
+        }
+    ],
+    "affected_systems_content": "",
+    "closed_at": null,
+    "content": "## Identification du composant vulnérable \n\nIl est possible de vérifier que le composant vulnérable Visual Composer development server est activé au travers de l'URL `http://hote:port/nwa/sysinfo` et de chercher la présence du composant  `VISUAL COMPOSER FRAMEWORK` (`VCFRAMEWORK.SCA` ou `VCFRAMEWORK`). Si la ligne indique `NO`, le composant n'est pas installé.\n\n## Solutions\n\nAvant d'appliquer le correctif de sécurité, il est nécessaire de vérifier qu'aucun fichier avec l'extension `jsp`,  `java` ou `class` n'est présent dans les dossiers suivants :\n* `C:\\usr\\sap\\<SID>\\<InstanceID>\\j2ee\\cluster\\apps\\sap.com\\irj\\servlet_jsp\\irj\\root`\n* `C:\\usr\\sap\\<SID>\\<InstanceID>\\j2ee\\cluster\\apps\\sap.com\\irj\\servlet_jsp\\irj\\work`\n* `C:\\usr\\sap\\<SID>\\<InstanceID>\\j2ee\\cluster\\apps\\sap.com\\irj\\servlet_jsp\\irj\\work\\sync`\n\nDe plus, il est nécessaire de vérifier dans les journaux du serveur web : \n* des accès à l'URL `/developmentserver/metadatauploader` via une requête POST avec un code HTTP 200 sans authentification ;\n* des accès aux URL de la forme `/irj/helper.jsp`, `/irj/cache.jsp` ou `/irj/\\w{8}.jsp`[3].\n\nEnfin il est possible de consulter [4] pour d'autres indicateurs de compromission. *Note : Ces indicateurs n'ont pas été qualifiés par le CERT-FR.*\n<br></br>\nSi des fichiers malveillants ou des journaux suspects sont présents : \n* signaler l’événement auprès du CERT-FR en mettant en copie vos éventuels CSIRTs métier et consulter les bons réflexes en cas d'intrusion sur votre système d'information [5] ;\n* isoler totalement la machine concernée du réseau, vis-à-vis d'Internet comme du réseau interne, afin de limiter les risques de latéralisation ;\n* en cas d'utilisation d'une appliance virtuelle, réaliser un instantané du système de fichier et de la mémoire vive ;\n* si possible, éviter d'éteindre la machine afin de conserver les traces nécessaires aux investigations ;\n* mettre sous séquestre les journaux collectés.\n\nLes correctifs pour le composant Visual Composer Framework 7.50 sont listés et disponibles dans le bulletin de sécurité 3594142 de l'éditeur. \n\nDes mesures de contournements sont proposées par l'éditeur [1]. ",
+    "cves": [
+        {
+            "name": "CVE-2025-31324",
+            "url": "https://www.cve.org/CVERecord?id=CVE-2025-31324"
+        }
+    ],
+    "links": [
+        {
+            "title": "Avis CERT-FR CERTFR-2025-AVI-0350 du 25 avril 2025",
+            "url": "https://www.cert.ssi.gouv.fr/avis/CERTFR-2025-AVI-0350/"
+        },
+        {
+            "title": "[4] Billet de blogue de Reliaquest relatif à l'exploitation de la vulnérabilité  CVE-2025-31324",
+            "url": "https://reliaquest.com/blog/threat-spotlight-reliaquest-uncovers-vulnerability-behind-sap-netweaver-compromise/"
+        },
+        {
+            "title": "[5] Les bons réflexes en cas d’intrusion sur un système d’information",
+            "url": " https://www.cert.ssi.gouv.fr/les-bons-reflexes-en-cas-dintrusion-sur-un-systeme-dinformation/ "
+        },
+        {
+            "title": "[3] Billet de blogue Rapid7 du 28 avril relatif à la vulnérabilité CVE-2025-31324",
+            "url": "https://www.rapid7.com/blog/post/2025/04/28/etr-active-exploitation-of-sap-netweaver-visual-composer-cve-2025-31324/"
+        },
+        {
+            "title": "[1] Bulletin de sécurité SAP 3593336 version 5 du 28/04/2025 relatif aux mesures de contournement",
+            "url": "https://me.sap.com/notes/3593336"
+        },
+        {
+            "title": "[2] FAQ sur l'exploitation de la vulnérabilité CVE-2025-31324",
+            "url": " https://me.sap.com/notes/3596125"
+        }
+    ],
+    "reference": "CERTFR-2025-ALE-005",
+    "revisions": [
+        {
+            "description": "Version initiale",
+            "revision_date": "2025-04-28T00:00:00.000000"
+        }
+    ],
+    "risks": [
+        {
+            "description": "Exécution de code arbitraire à distance"
+        },
+        {
+            "description": "Contournement de la politique de sécurité"
+        }
+    ],
+    "summary": "Le 24 avril 2025, SAP a publié un bulletin de sécurité relatif à la vulnérabilité CVE-2025-31324 qui permet l'exécution de code arbitraire à distance pour un utilisateur non authentifié. Cette vulnérabilité est provoquée par un contournement de la politique de sécurité qui permet de télécharger des fichiers arbitraires et potentiellement exécutables sur le serveur. Elle impacte le composant *Visual Composer development server*, non installé par défaut mais fréquemment utilisé.\n\nLe CERT-FR a connaissance de plusieurs compromissions liées à cette vulnérabilité. \n\n\nL'accès aux détails complets concernant cette vulnérabilité ([1] [2]) nécessite un compte utilisateur pour le support SAP. Le bulletin de sécurité du 8 avril 2025 a été mis à jour pour indiquer cette nouvelle vulnérabilité sans faire mention de son exploitation active.",
+    "title": "Vulnérabilité dans SAP NetWeaver",
+    "vendor_advisories": [
+        {
+            "published_at": "2025-04-24",
+            "title": "Bulletin de sécurité SAP april-2025",
+            "url": " https://support.sap.com/en/my-support/knowledge-base/security-notes-news/april-2025.html "
+        },
+        {
+            "published_at": "2025-04-24",
+            "title": "Bulletin de sécurité SAP 3594142 version 17",
+            "url": "https://me.sap.com/notes/3594142"
+        }
+    ]
+}

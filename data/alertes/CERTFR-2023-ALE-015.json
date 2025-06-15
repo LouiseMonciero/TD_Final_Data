@@ -1,0 +1,81 @@
+{
+    "$ref": "https://www.cert.ssi.gouv.fr/openapi.json",
+    "affected_systems": [],
+    "affected_systems_content": "",
+    "closed_at": "2023-03-14",
+    "content": "## Solution\n\n\\[Mise à jour du 05 février 2023\\]\n\nLe CERT-FR a la confirmation qu'il est possible de récupérer les disques\ndes machines virtuelles lorsque les fichiers de configuration (*.vmdk*)\nsont chiffrés et renommés avec une extension *.args.* En effet, dans ce\ncas, le fichier contenant le disque virtuel (fichier *-flat.vmdk*) n'est\npas chiffré. Plusieurs procédures testées avec succès sont documentées\n\\[1\\].\n\nLe CERT-FR recommande fortement de :\n\n-   isoler le serveur affecté ;\n-   dans la mesure du possible, effectuer une analyse des systèmes afin\n    de détecter tout signe de compromission \\[2\\], l'application seule\n    des correctifs n'est pas suffisante, un attaquant a probablement\n    déjà déposé un code malveillant ;\n-   privilégier une réinstallation de l'hyperviseur dans une version\n    supportée par l'éditeur (ESXi 7.x ou ESXi 8.x) ;\n-   appliquer l'ensemble des correctifs de sécurité et de suivre les\n    futurs avis de sécurité de l'éditeur ;\n-   désactiver les services inutiles sur l'hyperviseur (tel que le\n    service *SLP* \\[3\\]) ;\n-   bloquer l'accès aux différents services d'administration, soit par\n    un pare-feu dédié, soit par le pare-feu intégré à l'hyperviseur et\n    mettre en œuvre un réseau local d'administration ainsi qu'une\n    capacité d'administration distante si elle est requise (*via* réseau\n    privé virtuel, *VPN*, ou, à défaut, par un filtrage des adresses IP\n    de confiance).\n\n \n\n------------------------------------------------------------------------\n\nLa mise à jour d'un produit ou d'un logiciel est une opération délicate\nqui doit être menée avec prudence. Il est notamment recommandé\nd'effectuer des tests autant que possible. Des dispositions doivent\négalement être prises pour garantir la continuité de service en cas de\ndifficultés lors de l'application des mises à jour comme des correctifs\nou des changements de version.\n",
+    "cves": [
+        {
+            "name": "CVE-2021-21974",
+            "url": "https://www.cve.org/CVERecord?id=CVE-2021-21974"
+        },
+        {
+            "name": "CVE-2020-3992",
+            "url": "https://www.cve.org/CVERecord?id=CVE-2020-3992"
+        }
+    ],
+    "links": [
+        {
+            "title": "[3] Procédure permettant de désactiver le service SLP",
+            "url": "https://kb.vmware.com/s/article/76372"
+        },
+        {
+            "title": "[1] Procédures de récupération des machines virtuelles",
+            "url": "https://gist.github.com/MarianBojescu/da539a47d5eae29383a4804218ad7220"
+        },
+        {
+            "title": "[2] Les bons réflexes en cas d’intrusion sur un système d’information",
+            "url": "https://www.cert.ssi.gouv.fr/les-bons-reflexes-en-cas-dintrusion-sur-un-systeme-dinformation/"
+        },
+        {
+            "title": "Avis de sécurité CERT-FR CERTFR-2021-AVI-145 du 24 février 2021",
+            "url": "https://www.cert.ssi.gouv.fr/avis/CERTFR-2021-AVI-145/"
+        },
+        {
+            "title": "[1] Procédures de récupération des machines virtuelles",
+            "url": "https://enes.dev"
+        }
+    ],
+    "reference": "CERTFR-2023-ALE-015",
+    "revisions": [
+        {
+            "description": "Version initiale.",
+            "revision_date": "2023-02-03T00:00:00.000000"
+        },
+        {
+            "description": "Clarification de la section 'Solution'",
+            "revision_date": "2023-02-03T00:00:00.000000"
+        },
+        {
+            "description": "Mise à jour de la section 'Résumé' et de la section 'Solution'",
+            "revision_date": "2023-02-05T00:00:00.000000"
+        },
+        {
+            "description": "Mise à jour de la section 'Solution'",
+            "revision_date": "2023-02-10T00:00:00.000000"
+        },
+        {
+            "description": "Clôture de l'alerte. Cela ne signifie pas la fin d'une menace. Seule l'application de la mise à jour permet de vous prémunir contre l'exploitation de la vulnérabilité correspondante.",
+            "revision_date": "2023-03-14T00:00:00.000000"
+        }
+    ],
+    "risks": [
+        {
+            "description": "Exécution de code arbitraire à distance"
+        }
+    ],
+    "summary": "<span style=\"color: #ff0000;\">\\[Mise à jour du 10 février\n2023\\]</span>  \nUne nouvelle vague d’attaque démarrée le 8 février change la méthode de\nchiffrement permettant de chiffrer un plus grand volume de données dans\nles fichiers de grande taille rendant la restauration des données plus\ndifficile voire impossible.\n\n\\[Mise à jour du 05 février 2023\\] Mise à jour du résumé et de la\nsection 'Solution'.\n\nLe 03 février 2023, le CERT-FR a pris connaissance de campagnes\nd'attaque ciblant les hyperviseurs VMware ESXi dans le but d'y déployer\nun rançongiciel.\n\n<span style=\"text-decoration: underline;\">Dans l'état actuel des\ninvestigations</span>, ces campagnes d'attaque semblent avoir tiré parti\nde l'exposition d'hyperviseurs ESXi qui n'auraient pas été mis à jour\ndes correctifs de sécurité suffisamment rapidement. En particulier, le\nservice *SLP* semble avoir été visé, service pour lequel plusieurs\nvulnérabilités avaient fait l'objet de correctifs successifs (notamment\nles vulnérabilités CVE-2020-3992 et CVE-2021-21974, cf. section\nDocumentation). Ces vulnérabilités permettent à un attaquant de réaliser\nune exploitation de code arbitraire à distance. Des codes d'exploitation\nsont disponibles en source ouverte depuis au moins mai 2021.\n\nLes systèmes actuellement visés seraient des hyperviseurs ESXi en\nversion 6.x et antérieures à 6.7.\n\nCependant, le CERT-FR rappelle que les vulnérabilités affectant *SLP*\nconcernent les systèmes suivants :\n\n-   ESXi versions 7.x antérieures à ESXi70U1c-17325551\n-   ESXi versions 6.7.x antérieures à ESXi670-202102401-SG\n-   ESXi versions 6.5.x antérieures à ESXi650-202102101-SG\n\n \n",
+    "title": "[MàJ] Campagne d'exploitation d'une vulnérabilité affectant VMware ESXi",
+    "vendor_advisories": [
+        {
+            "published_at": null,
+            "title": "Bulletin de sécurité VMware VMSA-2020-0023 du 20 octobre 2020",
+            "url": "https://www.vmware.com/security/advisories/VMSA-2020-0023.html"
+        },
+        {
+            "published_at": null,
+            "title": "Bulletin de sécurité VMware VMSA-2021-0002 du 23 février 2021",
+            "url": "https://www.vmware.com/security/advisories/VMSA-2021-0002.html"
+        }
+    ]
+}

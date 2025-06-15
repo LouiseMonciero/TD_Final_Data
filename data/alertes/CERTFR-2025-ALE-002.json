@@ -1,0 +1,86 @@
+{
+    "$ref": "https://www.cert.ssi.gouv.fr/openapi.json",
+    "affected_systems": [
+        {
+            "description": "FortiOS versions 7.0.x antérieures à 7.0.17",
+            "product": {
+                "name": "FortiOS",
+                "vendor": {
+                    "name": "Fortinet",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "FortiProxy versions 7.0.x antérieures à 7.0.20",
+            "product": {
+                "name": "FortiProxy",
+                "vendor": {
+                    "name": "Fortinet",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "FortiProxy versions 7.2.x antérieures à 7.2.13",
+            "product": {
+                "name": "FortiProxy",
+                "vendor": {
+                    "name": "Fortinet",
+                    "scada": false
+                }
+            }
+        }
+    ],
+    "affected_systems_content": "",
+    "closed_at": "2025-05-07",
+    "content": "## Solutions\nSe référer au bulletin de sécurité de l'éditeur pour l'obtention des correctifs (cf. section Documentation).\n\nL'éditeur recommande les solutions de contournement suivantes :\n* désactiver l'interface d'administration HTTP/HTTPS ;\n* limiter les adresses IP qui peuvent joindre l'interface d'administration HTTP/HTTPS ;\n* créer une politique locale pour restreindre l'accès uniquement au groupe prédéfini sur l'interface de gestion.\n\nSe référer au bulletin de sécurité de l'éditeur pour l'obtention des détails sur les mesures de contournement.\n* effectuer une recherche de compromission au niveau de l'équipement ;\n<br>*Note : ces indicateurs n'ont pas été qualifiés par le CERT-FR.*\n*  rechercher toutes traces de latéralisation sur le reste du système d’information, notamment :\n   * en cherchant les connexions ou tentatives de connexion vers Internet depuis l'équipement ;\n   * puis en cherchant ces adresses IP de destination pour vérifier si d’autres machines ont tenté une connexion.\n* en cas de compromission détectée :\n    * signaler l’événement auprès du CERT-FR en mettant en copie vos éventuels CSIRTs métier et consulter les bons réflexes en cas d'intrusion sur votre système d'information [1] ;\n    * isoler l'équipement du réseau et sauvegarder les journaux liés à l'équipement.\n",
+    "cves": [
+        {
+            "name": "CVE-2024-55591",
+            "url": "https://www.cve.org/CVERecord?id=CVE-2024-55591"
+        }
+    ],
+    "links": [
+        {
+            "title": "Avis CERTFR-2025-AVI-0030 du 14 janvier 2025",
+            "url": "https://www.cert.ssi.gouv.fr/avis/CERTFR-2025-AVI-0030/"
+        },
+        {
+            "title": "[1] Les bons réflexes en cas d’intrusion sur un système d’information",
+            "url": "https://www.cert.ssi.gouv.fr/les-bons-reflexes-en-cas-dintrusion-sur-un-systeme-dinformation/"
+        }
+    ],
+    "reference": "CERTFR-2025-ALE-002",
+    "revisions": [
+        {
+            "description": "     Clôture de l'alerte. Cela ne signifie pas la fin d'une menace. Seule l'application de la mise à jour permet de vous prémunir contre l'exploitation de la vulnérabilité correspondante.",
+            "revision_date": "2025-05-07T00:00:00.000000"
+        },
+        {
+            "description": "Code d'exploitation public",
+            "revision_date": "2025-01-28T00:00:00.000000"
+        },
+        {
+            "description": "Version initiale",
+            "revision_date": "2025-01-14T00:00:00.000000"
+        }
+    ],
+    "risks": [
+        {
+            "description": "Exécution de code arbitraire à distance"
+        },
+        {
+            "description": "Contournement de la politique de sécurité"
+        }
+    ],
+    "summary": "<span style=\"color: #ff0000;\"><strong>\\[Mise à jour du 28 janvier 2025\\]</strong>\n</span><strong>\nUne preuve de concept permettant l'exploitation de cette vulnérabilité est disponible publiquement. </strong>\n\nLe 14 janvier 2025, Fortinet a publié un avis de sécurité concernant la vulnérabilité critique CVE-2024-55591 affectant FortiOS et FortiProxy. Elle permet à un attaquant distant non authentifié de contourner le mécanisme d'authentification de l'interface d'administration d'un équipement FortiOS ou FortiProxy et d'obtenir des privilèges super-administrateur via l'envoi de requêtes forgées au module websocket <code>Node.js</code>.\n\nLe CERT-FR rappelle que l'exposition d'une interface d'administration sur Internet est contraire aux bonnes pratiques.\nLe CERT-FR recommande donc fortement d'appliquer le correctif dans les plus brefs délais.\nFortinet indique que cette vulnérabilité est activement exploitée. \n",
+    "title": "[MàJ] Vulnérabilité dans les produits Fortinet",
+    "vendor_advisories": [
+        {
+            "published_at": "2025-01-14",
+            "title": "Bulletin de sécurité FG-IR-24-535",
+            "url": "https://fortiguard.fortinet.com/psirt/FG-IR-24-535"
+        }
+    ]
+}

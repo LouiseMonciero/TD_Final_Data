@@ -1,0 +1,194 @@
+{
+    "$ref": "https://www.cert.ssi.gouv.fr/openapi.json",
+    "affected_systems": [
+        {
+            "description": "FortiManager versions 7.6.x antérieures à 7.6.2",
+            "product": {
+                "name": "FortiManager",
+                "vendor": {
+                    "name": "Fortinet",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "FortiManager versions 7.2.x antérieures à 7.2.9",
+            "product": {
+                "name": "FortiManager",
+                "vendor": {
+                    "name": "Fortinet",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "FortiAnalyzer modèles 1000E, 1000F, 2000E, 3000E, 3000F, 3000G, 3500E, 3500F, 3500G, 3700F, 3700G, 3900E avec la fonctionnalité FortiManager",
+            "product": {
+                "name": "FortiAnalyzer",
+                "vendor": {
+                    "name": "Fortinet",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "FortiManager versions 6.4.x antérieures à 6.4.15",
+            "product": {
+                "name": "FortiManager",
+                "vendor": {
+                    "name": "Fortinet",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "FortiManager versions 7.0.x antérieures à 7.0.13",
+            "product": {
+                "name": "FortiManager",
+                "vendor": {
+                    "name": "Fortinet",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "FortiManager Cloud versions 7.4.x antérieures à 7.4.5",
+            "product": {
+                "name": "FortiManager",
+                "vendor": {
+                    "name": "Fortinet",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "FortiManager versions 6.2.x antérieures à 6.2.13",
+            "product": {
+                "name": "FortiManager",
+                "vendor": {
+                    "name": "Fortinet",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "FortiManager Cloud versions 7.2.x antérieures à 7.2.8",
+            "product": {
+                "name": "FortiManager",
+                "vendor": {
+                    "name": "Fortinet",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "FortiManager versions 7.4.x antérieures à 7.4.6",
+            "product": {
+                "name": "FortiManager",
+                "vendor": {
+                    "name": "Fortinet",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "FortiManager Cloud versions 6.4.x à 7.0.x antérieures à 7.0.13",
+            "product": {
+                "name": "FortiManager",
+                "vendor": {
+                    "name": "Fortinet",
+                    "scada": false
+                }
+            }
+        }
+    ],
+    "affected_systems_content": "**<span class=\"important-content\">[Mise à jour du 14 janvier 2025]</span>** <span class=\"important-content\">**Publication des correctifs**</span>\n\nL'éditeur a publié des correctifs pour la vulnérabilité de type jour-zéro désormais identifiée en tant que CVE-2024-50566. La liste des systèmes affectés a été mise à jour.\n\n**[Mise à jour du 15 novembre 2024]** Le CERT-FR a connaissance d'une vulnérabilité de type jour-zéro\n\nLe CERT-FR a connaissance d'une vulnérabilité de type jour-zéro affectant l'ensemble des équipements FortiManager et FortiAnalyzer avec la fonctionnalité FortiManager.\n\n**[Mise à jour du 24 octobre 2024]Mise à jour des systèmes affectés**\n\nL'éditeur a indiqué avoir publié de nouvelles versions correctives pour FortiManager Cloud. Fortinet précise que certains équipements FortiAnalyser sont également affectés. L'identification de ces équipements est précisée dans le bulletin éditeur. ",
+    "closed_at": "2025-03-31",
+    "content": "## Mesures de contournement\n\nL'éditeur propose plusieurs mesures de contournement si la mise à jour est impossible dans l'immédiat. Celles-ci varient en fonction de la version de l'équipement et peuvent entraîner des effets de bord voire être contournées dans certaines situations.\n\n## Solutions\n\n**<span class=\"important-content\">[Mise à jour du 14 janvier 2025]</span>** <span class=\"important-content\">**Publication des correctifs**</span>\n\nLe 14 janvier 2025, Fortinet a publié un avis de sécurité relatif à la vulnérabilité CVE-2024-50566. Les mises à jour de sécurité sont disponibles et doivent être appliquées. Veuillez-vous référer à l'avis éditeur (FG-IR-24-463) pour la liste des versions correctives.\n\n**[Mise à jour du 24 octobre 2024] Précisions relatives aux recommandations du CERT-FR.**\n\nLe CERT-FR n'exclut pas la possibilité d'exploitations réalisées dans les mois précédant la publication de l'avis de l'éditeur. Il est donc nécessaire de chercher les indicateurs de compromissions mis à disposition par l'éditeur sur une période de temps correspondante. Le CERT-FR recommande également de faire une recherche en utilisant les indicateurs détaillés dans le billet de blogue de Mandiant [4]. *Note : Ces indicateurs n'ont pas été qualifiés par le CERT-FR.*\n\nDes risques d'exploitation depuis l'intérieur du système d'information via un équipement préalablement compromis, ou un relais applicatif, sont possibles. Le CERT-FR recommande donc d'effectuer une recherche de compromission sur les équipements non-exposés sur Internet.\n\n\nEn cas de compromission ou de suspicion de compromission: \n* signaler l’événement auprès du CERT-FR en mettant en copie vos éventuels CSIRTs métier ;\n* rechercher toutes traces de latéralisation sur le reste du système d’information, notamment :\n    * en cherchant les connexions ou tentatives de connexion vers Internet depuis l'équipement compromis ;\n    * puis en cherchant ces adresses IP de destination pour vérifier si d’autres machines ont tenté une connexion ; \n    * en identifiant l'ensemble des équipement Fortinet gérés par le FortiManager puis en examinant leurs journaux.\n\n**[Publication initiale]**\nDes versions correctives sont disponibles pour la majorité des versions impactées. Le CERT-FR recommande l'application des mises à jour de sécurité dans les plus brefs délais.\nPour les versions 6.4.x, 7.0 et 7.2 de FortiManager Cloud, l'éditeur indique de mettre à jour vers la version 7.4.5 ou ultérieure. \n\nFortinet met à disposition différents indicateurs de compromission dans son avis de sécurité.\n\nEn cas de suspicion de compromission, il est recommandé de consulter les [bons réflexes en cas d'intrusion sur votre système d'information](https://www.cert.ssi.gouv.fr/les-bons-reflexes-en-cas-dintrusion-sur-un-systeme-dinformation/) [1], ainsi que les fiches réflexe sur la compromission système [2] [3].\n\nL'éditeur propose, dans son bulletin, des méthodes de remédiation. Néanmoins, le CERT-FR recommande tout d'abord d'isoler les équipements compromis du réseau et de réaliser un gel de données (instantané pour les machines virtuelles, isolement de l’équipement s’il s’agit d’une machine physique) à des fins d’investigations approfondies. ",
+    "cves": [
+        {
+            "name": "CVE-2024-50566",
+            "url": "https://www.cve.org/CVERecord?id=CVE-2024-50566"
+        },
+        {
+            "name": "CVE-2024-47575",
+            "url": "https://www.cve.org/CVERecord?id=CVE-2024-47575"
+        }
+    ],
+    "links": [
+        {
+            "title": "Avis CERTFR-2025-AVI-0030 du 14 janvier 2025",
+            "url": "https://www.cert.ssi.gouv.fr/avis/CERTFR-2025-AVI-0030/"
+        },
+        {
+            "title": "[4] Billet de blogue de Mandiant du 24 octobre 2024",
+            "url": "https://cloud.google.com/blog/topics/threat-intelligence/fortimanager-zero-day-exploitation-cve-2024-47575?hl=en"
+        },
+        {
+            "title": "[3] Fiche réflexe Compromission système - Endiguement",
+            "url": "https://www.cert.ssi.gouv.fr/fiche/CERTFR-2024-RFX-006/"
+        },
+        {
+            "title": "[1] Les bons réflexes en cas d’intrusion sur un système d’information",
+            "url": "https://www.cert.ssi.gouv.fr/les-bons-reflexes-en-cas-dintrusion-sur-un-systeme-dinformation/"
+        },
+        {
+            "title": "[2] Fiche réflexe Compromission système - Qualification",
+            "url": "https://www.cert.ssi.gouv.fr/fiche/CERTFR-2024-RFX-005/"
+        },
+        {
+            "title": "Avis CERTFR-2024-AVI-0917 du 23 octobre 2024",
+            "url": "https://www.cert.ssi.gouv.fr/avis/CERTFR-2024-AVI-0917"
+        }
+    ],
+    "reference": "CERTFR-2024-ALE-014",
+    "revisions": [
+        {
+            "description": "Mise à jour concernant la disponibilité de correctifs",
+            "revision_date": "2024-10-30T00:00:00.000000"
+        },
+        {
+            "description": "Reformulation",
+            "revision_date": "2024-11-21T00:00:00.000000"
+        },
+        {
+            "description": "Publication des correctifs de sécurité pour la vulnérabilité CVE-2024-50566",
+            "revision_date": "2025-01-14T00:00:00.000000"
+        },
+        {
+            "description": "Mise à jour des systèmes affectés et des recommandations du CERT-FR",
+            "revision_date": "2024-10-24T00:00:00.000000"
+        },
+        {
+            "description": "Le CERT-FR a connaissance d'une vulnérabilité de type jour-zéro permettant de contourner partiellement le correctif FG-IR-24-423.",
+            "revision_date": "2024-11-15T00:00:00.000000"
+        },
+        {
+            "description": "    Clôture de l'alerte. Cela ne signifie pas la fin d'une menace. Seule l'application de la mise à jour permet de vous prémunir contre l'exploitation de la vulnérabilité correspondante.",
+            "revision_date": "2025-03-31T00:00:00.000000"
+        },
+        {
+            "description": "Version initiale",
+            "revision_date": "2024-10-23T00:00:00.000000"
+        }
+    ],
+    "risks": [
+        {
+            "description": "Exécution de code arbitraire à distance"
+        }
+    ],
+    "summary": "**<span class=\"important-content\">[Mise à jour du 14 janvier 2025]</span>** <span class=\"important-content\">**Publication des correctifs**</span>\n\nLe 14 janvier 2025, Fortinet a publié un avis de sécurité relatif à la vulnérabilité CVE-2024-50566 qui correspond à la vulnérabilité de type jour-zéro pour laquelle une preuve de concept a été publiée en novembre 2024. Des correctifs de sécurité sont désormais disponibles et doivent être appliqués.\n\n**[Mise à jour du 15 novembre 2024]** Le CERT-FR a connaissance d'une vulnérabilité de type jour-zéro non couverte par le correctif FG-IR-24-423.\n\nLe 14 novembre 2024, le CERT-FR a pris connaissance d'une preuve de concept publique permettant l'exploitation d'une vulnérabilité de type jour-zéro affectant l'ensemble des équipements FortiManager et FortiAnalyzer avec la fonctionnalité FortiManager.\n</span>\n</br></br>\nCette vulnérabilité permet à un attaquant contrôlant un équipement FortiGate enregistré de prendre le contrôle de l'équipement FortiManager associé, même sur les versions les plus à jour. Un attaquant peut donc, depuis un équipement FortiGate compromis, se latéraliser vers un équipement FortiManager puis vers d'autres équipements FortiGate même si ces derniers ne sont pas exposés sur Internet et qu'ils bénéficient des derniers correctifs de sécurité.\n</span>\n\n**[Publication initiale]**\n\nUne vulnérabilité a été découverte dans Fortinet FortiManager. Elle permet à un attaquant non authentifié de provoquer une exécution de code arbitraire à distance.\n\nFortinet indique que la vulnérabilité CVE-2024-47575 est activement exploitée. L'éditeur précise qu'en exploitant cette vulnérabilité, un attaquant est en mesure d'exfiltrer des données contenant des adresses IP, des secrets et des configurations des équipements gérés par le FortiManager. ",
+    "title": "[MàJ] Multiples vulnérabilités dans Fortinet FortiManager",
+    "vendor_advisories": [
+        {
+            "published_at": "2025-01-14",
+            "title": "Bulletin de sécurité Fortinet FG-IR-24-463",
+            "url": "https://www.fortiguard.com/psirt/FG-IR-24-463"
+        },
+        {
+            "published_at": "2024-10-23",
+            "title": "Bulletin de sécurité Fortinet FG-IR-24-423",
+            "url": "https://www.fortiguard.com/psirt/FG-IR-24-423"
+        }
+    ]
+}

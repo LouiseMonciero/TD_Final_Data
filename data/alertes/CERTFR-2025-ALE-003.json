@@ -1,0 +1,107 @@
+{
+    "$ref": "https://www.cert.ssi.gouv.fr/openapi.json",
+    "affected_systems": [
+        {
+            "description": "Pulse Connect Secure versions antérieures à 22.7R2.6",
+            "product": {
+                "name": "Pulse Connect Secure",
+                "vendor": {
+                    "name": "Ivanti",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Zero Trust Access Gateways versions antérieures à 22.8R2.2",
+            "product": {
+                "name": "Zero Trust Access gateways",
+                "vendor": {
+                    "name": "Ivanti",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Ivanti Policy Secure (IPS) versions antérieures à 22.7R1.4",
+            "product": {
+                "name": "Policy Secure (IPS)",
+                "vendor": {
+                    "name": "Ivanti",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Ivanti Connect Secure (ICS) versions antérieures à 22.7R2.6",
+            "product": {
+                "name": "Connect Secure (ICS)",
+                "vendor": {
+                    "name": "Ivanti",
+                    "scada": false
+                }
+            }
+        }
+    ],
+    "affected_systems_content": "L'éditeur indique que les correctifs seront disponibles le 19 avril 2025 pour Zero Trust Access Gateways et le 21 avril 2025 pour Ivanti Policy Secure.\nL'éditeur indique que les Pulse Connect Secure en versions 9.1x sont en fin de vie depuis le 31 décembre 2024. Les utilisateurs peuvent contacter Ivanti pour migrer vers une version à jour.",
+    "closed_at": null,
+    "content": "## Solutions\n\n**[Mise à jour du 04 avril 2025]**\n\nLes recommandations suivantes sont listées par ordre de priorité.\n* isoler totalement la machine concernée du réseau, vis-à-vis d'Internet comme du réseau interne, afin de limiter les risques de latéralisation ;\n* en cas d'utilisation d'une appliance virtuelle, réaliser un instantané du système de fichier et de la mémoire vive ;\n* si possible, éviter d'éteindre la machine afin de conserver les traces nécessaires aux investigations ;\n* mettre sous séquestre les journaux collectés ;\n* procéder à l’analyse des serveurs afin d’identifier une possible compromission à l’aide des indicateurs de compromission publiés par Mandiant [2] ;\n* l'éditeur recommande d'exécuter les versions externes de son script Integrity Check Tool (ICT) ;\n* en cas de compromission :\n    * signaler l’événement auprès du CERT-FR en mettant en copie vos éventuels CSIRTs métier et consulter les bons réflexes en cas d'intrusion sur votre système d'information [3] ;\n    * effectuer une remise à la configuration de sortie d'usine (*Factory Reset*) [4] ;\n        * le CERT-FR rappelle que certaines menaces peuvent persister à une réinitialisation, ce dont l'utilisation dans les contextes sensibles doit tenir compte ;\n    * procéder à une montée de version du micrologiciel (*firmware*) si le correctif est disponible ;\n    * considérer les secrets stockés sur l'équipement, ou y ayant transité en clair, comme compromis. Les actions suivantes sont dès lors nécessaires :\n        * réinitialiser les secrets liés au LDAP ou à l'Active Directory, si configuré.\n            * le CERT-FR a connaissance de latéralisation utilisant ces secrets.\n        * révoquer et réémettre tous les certificats présents sur les équipements affectés :\n            * certificats utilisés pour les machines et/ou pour l’authentification utilisateur (coté client et serveur) ;\n            * certificats de signature de code et les certificats TLS pour l’interface exposée.\n        * réinitialiser le mot de passe d'administration ;\n        * réinitialiser les clés d’API stockées sur l’équipement ;\n        * réinitialiser les mots de passe de tout compte local défini sur la passerelle, y compris les comptes de service utilisés dans la configuration liée aux serveurs d’authentification ;\n        * révoquer l'ensemble des moyens d'authentification (tickets Kerberos...) des comptes de services utilisés.\n        * réinitialiser les authentifications des serveurs de licence.\n    * Une fois la machine isolée et les collectes réalisées, conduire une recherche de latéralisation sur votre système d'information depuis l'équipement compromis, notamment :\n        * en recherchant les indicateurs de compromission décrits plus bas dans cette alerte ;\n        * en cherchant les connexions ou tentatives de connexion vers Internet depuis l'équipement ;\n        * puis en cherchant ces adresses IP de destination pour vérifier si d’autres machines ont tenté une connexion.\n* En cas d'absence de compromission :\n    * procéder à une montée de version du micrologiciel (*firmware*) si le correctif est disponible ;\n    * si aucune mise à jour correctrice n'est disponible, l'équipement est à risque de compromission; contactez le service d'assistance Ivanti et, dans la mesure du possible, déconnectez l'équipement d'Internet.\n    * surveiller l'activité des comptes et des services liés à l'équipement, notamment le compte de service LDAP ou Active Directory, si celui a été configuré.",
+    "cves": [
+        {
+            "name": "CVE-2025-22457",
+            "url": "https://www.cve.org/CVERecord?id=CVE-2025-22457"
+        }
+    ],
+    "links": [
+        {
+            "title": "Avis CERT-FR CERTFR-2025-AVI-0273 du 3 avril 2025",
+            "url": "https://www.cert.ssi.gouv.fr/avis/CERTFR-2025-AVI-0273/"
+        },
+        {
+            "title": "[1] Bulletin de sécurité Ivanti April-Security-Advisory-Ivanti-Connect-Secure-Policy-Secure-ZTA-Gateways-CVE-2025-22457 du 03 avril 2025",
+            "url": "https://forums.ivanti.com/s/article/April-Security-Advisory-Ivanti-Connect-Secure-Policy-Secure-ZTA-Gateways-CVE-2025-22457"
+        },
+        {
+            "title": "[2] Rapport Mandiant du 3 avril 2025",
+            "url": "https://cloud.google.com/blog/topics/threat-intelligence/china-nexus-exploiting-critical-ivanti-vulnerability?hl=en"
+        },
+        {
+            "title": "Avis CERT-FR CERTFR-2025-AVI-0121 du 12 février 2025",
+            "url": "https://www.cert.ssi.gouv.fr/avis/CERTFR-2025-AVI-0121/"
+        },
+        {
+            "title": "[4] Bulletin technique Ivanti relatif à la réinitialisation de l'équipement",
+            "url": "https://forums.ivanti.com/s/article/KB22964?language=en_US"
+        },
+        {
+            "title": "[3] Les bons réflexes en cas d’intrusion sur un système d’information",
+            "url": "https://www.cert.ssi.gouv.fr/les-bons-reflexes-en-cas-dintrusion-sur-un-systeme-dinformation/"
+        },
+        {
+            "title": "Bulletin de sécurité Ivanti du 11 février 2025",
+            "url": "https://forums.ivanti.com/s/article/February-Security-Advisory-Ivanti-Connect-Secure-ICS-Ivanti-Policy-Secure-IPS-and-Ivanti-Secure-Access-Client-ISAC-Multiple-CVEs?language=en_US"
+        }
+    ],
+    "reference": "CERTFR-2025-ALE-003",
+    "revisions": [
+        {
+            "description": "Ajout des recommandations",
+            "revision_date": "2025-04-04T00:00:00.000000"
+        },
+        {
+            "description": "Version initiale",
+            "revision_date": "2025-04-03T00:00:00.000000"
+        },
+        {
+            "description": "Ajout de la connaissance d'un POC",
+            "revision_date": "2025-04-11T00:00:00.000000"
+        }
+    ],
+    "risks": [
+        {
+            "description": "Exécution de code arbitraire à distance"
+        }
+    ],
+    "summary": "<span class=\"important-content\">**\\[Mise à jour du 11 avril 2025\\]** </span>\n\nLe CERT-FR a connaissance d'une preuve de concept publique permettant de provoquer une exécution de code arbitraire à distance.\n\n**[Mise à jour du 04 avril 2025]** \n\nLe CERT-FR a connaissance d'une preuve de concept publique permettant de provoquer un arrêt du serveur Web.\n\n**[Publication initiale]**\n\nUne vulnérabilité critique de type débordement de pile a été découverte dans Pulse Connect Secure, Ivanti Connect Secure (ICS), Policy Secure (IPS) et Zero Trust Access (ZTA) Gateways. Cette vulnérabilité, d'identifiant CVE-2025-22457, permet à un attaquant non authentifié de provoquer une exécution de code arbitraire à distance.\n\nIvanti indique que cette vulnérabilité est activement exploitée [1].\n\nLa mise à jour corrective pour les ICS est disponible depuis le 11 février 2025. Dans son rapport [2], Mandiant indique avoir constaté des traces d'exploitation depuis la mi-mars 2025. Il peut cependant être utile d'effectuer une recherche de compromission même si les correctifs ont été préalablement installés.\n\nÀ titre de précision, la vulnérabilité CVE-2025-22457 est distincte de la vulnérabilité CVE-2025-0282, qui affecte sensiblement les mêmes produits, et qui a fait l'objet de l'alerte [CERTFR-2025-ALE-001](https://www.cert.ssi.gouv.fr/alerte/CERTFR-2025-ALE-001/).\n",
+    "title": "[MàJ] Vulnérabilité dans les produits Ivanti",
+    "vendor_advisories": []
+}

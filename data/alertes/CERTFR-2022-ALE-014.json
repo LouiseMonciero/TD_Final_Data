@@ -1,0 +1,85 @@
+{
+    "$ref": "https://www.cert.ssi.gouv.fr/openapi.json",
+    "affected_systems": [
+        {
+            "description": "AMI MegaRAC SPx-13 versions 0 à SPx-13-update-4.00",
+            "product": {
+                "name": "N/A",
+                "vendor": {
+                    "name": "N/A",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "AMI MegaRAC SPx-12 versions 0 à SPx-12-update-6.00",
+            "product": {
+                "name": "N/A",
+                "vendor": {
+                    "name": "N/A",
+                    "scada": false
+                }
+            }
+        }
+    ],
+    "affected_systems_content": null,
+    "closed_at": "2023-09-11",
+    "content": "## Solution\n\nSe référer au bulletin de sécurité de l'éditeur pour l'obtention des\ncorrectifs (cf. section Documentation).\n",
+    "cves": [
+        {
+            "name": "CVE-2022-40242",
+            "url": "https://www.cve.org/CVERecord?id=CVE-2022-40242"
+        },
+        {
+            "name": "CVE-2022-40259",
+            "url": "https://www.cve.org/CVERecord?id=CVE-2022-40259"
+        },
+        {
+            "name": "CVE-2022-2827",
+            "url": "https://www.cve.org/CVERecord?id=CVE-2022-2827"
+        }
+    ],
+    "links": [
+        {
+            "title": "Bulletin de sécurité Lenovo du 12 septembre 2022",
+            "url": "https://support.lenovo.com/us/en/product_security/LEN-98711"
+        },
+        {
+            "title": "Bulletin de sécurité Gigabyte du 13 décembre 2022",
+            "url": "https://www.gigabyte.com/Support/Security/2044"
+        },
+        {
+            "title": "Bulletin de sécurité Hewlett Packard 22 novembre 2022",
+            "url": "https://support.hpe.com/hpesc/public/docDisplay?docLocale=en_US&docId=hpesbhf04385en_us"
+        },
+        {
+            "title": "Bulletin de sécurité Intel du 12 mai 2022",
+            "url": "https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00801.html"
+        }
+    ],
+    "reference": "CERTFR-2022-ALE-014",
+    "revisions": [
+        {
+            "description": "Version initiale",
+            "revision_date": "2022-12-16T00:00:00.000000"
+        },
+        {
+            "description": "Clôture de l'alerte. Cela ne signifie pas la fin d'une menace. Seule l'application de la mise à jour permet de vous prémunir contre l'exploitation de la vulnérabilité correspondante.",
+            "revision_date": "2023-09-11T00:00:00.000000"
+        }
+    ],
+    "risks": [
+        {
+            "description": "Exécution de code arbitraire à distance"
+        }
+    ],
+    "summary": "## Contexte\n\nLe 05 décembre 2022, trois vulnérabilités respectivement identifiées par\nles numéros CVE-2022-40259, CVE-2022-40242 et CVE-2022-2827 ont été\nsignalées dans la solution d’administration à distance MegaRAC de\nl’éditeur AMI.\n\nLa solution MegaRAC s’appuie sur un BMC (Baseboard Management\nController) : un microcontrôleur intégré à la carte mère d’un serveur\n(ou installé comme carte fille) qui possède son propre stockage, son\npropre système d’exploitation et peut disposer d’un port réseau dédié ou\npartagé avec le système principal. Ce microcontrôleur est utilisé afin\nde fournir des capacités de gestion à distance en mode \"hors bande\" et\n\"hors tension\". Il permet aux administrateurs d’effectuer à distance un\ncertain nombre de tâches qui nécessiteraient autrement un accès physique\nau serveur. Le processeur BMC dispose en effet d’accès aux différents\ncomposants de la carte mère, ce qui lui permet de surveiller le\nmatériel, mettre à jour le micrologiciel du BIOS, mettre l'hôte sous\ntension, et permettre un déport clavier-écran-souris *via* le réseau.\nSouvent, il est connecté au bus PCIe et bénéficie d’un accès direct plus\nou moins large à la mémoire en lecture et écriture (DMA, Direct Memory\nAccess).\n\nCe contrôleur peut être accédé par différentes interfaces :\n\n-   IPMI (Intelligent Platform Management Interface) : il s’agit d’un\n    ensemble de spécifications d’interface permettant d’accéder aux\n    fonctions du BMC *via* le réseau IP ;\n-   Redfish, successeur de IPMI, proposant une interface RESTful pour la\n    gestion des serveurs, du stockage et des réseaux. Redfish est pris\n    en charge par les principaux fournisseurs de serveurs et\n    d'infrastructures, ainsi que par le projet de micrologiciel OpenBMC\n    ;\n-   des protocoles réseau tels que SSH.\n\nDe nombreux constructeurs de carte mère intègrent la solution AMI\nMegaRAC dans leurs modèles pour serveurs.\n\n## Description\n\nCes trois vulnérabilités, d'une gravité moyenne à critique permettent\nune exécution de code à distance et un accès non autorisé à des\npériphériques requérant normalement des privilèges administrateur.\n\nLa première vulnérabilité, désignée par l’identifiant CVE-2022-40242,\nconcerne l’existence d’un compte administrateur disposant d’un mot de\npasse par défaut.\n\nLa seconde vulnérabilité, CVE-2022-2827, permet d’énumérer les comptes\nconfigurés au niveau du BMC.\n\nEnfin, la troisième vulnérabilité, CVE-2022-40259, offre la possibilité\nà un attaquant distant de tirer parti d’une mauvaise gestion des\nparamètres fournis dans l’URL pour exploiter un appel dans\nl’implémentation de l’API Redfish (IPMI). Cette vulnérabilité de type\nexécution de code arbitraire à distance requiert un niveau de privilège\nminimal de type « callback » ou supérieur.\n\nL’attaquant pourra ainsi tirer parti des deux premières vulnérabilités\npour obtenir un compte permettant d’exploiter la troisième.\n\nLa plupart des serveurs ont une configuration d’usine avec les\ninterfaces IPMI ou Redfish activées et accessibles *via* un port réseau\ndédié ou *via* l’interface réseau principale de la carte mère, qui est\nalors partagée de manière transparente avec le système d’exploitation.\nCette interface du BMC et son adressage sont généralement invisibles du\nsystème d’exploitation et des outils d’inventaire installés. Par\nailleurs, l’une des fonctions du BMC est de pouvoir arrêter ou démarrer\nun serveur à distance, il reste donc alimenté et accessible *via* les\ninterfaces IPMI, Redfish ou SSH même lorsque le serveur est éteint. En\nl’absence de procédure spécifique de configuration à la mise en service\nd’un serveur (spécifiquement pour ne pas exposer cette interface\nailleurs que sur un réseau dédié à la gestion hors bande), il est très\nprobable que les interfaces d’accès au BMC soient exposées par\ninadvertance.\n\nPour l’heure, rien n’indique que ces vulnérabilités aient pu faire\nl’objet d’attaques ciblées. Pour autant, ces vulnérabilités présentent\nun risque majeur car la solution MegaRAC est intégrée par de nombreux\nconstructeurs de serveurs. La complexité de la chaîne\nd’approvisionnement ralentit le déploiement des correctifs, augmentant\nsignificativement l’exposition des serveurs utilisant cette solution à\ndes attaques.\n\nChaînées ensemble, ces vulnérabilités permettent de prendre le contrôle\nà distance des serveurs, le vol de secrets critiques (par exemple\nempreintes et mots de passe en mémoire d’un contrôleur de domaine), le\ndéploiement à distance de logiciels malveillants (par exemple des\nrançongiciels ou des implants de micrologiciel) y compris sur des\nmachines virtuelles hébergées sur le serveur physique vulnérable. Du\nfait de son ancrage au niveau matériel, l’installation d’un implant au\nsein de l’IPMI constituerait une porte dérobée de premier choix, car\ncelui-ci serait persistant à une réinstallation du système hôte voire à\nun changement de disque dur du serveur.\n\n \n\n## Recommandations\n\n<div markdown=\"1\">\n\nAu regard des possibilités offensives induites et du nombre\nd’équipements vulnérables, le CERT-FR recommande de manière générale, et\npour l’ensemble des systèmes de gestion hors bande, de :\n\n-   désactiver les interfaces d’accès au BMC si celui-ci n’est pas\n    utilisé dans le cadre de la supervision et de l’administration à\n    distance\\* ;\n-   appliquer les correctifs publiés par les fabricants ;\n-   s’assurer que tous les accès réseau aux sous-systèmes BMC (IPMI,\n    Redfish, SSH, etc.) sont uniquement permis depuis sur un réseau de\n    gestion dédié ;\n-   activer les fonctionnalités de pare-feu proposées par IPMI ou\n    Redfish afin de restreindre l’accès aux interfaces aux seuls postes\n    d’administration ;\n-   mettre en place un système de journalisation distante :\n    -   authentification\n    -   autorisation (utilisateurs / services)\n    -   état du système (mise sous tension / hors tension, redémarrage)\n    -   changements système (mise à jour du micrologiciel, chargement du\n        micrologiciel après une compromission du système hôte)\n-   désactiver ou changer les identifiants des comptes installés par\n    défaut au niveau du BMC ;\n-   respecter le principe du moindre privilège pour les actions de\n    supervision ou de gestion au travers du BMC (rôles root,\n    administrator, operator, user et callback).\n\n</div>\n\n \n\n\\* Il convient de noter que cela ne désactive pas le fonctionnement du\ncontrôleur BMC mais réduit son exposition depuis le réseau\n\n \n",
+    "title": "Multiples vulnérabilités dans AMI MegaRAC",
+    "vendor_advisories": [
+        {
+            "published_at": null,
+            "title": "Rapport de découverte Eclypsium du 5 décembre 2022",
+            "url": "https://eclypsium.com/2022/12/05/supply-chain-vulnerabilities-put-server-ecosystem-at-risk/"
+        }
+    ]
+}

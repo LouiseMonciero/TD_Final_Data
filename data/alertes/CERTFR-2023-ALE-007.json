@@ -1,0 +1,70 @@
+{
+    "$ref": "https://www.cert.ssi.gouv.fr/openapi.json",
+    "affected_systems": [
+        {
+            "description": "Zimbra Collaboration Suite 8.x",
+            "product": {
+                "name": "Zimbra Collaboration",
+                "vendor": {
+                    "name": "Synacor",
+                    "scada": false
+                }
+            }
+        }
+    ],
+    "affected_systems_content": "",
+    "closed_at": "2024-01-02",
+    "content": "## Solution\n\nL'éditeur documente la procédure manuelle à réaliser pour corriger la\nvulnérabilité. <span style=\"text-decoration: underline;\">Le CERT-FR\nrecommande très fortement d'appliquer cette procédure sans\ndélai.</span>\n\nSe référer au bulletin de sécurité de l'éditeur pour l'obtention des\ncorrectifs (cf. section Documentation).\n",
+    "cves": [
+        {
+            "name": "CVE-2023-37580",
+            "url": "https://www.cve.org/CVERecord?id=CVE-2023-37580"
+        }
+    ],
+    "links": [
+        {
+            "title": "Avis CERT-FR CERTFR-2023-AVI-0546 du 13 juillet",
+            "url": "https://www.cert.ssi.gouv.fr/avis/CERTFR-2023-AVI-0546/"
+        },
+        {
+            "title": "[1] Avis de sécurité Zimbra 8.8.15 P41 du 26 juillet 2023",
+            "url": "https://wiki.zimbra.com/wiki/Zimbra_Releases/8.8.15/P41"
+        }
+    ],
+    "reference": "CERTFR-2023-ALE-007",
+    "revisions": [
+        {
+            "description": "Version initiale",
+            "revision_date": "2023-07-17T00:00:00.000000"
+        },
+        {
+            "description": "Confirmation des versions affectées.",
+            "revision_date": "2023-07-18T00:00:00.000000"
+        },
+        {
+            "description": "Ajout du correctif de l'éditeur",
+            "revision_date": "2023-07-26T00:00:00.000000"
+        },
+        {
+            "description": "Clôture de l'alerte. Cela ne signifie pas la fin d'une menace. Seule l'application de la mise à jour permet de vous prémunir contre l'exploitation de la vulnérabilité correspondante.",
+            "revision_date": "2024-01-02T00:00:00.000000"
+        }
+    ],
+    "risks": [
+        {
+            "description": "Atteinte à la confidentialité des données"
+        },
+        {
+            "description": "Atteinte à l'intégrité des données"
+        }
+    ],
+    "summary": "<span style=\"color: #ff0000;\"><strong>\\[Mise à jour du 26 juillet 2023\\]\nPublication du correctif de sécurité par l'éditeur  \n</strong></span>\n\n<span style=\"color: #ff0000;\">Le 26 juillet 2023, l'éditeur a publié un\ncorrectif de sécurité \\[1\\] pour cette vulnérabilité immatriculée\nCVE-2023-37580. Il est donc fortement recommandé de déployer le\ncorrectif P41 pour toutes les versions 8.8.15 du produit Zimbra\nCollaboration Suite.</span>\n\nLe 13 juillet 2023, Zimbra a publié un avis de sécurité alertant de\nl'existence d'une vulnérabilité affectant sa solution Collaboration\nSuite dans la version 8.8.15\n\nCette vulnérabilité permet à un attaquant de réaliser une injection de\ncode indirecte (*XSS*) pour porter atteinte à l'intégrité des données et\nla confidentialité des données. Aucun identifiant CVE ne lui a été\nattribué au moment de la publication de la présente alerte.\n\n<span style=\"text-decoration: underline;\">Le CERT-FR rappelle que les\nversions 8.x antérieures à 8.8.15 ne sont plus supportées</span>. \\[Mise\nà jour du 18 juillet 2023\\] L'éditeur confirme que toutes les versions\n8.x sont affectées.\n\nL'éditeur indique que <span style=\"text-decoration: underline;\">cette\nvulnérabilité est activement exploité</span>e alors qu'une version\ncorrective n'est pas disponible.\n",
+    "title": "[MàJ] Vulnérabilité dans Zimbra Collaboration Suite",
+    "vendor_advisories": [
+        {
+            "published_at": "2023-07-13",
+            "title": "Bulletin de sécurité Zimbra",
+            "url": "https://blog.zimbra.com/2023/07/security-update-for-zimbra-collaboration-suite-version-8-8-15/"
+        }
+    ]
+}

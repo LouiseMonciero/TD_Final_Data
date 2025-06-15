@@ -1,0 +1,121 @@
+{
+    "$ref": "https://www.cert.ssi.gouv.fr/openapi.json",
+    "affected_systems": [
+        {
+            "description": "IOS XE versions 17.6.x antérieures à 17.6.6a",
+            "product": {
+                "name": "IOS XE",
+                "vendor": {
+                    "name": "Cisco",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Cisco IOS XE si l'interface Web de gestion est accessible",
+            "product": {
+                "name": "IOS XE",
+                "vendor": {
+                    "name": "Cisco",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "IOS XE sur Catalyst 3650 et 3850 versions 16.12.x antérieures à 16.12.10a",
+            "product": {
+                "name": "IOS XE",
+                "vendor": {
+                    "name": "Cisco",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "IOS XE versions 17.3.x antérieures à 17.3.8a",
+            "product": {
+                "name": "IOS XE",
+                "vendor": {
+                    "name": "Cisco",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "IOS XE versions 17.9.x antérieures à 17.9.4a",
+            "product": {
+                "name": "IOS XE",
+                "vendor": {
+                    "name": "Cisco",
+                    "scada": false
+                }
+            }
+        }
+    ],
+    "affected_systems_content": "",
+    "closed_at": "2024-02-16",
+    "content": "## Contournement provisoire\n\nDans l'attente des correctifs de sécurité, Cisco recommande de vérifier\nles configurations des différents équipements et de <u>désactiver\ncomplétement l'interface *webui* (en HTTP et HTTPS)</u> si celle-ci est\nactivée.\n\nLe CERT-FR rappelle que les interfaces de gestion ne doivent être\naccessibles que depuis un réseau d'administration sécurisé. Se référer\naux recommandations de l'ANSSI relatives à l'administration sécurisée\ndes systèmes d'information (cf. section Documentation)\n\n## Solution\n\nSe référer au bulletin de sécurité de l'éditeur pour l'obtention des\ncorrectifs (cf. section Documentation).",
+    "cves": [
+        {
+            "name": "CVE-2023-20198",
+            "url": "https://www.cve.org/CVERecord?id=CVE-2023-20198"
+        },
+        {
+            "name": "CVE-2023-20273",
+            "url": "https://www.cve.org/CVERecord?id=CVE-2023-20273"
+        }
+    ],
+    "links": [
+        {
+            "title": "Avis CERT-FR CERTFR-2023-AVI-0878 du 23 octobre 2023",
+            "url": "https://www.cert.ssi.gouv.fr/avis/CERTFR-2023-AVI-0878/"
+        },
+        {
+            "title": "Recommandations de l'ANSSI relatives à l'administration sécurisée des systèmes d'information",
+            "url": "https://www.ssi.gouv.fr/uploads/2018/04/anssi-guide-admin_securisee_si_v3-0.pdf"
+        }
+    ],
+    "reference": "CERTFR-2023-ALE-011",
+    "revisions": [
+        {
+            "description": "Version initiale",
+            "revision_date": "2023-10-17T00:00:00.000000"
+        },
+        {
+            "description": "Les versions 17.6.6a et 16.12.10a sont disponibles.",
+            "revision_date": "2023-10-30T00:00:00.000000"
+        },
+        {
+            "description": "POC disponible publiquement.",
+            "revision_date": "2023-10-31T00:00:00.000000"
+        },
+        {
+            "description": "La version 17.3.8a est disponible.",
+            "revision_date": "2023-11-02T00:00:00.000000"
+        },
+        {
+            "description": "Clôture de l'alerte. Cela ne signifie pas la fin d'une menace. Seule l'application de la mise à jour permet de vous prémunir contre l'exploitation de la vulnérabilité correspondante.",
+            "revision_date": "2024-02-16T00:00:00.000000"
+        }
+    ],
+    "risks": [
+        {
+            "description": "Exécution de code arbitraire à distance"
+        },
+        {
+            "description": "Élévation de privilèges"
+        },
+        {
+            "description": "Contournement de la politique de sécurité"
+        }
+    ],
+    "summary": "<span style=\"color: #ff0000;\"><strong>\\[Mise à jour du 02 novembre\n2023\\]</strong></span>\n\nLa version 17.3.8a est disponible.\n\n<strong>\\[Mise à jour du 31 octobre 2023\\]</strong>\n\nLes détails techniques de la vulnérabilité CVE-2023-20198 sont désormais\ndisponibles publiquement. Cette vulnérabilité était déjà massivement\nexploitée. Tous les équipements exposant l'interface de gestion Web\nd'IOS XE doivent être considérés comme compromis.\n\n<strong>\\[Mise à jour du 30 octobre 2023\\]</strong>\n\nLes versions 17.6.6a et 16.12.10a sont disponibles.\n\n<strong>\\[Mise à jour du 23 octobre 2023\\]</strong>\n\nLe 22 octobre 2023, Cisco a mis à jour son avis de sécurité pour ajouter\nla vulnérabilité CVE-2023-20273. Celle-ci est activement exploitée par\nles attaquants pour élever leurs privilèges à *root* après avoir créé un\nutilisateur de niveau 15. Cela leur permet de placer un implant sur le\nsystème de fichiers de l'équipement.\n\nLa version 17.9.4a corrige ces vulnérabilités pour la branche 17.9.x. La\ndate de disponibilité des autres correctifs n'a pas été annoncée.\n\n<strong>\\[Publication initiale\\]</strong>\n\nLe 16 octobre 2023, Cisco a publié un avis de sécurité concernant la\nvulnérabilité CVE-2023-20198 affectant l'interface Web de gestion d'IOS\nXE (*webui*). Cette vulnérabilité permet à un attaquant non authentifié\nde créer un [utilisateur disposant des privilèges de niveau\n15](https://learningnetwork.cisco.com/s/blogs/a0D3i000002eeWTEAY/cisco-ios-privilege-levels).\nCela donne accès à toutes les commandes et la possibilité de modifier la\nconfiguration de l'équipement vulnérable, ce qui revient à en prendre le\ncontrôle complet. Le score CVSSv3 de cette vulnérabilité est de 10 (sur\n10).\n\nCisco <u>n'a pas encore publié de correctifs</u> de sécurité pour la\nvulnérabilité CVE-2023-20198. De plus, l'éditeur indique que cette\nvulnérabilité est <u>activement exploitée</u>.\n\nL'avis de l'éditeur documente les indicateurs de compromission\npermettant de rechercher des éventuelles exploitations de cette\nvulnérabilité.\n\n \n",
+    "title": "[MàJ] Multiples vulnérabilités dans Cisco IOS XE",
+    "vendor_advisories": [
+        {
+            "published_at": "2023-10-16",
+            "title": "Bulletin de sécurité Cisco cisco-sa-iosxe-webui-privesc-j22SaA4z",
+            "url": "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-iosxe-webui-privesc-j22SaA4z"
+        }
+    ]
+}

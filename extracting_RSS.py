@@ -35,3 +35,22 @@ for i in range(0, len(rss_feed.entries)):
     print(i)
 print(i)
 
+url_alerte = "https://cert.ssi.gouv.fr/alerte/feed/"
+rss_feed_alerte = feedparser.parse(url_alerte)
+
+
+for i in range(0, len(rss_feed_alerte.entries)):
+    url = rss_feed_alerte.entries[i].link
+    response = requests.get(url.rstrip('/') + '/json/')
+
+    if response.status_code == 200:
+        alerte_json = response.json()
+        reference = alerte_json.get("reference", "alerte_sans_ref")
+        os.makedirs("./data/alertes", exist_ok=True)
+        with open(f"./data/alertes/{reference}.json", "w", encoding='utf-8') as f:
+            json.dump(alerte_json, f, ensure_ascii=False, indent=4)
+    else:
+        print(f"Erreur lors de l'accès au JSON (alerte) : {response.status_code} – {response.text}")
+
+    time.sleep(random.randint(90, 140)) if (i % 7 == 0) else time.sleep(random.randint(3, 8))
+    

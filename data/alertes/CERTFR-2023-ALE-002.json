@@ -1,0 +1,201 @@
+{
+    "$ref": "https://www.cert.ssi.gouv.fr/openapi.json",
+    "affected_systems": [
+        {
+            "description": "Microsoft Office LTSC 2021 pour éditions 64 bits",
+            "product": {
+                "name": "Office",
+                "vendor": {
+                    "name": "Microsoft",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Microsoft Office LTSC 2021 pour éditions 32 bits",
+            "product": {
+                "name": "Office",
+                "vendor": {
+                    "name": "Microsoft",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Microsoft Office 2019 pour éditions 32 bits",
+            "product": {
+                "name": "Office",
+                "vendor": {
+                    "name": "Microsoft",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Microsoft 365 Apps pour Entreprise pour systèmes 32 bits",
+            "product": {
+                "name": "N/A",
+                "vendor": {
+                    "name": "Microsoft",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Microsoft 365 Apps pour Entreprise pour systèmes 64 bits",
+            "product": {
+                "name": "N/A",
+                "vendor": {
+                    "name": "Microsoft",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Microsoft Outlook 2013 RT Service Pack 1",
+            "product": {
+                "name": "N/A",
+                "vendor": {
+                    "name": "Microsoft",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Microsoft Office 2019 pour éditions 64 bits",
+            "product": {
+                "name": "Office",
+                "vendor": {
+                    "name": "Microsoft",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Microsoft Outlook 2013 Service Pack 1 (éditions 64 bits)",
+            "product": {
+                "name": "N/A",
+                "vendor": {
+                    "name": "Microsoft",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Microsoft Outlook 2013 Service Pack 1 (éditions 32 bits)",
+            "product": {
+                "name": "N/A",
+                "vendor": {
+                    "name": "Microsoft",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Microsoft Outlook 2016 (édition 64 bits)",
+            "product": {
+                "name": "N/A",
+                "vendor": {
+                    "name": "Microsoft",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Microsoft Outlook 2016 (édition 32 bits)",
+            "product": {
+                "name": "N/A",
+                "vendor": {
+                    "name": "Microsoft",
+                    "scada": false
+                }
+            }
+        }
+    ],
+    "affected_systems_content": null,
+    "closed_at": "2023-07-26",
+    "content": "## Solution\n\nLe CERT-FR recommande fortement d’appliquer la mise à jour fournie par\nMicrosoft, se référer au bulletin de sécurité de l'éditeur pour\nl'obtention des correctifs (cf. section Documentation).\n\n**\\[mise à jour du 29 mars 2023\\]** Le CERT-FR recommande fortement\nd'appliquer la mise à jour de sécurité de mars 2023 pour Microsoft\nExchange Server.\n\n<span style=\"color: #ff0000;\">**\\[mise à jour du 29 mars 2023\\]**</span>\nLe CERT-FR recommande fortement d'appliquer les mises à jour de sécurité\nde mars <u>et</u> de mai 2023 pour Microsoft Exchange Server.\n",
+    "cves": [
+        {
+            "name": "CVE-2023-23397",
+            "url": "https://www.cve.org/CVERecord?id=CVE-2023-23397"
+        },
+        {
+            "name": "CVE-2023-29324",
+            "url": "https://www.cve.org/CVERecord?id=CVE-2023-29324"
+        }
+    ],
+    "links": [
+        {
+            "title": "[3] Billet de blog du découvreur de la CVE-2023-29324",
+            "url": "https://www.akamai.com/blog/security-research/important-outlook-vulnerability-bypass-windows-api"
+        },
+        {
+            "title": "Bulletin de sécurité Microsoft CVE-2023-23397 du 14 mars 2023",
+            "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-23397"
+        },
+        {
+            "title": "Documentation et code Powershell fournis par Microsoft pour l'identification de compromission",
+            "url": "https://aka.ms/CVE-2023-23397ScriptDoc"
+        },
+        {
+            "title": "[2] Guide ANSSI pour le nomadisme numérique",
+            "url": "https://www.ssi.gouv.fr/guide/recommandations-sur-le-nomadisme-numerique/"
+        },
+        {
+            "title": "Avis CERTFR-2023-AVI-0231 du 15 mars 2023",
+            "url": "https://www.cert.ssi.gouv.fr/avis/CERTFR-2023-AVI-0231/"
+        },
+        {
+            "title": "Les bons réflexes en cas d’intrusion sur un système d’information",
+            "url": "https://www.cert.ssi.gouv.fr/les-bons-reflexes-en-cas-dintrusion-sur-un-systeme-dinformation/"
+        },
+        {
+            "title": "Avis CERTFR-2023-AVI-0234 du 15 mars 2023",
+            "url": "https://www.cert.ssi.gouv.fr/avis/CERTFR-2023-AVI-0234/"
+        }
+    ],
+    "reference": "CERTFR-2023-ALE-002",
+    "revisions": [
+        {
+            "description": "Version initiale",
+            "revision_date": "2023-03-15T00:00:00.000000"
+        },
+        {
+            "description": "Clarifications mineures",
+            "revision_date": "2023-03-16T00:00:00.000000"
+        },
+        {
+            "description": "clarification de la recommadation pour le filtrage du flux SMB",
+            "revision_date": "2023-04-20T00:00:00.000000"
+        },
+        {
+            "description": "Ajout d'informations concernant la vulnérabilité CVE-2023-29324",
+            "revision_date": "2023-05-11T00:00:00.000000"
+        }
+    ],
+    "risks": [
+        {
+            "description": "Élévation de privilèges"
+        }
+    ],
+    "summary": "<span style=\"color: #ff0000;\"><strong>\\[mise à jour du 11 mai 2023\\]\nPossibilité de contournement du correctif proposé par l'éditeur par le\nbiais de la CVE-2023-29324</strong></span>\n\n<strong>\\[mise à jour du 20 avril 2023\\] clarification de la recommandation\npour le filtrage du flux SMB</strong>\n\n<strong>\\[mise à jour du 29 mars 2023\\] complément d'information et\nrecommandation  \n</strong>\n\nEn date du 14 mars 2023, <span class=\"mx_EventTile_body\" dir=\"auto\">lors\nde sa mise à jour mensuelle</span>, Microsoft a indiqué l'existence\nd'une vulnérabilité CVE-2023-23397 affectant diverses versions du\nproduit Outlook pour Windows qui permet à un attaquant <span\nclass=\"mx_EventTile_body\" dir=\"auto\">de récupérer le condensat\n</span>*Net-NTLMv2* (*new technology LAN manager*).\n\nMicrosoft indique que cette vulnérabilité est activement exploitée dans\nle cadre d'attaques ciblées. Par ailleurs, le CERT-FR a connaissance\nd'une première preuve de concept publique (non encore qualifiée).\n\nLa vulnérabilité ne requiert pas d'intervention de l'utilisateur. Elle\nest déclenchée lorsqu'un attaquant envoie un message contenant un\nlien *UNC* (*Universal Naming Convention*) vers une ressource partagée\nen *SMB* hébergée sur un serveur qui serait sous contrôle de\nl'attaquant. Durant la connexion *SMB* au serveur malveillant, le <span\nclass=\"mx_EventTile_body\" dir=\"auto\">message d’authentification</span>\n*NTLM* pour la négociation de l'authentification est envoyé, l'attaquant\npeut ainsi le relayer auprès d'autres services supportant ce type\nd'authentification pour obtenir un accès valide.\n\nL'éditeur indique que les version d'Outlook pour Android, iOS, Mac, mais\naussi la version web et les services M365 ne sont pas vulnérables.\n\nMicrosoft a publié un code Powershell et une documentation permettant de\nvérifier si un système a été la cible d'une attaque. Le script remonte\nles courriels, tâches et invitations de calendrier pointant vers un\npartage potentiellement non-maîtrisé. Ces éléments doivent être passés\nen revue afin de déterminer leur légitimité et, dans le cas contraire,\nils doivent faire l'objet d'une investigation (contrôler l'existence de\nconnexions sortantes associées, lister les connexions réalisées à l'aide\ndu compte utilisateur, etc.) pour prendre les mesures de remédiation\nappropriées.\n\n<strong>\\[mise à jour du 20 avril 2023\\]</strong> Le 24 mars 2023, Microsoft a publié\nun guide d'investigation documentant les différents contrôles à mener et\nles indicateurs de compromission à chercher. Il convient de noter que ce\nguide apporte plusieurs éléments techniques qui sont également à prendre\nen compte :\n\n-   Pour prévenir une exploitation menée par un attaquant utilisant une\n    machine distante pour collecter les condensats *Net-NTLMv2*, il\n    convient d'interdire les flux *SMB* <u>en sortie du système\n    d'information</u> (TCP/445). Cette règle s'impose également aux\n    postes nomades, dont les flux doivent être sécurisés (cf. les règles\n    R16 à R18 du guide ANSSI pour le nomadisme numérique \\[2\\]).\n-   <span class=\"mx_EventTile_body markdown-body\" dir=\"auto\">La mise à\n    jour de sécurité de Microsoft Exchange Server du mois de mars 2023\n    permet de prévenir l'exploitation de la vulnérabilité en supprimant\n    automatiquement les courriels dont la propriété\n    *PidLidReminderFileParameter* est définie. Ce correctif ne corrige\n    pas la vulnérabilité intrinsèque au client Outlook mais empêche son\n    exploitation.</span>\n\n<span style=\"color: #ff0000;\"><strong>\\[mise à jour du 11 mai 2023\\]</strong>\n</span>Le 9 mai, Microsoft a publié un correctif pour une vulnérabilité\ndont l'identifiant est CVE-2023-29324. Cette vulnérabilité permet de\ncontinuer à exploiter la vulnérabilité CVE-2023-23397 avec un lien *UNC*\nspécialement construit par l'attaquant \\[3\\] si le correctif de sécurité\nde mars 2023 pour les serveurs Microsoft Exchange n'a pas été appliqué\n(cf. la mise à jour de l'alerte du 20 avril).\n\nAfin de respecter le principe de défense en profondeur, le CERT-FR\nrecommande d'appliquer la mise à jour de mai 2023 (correction de la\nvulnérabilité CVE-2023-29324).\n\n<span style=\"color: #ff0000;\"> </span>\n",
+    "title": "[MàJ] Vulnérabilité dans Microsoft Outlook",
+    "vendor_advisories": [
+        {
+            "published_at": null,
+            "title": "[1] Guide d'investigation Microsoft du 24 mars 2023",
+            "url": "https://www.microsoft.com/en-us/security/blog/2023/03/24/guidance-for-investigating-attacks-using-cve-2023-23397/"
+        },
+        {
+            "published_at": null,
+            "title": "Bulletin de sécurité Microsoft du 14 mars 2023",
+            "url": null
+        },
+        {
+            "published_at": null,
+            "title": "Billet de blogue Microsoft du 14 mars 2023",
+            "url": "https://msrc.microsoft.com/blog/2023/03/microsoft-mitigates-outlook-elevation-of-privilege-vulnerability/"
+        }
+    ]
+}

@@ -1,0 +1,133 @@
+{
+    "$ref": "https://www.cert.ssi.gouv.fr/openapi.json",
+    "affected_systems": [
+        {
+            "description": "PAN-OS versions 11.1.0 antérieures à 11.1.5-h1",
+            "product": {
+                "name": "PAN-OS",
+                "vendor": {
+                    "name": "Palo Alto Networks",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "PAN-OS versions 11.0.0 antérieures à 11.0.6-h1",
+            "product": {
+                "name": "PAN-OS",
+                "vendor": {
+                    "name": "Palo Alto Networks",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "PAN-OS versions 10.2.0 antérieures à 10.2.12-h2",
+            "product": {
+                "name": "PAN-OS",
+                "vendor": {
+                    "name": "Palo Alto Networks",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "PAN-OS versions 11.2.0 antérieures à 11.2.4-h1",
+            "product": {
+                "name": "PAN-OS",
+                "vendor": {
+                    "name": "Palo Alto Networks",
+                    "scada": false
+                }
+            }
+        }
+    ],
+    "affected_systems_content": "L'éditeur précise que les équipements Prisma Access et Cloud NGFW ne sont pas concernés par ces vulnérabilités. ",
+    "closed_at": "2025-01-27",
+    "content": "## Solutions\n\n\n\n**\\[Mise à jour du 18 novembre 2024\\]** <br>Des correctifs sont disponibles pour cette vulnérabilité.\n\n\nLes pare-feux les plus à risque sont ceux exposant leur interface d'administration sur Internet. Palo Alto Networks a indiqué avoir effectué un scan pour identifier ces interfaces et informé les propriétaires d'équipements concernés au travers de leur espace client (voir la section *Required Configuration for Exposure* de l'avis de sécurité). \nDe plus, l'éditeur propose un guide de sécurisation des interfaces d'administration [1]. \n\nSi une interface d'administration est exposée ou a été exposée sur Internet, le CERT-FR recommande de : \n1. isoler les équipements du réseau et réaliser un gel de données (instantané pour les machines virtuelles, isolement de l’équipement s’il s’agit d’un équipement physique) à des fins d’investigations approfondies ;\n2. reconstruire la solution avec une version à jour et en suivant les recommandations de sécurité de l'éditeur pour le déploiement de l'interface d'administration.\n\nSi l'interface d'administration n'est pas exposée sur internet, l'équipement reste néanmoins vulnérable à une exploitation pour un attaquant ayant accès à l'interface, par exemple depuis un réseau d'administration. Le CERT-FR recommande donc de surveiller les connexions ou tentatives de connexion à l'équipement.\n\nEn cas de suspicion de compromission, il est recommandé de consulter les [bons réflexes en cas d'intrusion sur votre système d'information](https://www.cert.ssi.gouv.fr/les-bons-reflexes-en-cas-dintrusion-sur-un-systeme-dinformation/) [2], ainsi que les fiches réflexe sur la compromission système [3] [4]. ",
+    "cves": [
+        {
+            "name": "CVE-2024-9474",
+            "url": "https://www.cve.org/CVERecord?id=CVE-2024-9474"
+        },
+        {
+            "name": "CVE-2024-0012",
+            "url": "https://www.cve.org/CVERecord?id=CVE-2024-0012"
+        }
+    ],
+    "links": [
+        {
+            "title": "Bulletin de sécurité Palo Alto Networks CVE-2024-9474 du 18 novembre 2024",
+            "url": "https://security.paloaltonetworks.com/CVE-2024-9474"
+        },
+        {
+            "title": "Billet de blogue Unit42 du 18 novembre 2024 ",
+            "url": "https://unit42.paloaltonetworks.com/cve-2024-0012-cve-2024-9474/"
+        },
+        {
+            "title": "[2] Les bons réflexes en cas d’intrusion sur un système d’information",
+            "url": "https://www.cert.ssi.gouv.fr/les-bons-reflexes-en-cas-dintrusion-sur-un-systeme-dinformation/"
+        },
+        {
+            "title": "[4] Fiche réflexe Compromission système - Endiguement",
+            "url": "https://www.cert.ssi.gouv.fr/fiche/CERTFR-2024-RFX-006/"
+        },
+        {
+            "title": "[3] Fiche réflexe Compromission système - Qualification",
+            "url": "https://www.cert.ssi.gouv.fr/fiche/CERTFR-2024-RFX-005/"
+        },
+        {
+            "title": "Bulletin de sécurité Palo Alto Networks CVE-2024-0012 du 18 novembre 2024",
+            "url": "https://security.paloaltonetworks.com/CVE-2024-0012"
+        },
+        {
+            "title": "Avis CERTFR-2024-AVI-1001 du 19 novembre 2024",
+            "url": "https://www.cert.ssi.gouv.fr/avis/CERTFR-2024-AVI-1001"
+        },
+        {
+            "title": "[1] Guide de sécurisation des interfaces d'administration des équipements Palo Alto Networks",
+            "url": "https://live.paloaltonetworks.com/t5/community-blogs/tips-amp-tricks-how-to-secure-the-management-access-of-your-palo/ba-p/464431"
+        },
+        {
+            "title": "Avis CERTFR-2024-AVI-0990 du 15 novembre 2024",
+            "url": "https://www.cert.ssi.gouv.fr/avis/CERTFR-2024-AVI-0990"
+        }
+    ],
+    "reference": "CERTFR-2024-ALE-015",
+    "revisions": [
+        {
+            "description": "Version initiale",
+            "revision_date": "2024-11-15T00:00:00.000000"
+        },
+        {
+            "description": "Clôture de l'alerte. Cela ne signifie pas la fin d'une menace. Seule l'application de la mise à jour permet de vous prémunir contre l'exploitation de la vulnérabilité correspondante.",
+            "revision_date": "2025-01-27T00:00:00.000000"
+        },
+        {
+            "description": "Ajout de la vulnérabilité CVE-2024-9474 et de la publication d'une preuve de concept",
+            "revision_date": "2024-11-19T00:00:00.000000"
+        },
+        {
+            "description": "Modification du titre",
+            "revision_date": "2024-11-25T00:00:00.000000"
+        },
+        {
+            "description": "Ajout de l'identifiant CVE et de correctifs",
+            "revision_date": "2024-11-18T00:00:00.000000"
+        }
+    ],
+    "risks": [
+        {
+            "description": "Exécution de code arbitraire à distance"
+        }
+    ],
+    "summary": "Le 8 novembre 2024, Palo Alto Networks a publié un avis de sécurité relatif à une vulnérabilité critique dans certains pare-feux Palo Alto Networks. Elle permet à un attaquant non authentifié d'exécuter du code arbitraire à distance sur l'interface d'administration des équipements.\n\nL'éditeur indique dans une mise à jour du 14 novembre 2024 avoir connaissance de l'exploitation de cette vulnérabilité sur des pare-feux exposant leur interface d'administration sur Internet. \n\n<span class=\"important-content\">\n\n**\\[Mise à jour du 19 novembre 2024\\]** \n\n</span>\n\nLe 18 novembre 2024, l'éditeur a publié un avis de sécurité concernant la vulnérabilité CVE-2024-9474. Celle-ci permet d'élever ses privilèges et peut être utilisée à la suite de la vulnérabilité publiée le 8 novembre 2024, ayant désormais l'identifiant CVE-2024-0012, afin d'obtenir les droits les plus élevés sur l'équipement.\n\nUne preuve de concept permettant l'exploitation de ces deux vulnérabilités est disponible publiquement. \n\n",
+    "title": "[MàJ] Multiples vulnérabilités sur l'interface d'administration des équipements Palo Alto Networks",
+    "vendor_advisories": [
+        {
+            "published_at": "2024-11-14",
+            "title": "Bulletin de sécurité Palo Alto Networks",
+            "url": "https://security.paloaltonetworks.com/PAN-SA-2024-0015"
+        }
+    ]
+}

@@ -1,0 +1,109 @@
+{
+    "$ref": "https://www.cert.ssi.gouv.fr/openapi.json",
+    "affected_systems": [
+        {
+            "description": "Exim versions antérieures à 4.96.1 ou 4.97",
+            "product": {
+                "name": "N/A",
+                "vendor": {
+                    "name": "Exim",
+                    "scada": false
+                }
+            }
+        }
+    ],
+    "affected_systems_content": "",
+    "closed_at": "2024-02-16",
+    "content": "## Contournement provisoire\n\nL'éditeur ne propose pas de correctif pour les trois vulnérabilités\nCVE-2023-42117, CVE-2023-42118 et CVE-2023-42119. Les mesures de\ncontournement proposées consistent à :\n\n-   Pour CVE-2023-42117 : recourir à un relai (*proxy*) de confiance\n    utilisant le protocole PROXY ;\n-   Pour CVE-2023-42118 : ne pas utiliser de *macro* *spf* dans les\n    directives de configuration définissant les listes de contrôles\n    d'accès (Access Control Lis*ts* ou *ACL*) ;\n-   Pour CVE-2023-42119 : utiliser un résolveur DNS de confiance, étant\n    en mesure de valider les données en fonction des types\n    d'enregistrements DNS. Cependant, la description du contournement\n    proposé par l'éditeur ne permet pas de proposer un produit répondant\n    à cette exigence.\n\n## Solution\n\nLe CERT-FR incite fortement à mettre à jour Exim à la dernière version\n4.96.1 ou 4.97 afin de corriger les vulnérabilités CVE-2023-42114,\nCVE-2023-42115 et CVE-2023-42116 dès la disponibilité des sources ou des\npaquets par l'éditeur ou les distributions Linux.\n\nL'installation des correctifs pour les autres vulnérabilités devra être\nréalisée dès leur disponibilité.\n\nSe référer au bulletin de sécurité de l'éditeur ou des distributions\nLinux pour l'obtention des correctifs (cf. section Documentation).",
+    "cves": [
+        {
+            "name": "CVE-2023-42118",
+            "url": "https://www.cve.org/CVERecord?id=CVE-2023-42118"
+        },
+        {
+            "name": "CVE-2023-42116",
+            "url": "https://www.cve.org/CVERecord?id=CVE-2023-42116"
+        },
+        {
+            "name": "CVE-2023-42115",
+            "url": "https://www.cve.org/CVERecord?id=CVE-2023-42115"
+        },
+        {
+            "name": "CVE-2023-42117",
+            "url": "https://www.cve.org/CVERecord?id=CVE-2023-42117"
+        },
+        {
+            "name": "CVE-2023-42119",
+            "url": "https://www.cve.org/CVERecord?id=CVE-2023-42119"
+        },
+        {
+            "name": "CVE-2023-42114",
+            "url": "https://www.cve.org/CVERecord?id=CVE-2023-42114"
+        }
+    ],
+    "links": [],
+    "reference": "CERTFR-2023-ALE-010",
+    "revisions": [
+        {
+            "description": "Version initiale",
+            "revision_date": "2023-10-02T00:00:00.000000"
+        },
+        {
+            "description": "Clôture de l'alerte. Cela ne signifie pas la fin d'une menace. Seule l'application de la mise à jour permet de vous prémunir contre l'exploitation de la vulnérabilité correspondante.",
+            "revision_date": "2024-02-16T00:00:00.000000"
+        }
+    ],
+    "risks": [
+        {
+            "description": "Exécution de code arbitraire à distance"
+        },
+        {
+            "description": "Atteinte à la confidentialité des données"
+        },
+        {
+            "description": "Atteinte à l'intégrité des données"
+        },
+        {
+            "description": "Contournement de la politique de sécurité"
+        }
+    ],
+    "summary": "Le 27 septembre 2023, Zero Day Initiative (ZDI) a publié six avis de\nsécurité \\[1\\] concernant des vulnérabilités de type zéro-jour affectant\nles versions antérieures à 4.96.1 ou 4.97 de l'agent de transfert de\ncourriels (*Mail Transfer Agent* ou *MTA*) Exim. Le 1er octobre 2023,\nl'éditeur a publié un avis de sécurité \\[2\\] contenant les détails des\nsix vulnérabilités découvertes par ZDI.\n\nL'éditeur annonce dans son bulletin du 1er octobre 2023 la\ncorrection, dans les versions 4.96.1 et 4.97 d'Exim, de trois\nvulnérabilités affectant la gestion de l'authentification :\n\n-   Les vulnérabilités identifiées CVE-2023-42114 et CVE-2023-42116\n    ayant respectivement un score *CVSSv3* de 3.7 et 8.1 sont présentes\n    dans le sous-système *SPA/NTLM.* Ce dernier introduit une faiblesse\n    dans la validation des entrées utilisateurs lors du traitement des\n    demandes de défis (*challenges*) *NTLM.* Un attaquant distant est en\n    mesure de provoquer une atteinte à la confidentialité des données et\n    une exécution de code arbitraire ;\n-   La vulnérabilité CVE-2023-42115, avec un score *CVSSv3* de 9.8, est\n    liée à l'implémentation du mécanisme *EXTERNAL* de la couche\n    d'authentification et de sécurité simple (Simpl*e Authentication and\n    Security Layer* ou *SASL*). Un manque de validation des données\n    fournies par l'utilisateur permet à un attaquant distant de tenter\n    une exécution de code arbitraire.\n\nCependant, à la date de publication initiale de cette alerte, l'éditeur\nne propose pas de correctif pour les trois vulnérabilités suivantes :\n\n-   La vulnérabilité CVE-2023-42117 ayant un score *CVSSv3* de 8.1 est\n    liée à la gestion du protocole PROXY. Un manque de validation des\n    données soumises par l'utilisateur peut permettre à un attaquant\n    distant de compromettre l'intégrité des données en mémoire et de\n    tenter une exécution de code arbitraire.\n-   La vulnérabilité identifiée CVE-2023-42118 a un score *CVSSv3* de\n    7.5. Un attaquant adjacent au réseau peut tenter une exécution de\n    code arbitraire vers les versions affectées de la bibliothèque\n    *libspf2* incluse dans Exim.\n-   Enfin, la vulnérabilité dont le numéro d'identification est\n    CVE-2023-42119 est référencée avec un score *CVSSv3* de 3.1. Elle\n    est introduite par le sous-système de recherches DNS : un manque de\n    validation des données fournies par l'utilisateur peut entraîner une\n    lecture au-delà du tampon alloué. Un attaquant adjacent au réseau\n    peut alors, en conjonction avec d'autres vulnérabilités, tenter une\n    exécution de code arbitraire dans le contexte du compte de service.\n\n \n",
+    "title": "Multiples vulnérabilités dans Exim",
+    "vendor_advisories": [
+        {
+            "published_at": "2023-09-27",
+            "title": "Bulletin de sécurité ZDI 23-1469",
+            "url": "https://www.zerodayinitiative.com/advisories/ZDI-23-1469/"
+        },
+        {
+            "published_at": "2023-09-27",
+            "title": "Bulletin de sécurité ZDI 23-1470",
+            "url": "https://www.zerodayinitiative.com/advisories/ZDI-23-1470/"
+        },
+        {
+            "published_at": "2023-09-27",
+            "title": "Bulletin de sécurité ZDI 23-1473",
+            "url": "https://www.zerodayinitiative.com/advisories/ZDI-23-1473/"
+        },
+        {
+            "published_at": "2023-09-27",
+            "title": "Bulletin de sécurité ZDI 23-1472",
+            "url": "https://www.zerodayinitiative.com/advisories/ZDI-23-1472/"
+        },
+        {
+            "published_at": "2023-10-01",
+            "title": "[2] Bulletin de sécurité Exim",
+            "url": "https://www.exim.org/static/doc/security/CVE-2023-zdi.txt"
+        },
+        {
+            "published_at": "2023-09-27",
+            "title": "[1] Bulletin de sécurité ZDI 23-1468",
+            "url": "https://www.zerodayinitiative.com/advisories/ZDI-23-1468/"
+        },
+        {
+            "published_at": "2023-09-27",
+            "title": "Bulletin de sécurité ZDI 23-1471",
+            "url": "https://www.zerodayinitiative.com/advisories/ZDI-23-1471/"
+        }
+    ]
+}

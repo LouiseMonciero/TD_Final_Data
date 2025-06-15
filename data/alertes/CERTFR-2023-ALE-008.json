@@ -1,0 +1,107 @@
+{
+    "$ref": "https://www.cert.ssi.gouv.fr/openapi.json",
+    "affected_systems": [
+        {
+            "description": "NetScaler ADC 13.1-FIPS antérieures à 13.1-37.159",
+            "product": {
+                "name": "NetScaler ADC",
+                "vendor": {
+                    "name": "Citrix",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "NetScaler ADC et NetScaler Gateway versions 13.1-x antérieures à 13.1-49.13",
+            "product": {
+                "name": "N/A",
+                "vendor": {
+                    "name": "Citrix",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "NetScaler ADC 12.1-FIPS antérieures à 12.1-55.297",
+            "product": {
+                "name": "NetScaler ADC",
+                "vendor": {
+                    "name": "Citrix",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "NetScaler ADC et NetScaler Gateway versions 13.0-x antérieures à 13.0-91.13",
+            "product": {
+                "name": "N/A",
+                "vendor": {
+                    "name": "Citrix",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "NetScaler ADC 12.1-NDcPP antérieures à 12.1-55.297",
+            "product": {
+                "name": "NetScaler ADC",
+                "vendor": {
+                    "name": "Citrix",
+                    "scada": false
+                }
+            }
+        }
+    ],
+    "affected_systems_content": null,
+    "closed_at": "2024-01-02",
+    "content": "## Solution\n\nSe référer au bulletin de sécurité de l'éditeur pour l'obtention des\ncorrectifs (cf. section Documentation).\n\nL'application seule des correctifs n'est pas suffisante. Il est\nfortement recommandé d'effectuer une analyse des systèmes \\[2\\]. En cas\nde suspicion de compromission, il est recommandé de continuer les\ninvestigations afin de déterminer les actions prises par un éventuel\nattaquant \\[1\\].\n",
+    "cves": [
+        {
+            "name": "CVE-2023-3519",
+            "url": "https://www.cve.org/CVERecord?id=CVE-2023-3519"
+        }
+    ],
+    "links": [
+        {
+            "title": "[2] Avis CISA aa23-201a du 20 juillet 2023",
+            "url": "https://www.cisa.gov/sites/default/files/2023-07/aa23-201a_csa_threat_actors_exploiting_citrix-cve-2023-3519_to_implant_webshells.pdf"
+        },
+        {
+            "title": "Avis CERT-FR CERTFR-2023-AVI-0568 du 19 juillet 2023",
+            "url": "https://www.cert.ssi.gouv.fr/avis/CERTFR-2023-AVI-0568/"
+        },
+        {
+            "title": "[1] Les bons réflexes en cas d’intrusion sur un système d’information",
+            "url": "https://www.cert.ssi.gouv.fr/les-bons-reflexes-en-cas-dintrusion-sur-un-systeme-dinformation/"
+        }
+    ],
+    "reference": "CERTFR-2023-ALE-008",
+    "revisions": [
+        {
+            "description": "Version initiale",
+            "revision_date": "2023-07-19T00:00:00.000000"
+        },
+        {
+            "description": "Ajout d'informations pour la détection d'une compromission",
+            "revision_date": "2023-07-21T00:00:00.000000"
+        },
+        {
+            "description": "Clôture de l'alerte. Cela ne signifie pas la fin d'une menace. Seule l'application de la mise à jour permet de vous prémunir contre l'exploitation de la vulnérabilité correspondante.",
+            "revision_date": "2024-01-02T00:00:00.000000"
+        }
+    ],
+    "risks": [
+        {
+            "description": "Exécution de code arbitraire à distance"
+        }
+    ],
+    "summary": "Le 18 juillet 2023, Citrix a publié un avis de sécurité concernant\nplusieurs vulnérabilités. La plus critique, dont l'identifiant CVE est\nCVE-2023-3519, permet à un attaquant non authentifié d'exécuter du code\narbitraire à distance.\n\nL'équipement est vulnérable s'il est configuré en tant que passerelle\n(*Gateway : VPN virtual server, ICA Proxy, CVPN, RDP Proxy*) ou en tant\nque serveur virtuel AAA (*AAA virtual server*).\n\nL'éditeur indique que les produits NetScaler ADC et NetScaler Gateway en\nversion 12.1 sont en fin de vie. Les clients sont invités à migrer vers\nune version supportée et à jour des correctifs de sécurité.\n\nCitrix indique que cette vulnérabilité est activement exploitée. Le\nCERT-FR recommande donc fortement d'appliquer le correctif dans les plus\nbrefs délais.\n\n## Détection d'une compromission\n\n<strong><span style=\"color: #ff0000;\">\\[mise à jour du 20 juillet\n2023\\]</span></strong> La CISA a documenté une méthode de recherche des signes\nd'une compromission de l'équipement \\[2\\].\n",
+    "title": "[MàJ] Vulnérabilité dans Citrix NetScaler ADC et NetScaler Gateway",
+    "vendor_advisories": [
+        {
+            "published_at": null,
+            "title": "Bulletin de sécurité Citrix CTX561482 du 18 juillet 2023",
+            "url": "https://support.citrix.com/article/CTX561482/citrix-adc-and-citrix-gateway-security-bulletin-for-cve20233519-cve20233466-cve20233467"
+        }
+    ]
+}

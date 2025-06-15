@@ -1,0 +1,65 @@
+{
+    "$ref": "https://www.cert.ssi.gouv.fr/openapi.json",
+    "affected_systems": [
+        {
+            "description": "Struts versions 2.x antérieures à 2.5.33",
+            "product": {
+                "name": "Struts",
+                "vendor": {
+                    "name": "Apache",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Struts versions 6.x antérieures à 6.3.0.2",
+            "product": {
+                "name": "Struts",
+                "vendor": {
+                    "name": "Apache",
+                    "scada": false
+                }
+            }
+        }
+    ],
+    "affected_systems_content": "",
+    "closed_at": "2024-02-16",
+    "content": "## Solution\n\nSe référer au bulletin de sécurité de l'éditeur pour l'obtention des\ncorrectifs (cf. section Documentation).\n",
+    "cves": [
+        {
+            "name": "CVE-2023-50164",
+            "url": "https://www.cve.org/CVERecord?id=CVE-2023-50164"
+        }
+    ],
+    "links": [
+        {
+            "title": "Avis CERT-FR CERTFR-2023-AVI-1005 du 07 décembre 2023",
+            "url": "https://www.cert.ssi.gouv.fr/avis/CERTFR-2023-AVI-1005/"
+        }
+    ],
+    "reference": "CERTFR-2023-ALE-013",
+    "revisions": [
+        {
+            "description": "Version initiale",
+            "revision_date": "2023-12-13T00:00:00.000000"
+        },
+        {
+            "description": "Clôture de l'alerte. Cela ne signifie pas la fin d'une menace. Seule l'application de la mise à jour permet de vous prémunir contre l'exploitation de la vulnérabilité correspondante.",
+            "revision_date": "2024-02-16T00:00:00.000000"
+        }
+    ],
+    "risks": [
+        {
+            "description": "Exécution de code arbitraire à distance"
+        }
+    ],
+    "summary": "<span id=\"p14\">Le 4 décembre 2023, Apache a publié un avis de sécurité\nconcernant la vulnérabilité critique <span id=\"19\"\nclass=\"s-rg\">CVE-2023-50164</span> concernant le cadriciel <span id=\"20\"\nclass=\"s-rg\">Struts</span> 2.</span><span id=\"p15\"> Cette vulnérabilité\npermet à un attaquant non authentifié de téléverser une porte dérobée\nsur un serveur vulnérable, et ainsi exécuter du code arbitraire à\ndistance.</span>\n\n<span id=\"p16\">Le 12 décembre 2023, un premier code d'exploitation a été\npublié publiquement et l</span><span id=\"p17\">e <span id=\"21\"\nclass=\"s-rg\">CERT-FR</span> a connaissance de tentatives\nd'exploitation.</span>\n\n<span id=\"p18\">Il est urgent d'effectuer la mise à jour des applications\ns'appuyant sur le cadriciel Struts dans les plus brefs délais, car le\n<span id=\"24\">CERT-FR</span> anticipe des tentatives d'exploitation en\nmasse de la vulnérabilité <span id=\"25\">CVE-2023-50164</span>.</span>\n",
+    "title": "Vulnérabilité dans Apache Struts 2",
+    "vendor_advisories": [
+        {
+            "published_at": "2023-12-04",
+            "title": "Bulletin de sécurité Struts 2 s2-066",
+            "url": "https://cwiki.apache.org/confluence/display/WW/s2-066"
+        }
+    ]
+}

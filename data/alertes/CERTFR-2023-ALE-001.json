@@ -1,0 +1,90 @@
+{
+    "$ref": "https://www.cert.ssi.gouv.fr/openapi.json",
+    "affected_systems": [
+        {
+            "description": "FortiOS versions 6.x antérieures à 6.4.12",
+            "product": {
+                "name": "FortiOS",
+                "vendor": {
+                    "name": "Fortinet",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "FortiOS versions 7.2.x antérieures à 7.2.4",
+            "product": {
+                "name": "FortiOS",
+                "vendor": {
+                    "name": "Fortinet",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "FortiOS versions 7.0.x antérieures à 7.0.10",
+            "product": {
+                "name": "FortiOS",
+                "vendor": {
+                    "name": "Fortinet",
+                    "scada": false
+                }
+            }
+        }
+    ],
+    "affected_systems_content": null,
+    "closed_at": "2023-07-26",
+    "content": "## Solution\n\nLe CERT-FR recommande fortement d’appliquer les correctifs fournis par\nl’éditeur, se référer à l’avis émis par le CERT-FR \\[2\\] pour plus\nd’informations.\n\nL'application seule des correctifs n'est pas suffisante puisque les\nattaquants disposent de moyens de persistance leur permettant de se\nconnecter ultérieurement au système.\n\nIl est recommandé d'effectuer une analyse des systèmes FortiGate et\nFortiManager, notamment à l'aide des indicateurs de compromission\nfournis par l'éditeur dans son billet de blog et dans les précédents\navis de sécurité émis. Ces marqueurs sont donnés à titre indicatif et\nn'ont pas été vérifiés par le CERT-FR.\n",
+    "cves": [
+        {
+            "name": "CVE-2022-41328",
+            "url": "https://www.cve.org/CVERecord?id=CVE-2022-41328"
+        }
+    ],
+    "links": [
+        {
+            "title": "[2] Avis CERT-FR CERTFR-2023-AVI-0199 du 08 mars 2023",
+            "url": "https://www.cert.ssi.gouv.fr/avis/CERTFR-2023-AVI-0199/"
+        },
+        {
+            "title": "[1] Recommandations relatives à l’administration sécurisée des systèmes d’information",
+            "url": "https://www.ssi.gouv.fr/administration/guide/securiser-ladministration-des-systemes-dinformation/"
+        },
+        {
+            "title": "Le guide d'hygiène informatique",
+            "url": "https://www.ssi.gouv.fr/uploads/2017/01/guide_hygiene_informatique_anssi.pdf"
+        },
+        {
+            "title": "Billet de blog Fortinet portant sur l'analyse de la vulnérabilité de l'avis FG-IR-22-369 du 09 mars 2023",
+            "url": "https://www.fortinet.com/blog/psirt-blogs/fg-ir-22-369-psirt-analysis"
+        },
+        {
+            "title": "Les bons réflexes en cas d’intrusion sur un système d’information",
+            "url": "https://www.cert.ssi.gouv.fr/les-bons-reflexes-en-cas-dintrusion-sur-un-systeme-dinformation/"
+        }
+    ],
+    "reference": "CERTFR-2023-ALE-001",
+    "revisions": [
+        {
+            "description": "Version initiale",
+            "revision_date": "2023-03-14T00:00:00.000000"
+        }
+    ],
+    "risks": [
+        {
+            "description": "Contournement de la politique de sécurité"
+        },
+        {
+            "description": "Exécution de code arbitraire à distance"
+        }
+    ],
+    "summary": "Le 07 mars 2023, Fortinet a publié un avis de sécurité détaillant\nl’existence d’une vulnérabilité de type traversée de chemin (*path\ntraversal*) permettant à un attaquant authentifié avec un compte à\nprivilèges de lire et d'écrire des fichiers arbitrairement au travers de\nl'interface en ligne de commande.\n\nLe 09 mars 2023, Fortinet a publié un billet sur son blog détaillant\nl'analyse de la compromission de plateformes de pare-feux FortiGate avec\nle système FortiOS par l'exploitation de la vulnérabilité CVE-2022-41328\ndétaillé dans l'avis FG-IR-22-369.\n\nFortinet indique que cette vulnérabilité est activement exploitée dans\nle cadre d'attaques ciblées. C'est lors d'une réponse à incident\nimpliquant des pare-feux FortiGate gérés par une console FortiManager\nque les équipes de Fortinet ont pu identifier les informations\nci-dessous :\n\n-   Le vecteur de compromission initial semble provenir de la console\n    FortiManager, ceci est déduit par la temporalité et la ressemblance\n    des attaques simultanées sur différents pare-feux gérés par la même\n    console ;\n-   Le fichier */sbin/init* est modifié et le fichier */bin/fgfm* est\n    créé, notamment pour assurer la persistance et ajouter des\n    fonctionnalités de contrôle ;\n-   Dans les cas connus de l'éditeur, les pare-feux impactés ont été\n    brutalement arrêtés et leur redémarrage a été empêché par une\n    protection du système contre la modification du microgiciel (option\n    FIPS).\n\nRemarque : les moyens ayant permis la prise de contrôle de la console\nFortiManager ne sont pas précisés par l'éditeur  (vols d'identifiants,\nexploitation d'une vulnérabilité précédente, ...).\n\n<span class=\"mx_EventTile_body\" dir=\"auto\">Pour rappel</span>, le\nCERT-FR recommande de mettre en place une infrastructure sécurisée pour\nl'administration des équipements et des services \\[1\\].\n",
+    "title": "Vulnérabilité dans Fortinet FortiOS",
+    "vendor_advisories": [
+        {
+            "published_at": null,
+            "title": "Bulletin de sécurité Fortinet FG-IR-22-369 du 07 mars 2023",
+            "url": "https://www.fortiguard.com/psirt/FG-IR-22-369"
+        }
+    ]
+}

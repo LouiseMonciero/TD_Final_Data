@@ -1,0 +1,64 @@
+{
+    "$ref": "https://www.cert.ssi.gouv.fr/openapi.json",
+    "affected_systems": [],
+    "affected_systems_content": "<p><span style=\"color: #ff0000;\"><strong>[Mise à jour du 29 janvier 2024] </strong></span></p> <p><span style=\"color: #ff0000;\"><strong>Les versions des systèmes affectés ont été mises à jour à la suite du nouveau bulletin de sécurité du 25 janvier 2024. Les versions 16.5.6, 16.6.4 et 16.7.2 initialement recommandées ne doivent plus être utilisées.<br /> </strong></span></p> <ul> <li>Gitlab Community Edition (CE) et Enterprise Edition (EE) versions 16.1.x antérieures à 16.1.6</li> <li>Gitlab Community Edition (CE) et Enterprise Edition (EE) versions 16.2.x antérieures à 16.2.9</li> <li>Gitlab Community Edition (CE) et Enterprise Edition (EE) versions 16.3.x antérieures à 16.3.7</li> <li>Gitlab Community Edition (CE) et Enterprise Edition (EE) versions 16.4.x antérieures à 16.4.5</li> <li>Gitlab Community Edition (CE) et Enterprise Edition (EE) versions 16.5.x antérieures à 16.5.8</li> <li>Gitlab Community Edition (CE) et Enterprise Edition (EE) versions 16.6.x antérieures à 16.6.6</li> <li>Gitlab Community Edition (CE) et Enterprise Edition (EE) versions 16.7.x antérieures à 16.7.4</li> <li>Gitlab Community Edition (CE) et Enterprise Edition (EE) versions 16.8.x antérieures à 16.8.1</li> </ul> ",
+    "closed_at": "2024-02-22",
+    "content": "## Solution\n\nSe référer au bulletin de sécurité de l'éditeur pour l'obtention des\ncorrectifs (cf. section Documentation).\n",
+    "cves": [
+        {
+            "name": "CVE-2024-0402",
+            "url": "https://www.cve.org/CVERecord?id=CVE-2024-0402"
+        },
+        {
+            "name": "CVE-2023-7028",
+            "url": "https://www.cve.org/CVERecord?id=CVE-2023-7028"
+        }
+    ],
+    "links": [
+        {
+            "title": "Avis CERT-FR CERTFR-2024-AVI-0030 du 12 janvier 2024",
+            "url": "https://www.cert.ssi.gouv.fr/avis/CERTFR-2024-AVI-0030/"
+        },
+        {
+            "title": "Avis CERT-FR CERTFR-2024-AVI-0069 du 26 janvier 2024",
+            "url": "https://www.cert.ssi.gouv.fr/avis/CERTFR-2024-AVI-0069/"
+        }
+    ],
+    "reference": "CERTFR-2024-ALE-002",
+    "revisions": [
+        {
+            "description": "Version initiale",
+            "revision_date": "2024-01-12T00:00:00.000000"
+        },
+        {
+            "description": "Ajout de la vulnérabilité CVE-2024-0402",
+            "revision_date": "2024-01-29T00:00:00.000000"
+        },
+        {
+            "description": "Clôture de l'alerte. Cela ne signifie pas la fin d'une menace. Seule l'application de la mise à jour permet de vous prémunir contre l'exploitation de la vulnérabilité correspondante.",
+            "revision_date": "2024-02-22T00:00:00.000000"
+        }
+    ],
+    "risks": [
+        {
+            "description": "Contournement de la politique de sécurité"
+        },
+        {
+            "description": "Exécution de code arbitraire à distance"
+        }
+    ],
+    "summary": "<span style=\"color: #ff0000;\"><strong>\\[Mise à jour du 29 janvier 2024\\]</strong>\n</span>\n\nLe 25 janvier 2024, l'éditeur a publié un avis de sécurité concernant\nplusieurs vulnérabilités affectant GitLab CE et EE.\n\nLa vulnérabilité CVE-2024-0402 est considérée critique avec un score\nCVSSv3 de 9,9. Elle permet à un attaquant authentifié d'écrire des\nfichiers à un emplacement arbitraire.\n\n<strong>\\[Publication initiale\\]</strong>\n\nLe 11 janvier 2024, l'éditeur a publié un avis de sécurité concernant\nplusieurs vulnérabilités affectant GitLab CE et EE.\n\nLa plus critique est la vulnérabilité CVE-2023-7028. Elle permet à un\nattaquant non authentifié d'envoyer un courriel de réinitialisation de\nmot de passe de n'importe quel utilisateur à une adresse arbitraire.\nL'attaquant peut ainsi, par le biais d'une simple requête HTTP POST,\nprendre le contrôle d'un compte dont il connaitrait le courriel.\n\nLe score CVSSv3 de la vulnérabilité CVE-2023-7028 est de 10 (sur 10).\nSon exploitation est triviale et le CERT-FR anticipe la publication de\ncodes d'exploitations publics dans les heures à venir.\n\nL'éditeur recommande de vérifier:\n\n-   dans le journal d'activité \"gitlab-rails/production_json.log\", la\n    présence de requêtes HTTP, sur le chemin \"/users/password\",\n    contenant plusieurs adresses courriel;\n-   dans le journal d'activité \"gitlab-rails/audit_json.log\", la\n    présence d'identifiants correspondant à \"PasswordsController#create\"\n    avec des \"target_details\" composé d'un tableau comprenant plusieurs\n    adresses courriel.\n\nLe CERT-FR recommande donc d'appliquer les correctifs dans les plus\nbrefs délais et d'activer l'authentification à multiples facteurs,\nnotamment sur les comptes à hauts privilèges.\n",
+    "title": "[MàJ] Multiples Vulnérabilités dans GitLab",
+    "vendor_advisories": [
+        {
+            "published_at": null,
+            "title": "Bulletin de sécurité GitLab du 11 janvier 2024",
+            "url": "https://about.gitlab.com/releases/2024/01/11/critical-security-release-gitlab-16-7-2-released/"
+        },
+        {
+            "published_at": null,
+            "title": "Bulletin de sécurité GitLab du 25 janvier 2024",
+            "url": "https://about.gitlab.com/releases/2024/01/25/critical-security-release-gitlab-16-8-1-released/"
+        }
+    ]
+}

@@ -172,3 +172,20 @@ ax.xaxis.set_major_locator(mdates.AutoDateLocator())
 plt.tight_layout()
 plt.savefig("Visualisation/courbe_cumulative_temps.png")
 plt.show()
+
+# 9. Boxplot : CVSS scores by top editors
+
+# Filter
+top_editors = df['Éditeur'].value_counts().head(10).index
+boxplot_df = df[df['Éditeur'].isin(top_editors)]
+
+# Plot
+plt.figure(figsize=(12, 6))
+sns.boxplot(data=boxplot_df, x='Éditeur', y='CVSS', palette='Set2')
+plt.title('Dispersion des scores CVSS pour les éditeurs les plus affectés')
+plt.xlabel('Éditeur')
+plt.ylabel('Score CVSS')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.savefig("Visualisation/boxplot_cvss_par_editeur.png")
+plt.show()

@@ -2,7 +2,7 @@ import requests
 import os
 import json
 
-def get_epss_data(cve_id):
+def get_first_data(cve_id):
     url = f"https://api.first.org/data/v1/epss?cve={cve_id}"
     
     try:
@@ -35,12 +35,9 @@ def get_epss_data(cve_id):
         with open(output_file, "w", encoding="utf-8") as f:
             json.dump(result, f, ensure_ascii=False, indent=4)
 
-        print(f"[✓] Score EPSS pour {cve} : {epss_score} (percentile: {percentile}, date: {date})")
+        print(f"Données de l'api first de {cve} enregistrées")
 
     except requests.exceptions.RequestException as e:
-        print(f"[!] Erreur réseau : {e}")
+        print(f"Erreur réseau : {e}")
     except Exception as e:
-        print(f"[!] Erreur générale : {e}")
-
-# Exemple d'utilisation
-get_epss_data("CVE-2023-24488")
+        print(f"Erreur générale : {e}")

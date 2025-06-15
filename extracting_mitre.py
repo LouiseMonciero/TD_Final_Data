@@ -58,12 +58,9 @@ def get_mitre_data(cve_id):
         with open(f"./data/mitre/{cve_id}.json", "w", encoding="utf-8") as f:
             json.dump(result, f, ensure_ascii=False, indent=4)
 
-        print(f"CVE {cve_id} traité et enregistré.")
+        print(f"Données de l'api mitre de {cve_id} enregistrées.")
 
     except requests.exceptions.RequestException as e:
         print(f"Erreur réseau : {e}")
     except Exception as e:
         print(f"Erreur générale : {e}")
-
-# Exemple
-get_mitre_data("CVE-2023-24488")

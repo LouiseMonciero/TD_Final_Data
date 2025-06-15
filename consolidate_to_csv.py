@@ -39,7 +39,14 @@ def consolidate_data():
 
             id_anssi = bulletin.get("reference", "")
             titre = bulletin.get("title", "")
-            date = bulletin.get("initial_release_date", "")
+            revisions = bulletin.get("revisions", [])
+            date = ""
+            for rev in revisions:
+                if rev.get("description", "").lower().startswith("version initiale"):
+                    date = rev.get("revision_date", "")
+                    break
+            if not date and revisions:
+                date = revisions[0].get("revision_date", "")
             lien = bulletin.get("url", "")
 
             cve_list = []

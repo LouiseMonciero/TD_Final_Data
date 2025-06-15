@@ -189,3 +189,24 @@ plt.xticks(rotation=45)
 plt.tight_layout()
 plt.savefig("Visualisation/boxplot_cvss_par_editeur.png")
 plt.show()
+
+# 10. Time evolution of CWE-79 vulnerabilities (Cross-Site Scripting)
+
+df["Date"] = pd.to_datetime(df["Date"], errors="coerce")
+cwe_79_df = df[df["CWE"] == "CWE-79"]
+
+# Group by month
+cwe_79_monthly = cwe_79_df.groupby(df["Date"].dt.to_period("M")).size()
+cwe_79_monthly.index = cwe_79_monthly.index.to_timestamp()
+
+# Plot
+plt.figure(figsize=(12, 6))
+plt.plot(cwe_79_monthly.index, cwe_79_monthly.values, marker="o", linestyle="-", color="salmon")
+plt.title("Évolution mensuelle des vulnérabilités CWE-79")
+plt.xlabel("Mois")
+plt.ylabel("Nombre de vulnérabilités")
+plt.xticks(rotation=45)
+plt.grid(True)
+plt.tight_layout()
+plt.savefig("Visualisation/evolution_CWE79.png")
+plt.show()

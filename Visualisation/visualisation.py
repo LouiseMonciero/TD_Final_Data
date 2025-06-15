@@ -101,3 +101,52 @@ plt.tight_layout()
 plt.savefig("Visualisation/top_affected_products.png")
 plt.show()
 
+# 6. Heatmap : Correlation between CVSS and EPSS
+
+df["CVSS"] = pd.to_numeric(df["CVSS"], errors="coerce")
+
+# Create a correlation dataframe
+correlation_df = df[["CVSS", "EPSS"]].dropna()
+
+df["Gravité_CVSS"] = df["CVSS"].apply(cvss_to_severity)
+
+# Categorize EPSS into 4 probability bins
+def epss_to_level(epss):
+    if epss <= 0.25:
+        return "Faible"
+    elif epss <= 0.5:
+        return "Moyenne"
+    elif epss <= 0.75:
+        return "Élevée"
+    else:
+        return "Critique"
+    
+df["Probabilité_EPSS"] = df["EPSS"].apply(epss_to_level)
+
+# Create cross-tab
+heatmap_data = pd.crosstab(df["Gravité_CVSS"], df["Probabilité_EPSS"])
+
+# Reorder for visual consistency
+heatmap_data = heatmap_data.reindex(index=["Critique", "Élevée", "Moyenne", "Faible"],
+                                     columns=["Faible", "Moyenne", "Élevée", "Critique"])
+
+# Plot heatmap
+plt.figure(figsize=(7, 5))
+sns.heatmap(heatmap_data, annot=True, fmt="d", cmap="coolwarm")
+plt.title("Relation entre gravité CVSS et probabilité EPSS")
+plt.xlabel("Probabilité d'exploitation (EPSS)")
+plt.ylabel("Niveau de gravité (CVSS)")
+plt.tight_layout()
+plt.savefig("Visualisation/heatmap_cvss_vs_epss.png")
+plt.show()
+
+# 7. Scatter plot : CVSS vs EPSS
+
+plt.figure(figsize=(8, 5))
+sns.scatterplot(data=df, x="CVSS", y="EPSS", alpha=0.6, color="teal")
+plt.title("Nuage de points : Score CVSS vs Score EPSS")
+plt.xlabel("Score CVSS")
+plt.ylabel("Score EPSS")
+plt.tight_layout()
+plt.savefig("Visualisation/scatter_cvss_epss.png")
+plt.show()

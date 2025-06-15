@@ -93,7 +93,6 @@ def consolidate_data():
     df = pd.DataFrame(rows)
     os.makedirs("data", exist_ok=True)
     df.to_csv("data/data.csv", index=False, encoding="utf-8")
-    print("Le fichier data.csv a été généré avec succès")
 
 if __name__ == "__main__":
     consolidate_data()

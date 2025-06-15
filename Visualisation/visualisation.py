@@ -1,5 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 # Data loading
 df = pd.read_csv('data/data.csv')
@@ -31,7 +32,7 @@ plt.title('Histogramme des niveaux de gravité des vulnérabilités (CVSS)')
 plt.xlabel('Niveau de gravité')
 plt.ylabel('Nombre de vulnérabilités')
 plt.tight_layout()
-plt.savefig("histogramme_gravite.png")
+plt.savefig("Visualisation/histogramme_gravite.png")
 plt.show()
 
 # 2. Circular vulnerability diagram (CWE)
@@ -51,5 +52,37 @@ top_8.plot(kind='pie', autopct='%1.1f%%', startangle=140)
 plt.title('Répartition des types de vulnérabilités (CWE)')
 plt.ylabel('')
 plt.tight_layout()
-plt.savefig("camembert_CWE.png")
+plt.savefig("Visualisation/camembert_CWE.png")
+plt.show()
+
+# 3. EPSS Score Density Curve
+
+# Ensure EPSS scores are numeric
+df['EPSS'] = pd.to_numeric(df['EPSS'], errors='coerce')
+epss_valid = df['EPSS'].dropna()
+
+# Plot
+plt.figure(figsize=(8, 5))
+sns.kdeplot(epss_valid, fill=True, color="purple", alpha=0.6)
+plt.title('EPSS score distribution')
+plt.xlabel('EPSS Score')
+plt.ylabel('Density')
+plt.tight_layout()
+plt.savefig("Visualisation/epss_curve.png")
+plt.show()
+
+# 4. Top Affected editors
+
+# Count top 10 most frequently affected editors
+top_editors = df['Éditeur'].value_counts().head(10)
+
+
+# Plot horizontal bar chart
+plt.figure(figsize=(10, 5))
+top_editors.plot(kind='barh', color='steelblue')
+plt.title('Top 10 éditeurs les plus affectés')
+plt.xlabel('Nombre de vulnérabilités')
+plt.gca().invert_yaxis()
+plt.tight_layout()
+plt.savefig("Visualisation/top_affected_products.png")
 plt.show()

@@ -150,3 +150,22 @@ plt.ylabel("Score EPSS")
 plt.tight_layout()
 plt.savefig("Visualisation/scatter_cvss_epss.png")
 plt.show()
+
+# _. Cumulative curve: Vulnerabilities over time
+
+# Convert Date to datetime
+#df["Date"] = pd.to_datetime(df["Date"], errors="coerce")
+df_sorted = df.sort_values("Date").dropna(subset=["Date"])
+
+# Group by date and calculate cumulative sum
+cumulative_df = df_sorted.groupby("Date").size().cumsum()
+
+# Plot
+plt.figure(figsize=(10, 5))
+cumulative_df.plot(color="darkblue")
+plt.title("Evolution dans le temps du nombre de vulnérabilités")
+plt.xlabel("Date")
+plt.ylabel("Nombre cumulatif de vulnérabilités")
+plt.tight_layout()
+plt.savefig("Visualisation/courbe_cumulative_temps.png")
+plt.show()

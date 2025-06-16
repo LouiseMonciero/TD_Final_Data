@@ -2,6 +2,8 @@ import os
 import json
 import pandas as pd
 
+folder_name = "data" # ou -- "data_pour_TD_final"
+
 # convert CVSS score to severity level
 def gravite_from_cvss(cvss):
     if cvss is None or cvss == "Non disponible":
@@ -22,11 +24,11 @@ def gravite_from_cvss(cvss):
 
 def consolidate_data():
     rows = []  # list that collects each row of the future CSV
-    mitre_dir = "./data/mitre"
-    first_dir = "./data/first"
+    mitre_dir = f"./{folder_name}/mitre"
+    first_dir = f"./{folder_name}/first"
     bulletins_dirs = [
-        ("./data/avis", "Avis"),
-        ("./data/alertes", "Alerte")
+        (f"./{folder_name}/avis", "Avis"),
+        (f"./{folder_name}/alertes", "Alerte")
     ]
 
     for folder_path, type_bulletin in bulletins_dirs:
@@ -98,8 +100,8 @@ def consolidate_data():
 
     # convert into a DataFrame and export to CSV
     df = pd.DataFrame(rows)
-    os.makedirs("data", exist_ok=True)
-    df.to_csv("data/data.csv", index=False, encoding="utf-8")
+    os.makedirs(folder_name, exist_ok=True)
+    df.to_csv(f"{folder_name}/data.csv", index=False, encoding="utf-8")
 
 if __name__ == "__main__":
     consolidate_data()

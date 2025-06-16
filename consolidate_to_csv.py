@@ -2,7 +2,7 @@ import os
 import json
 import pandas as pd
 
-folder_name = "data" #data_pour_TD_final" #"data" # ou -- 
+folder_name = "data_pour_TD_final" #data_pour_TD_final" #"data" # ou -- 
 
 # convert CVSS score to severity level
 def gravite_from_cvss(cvss):

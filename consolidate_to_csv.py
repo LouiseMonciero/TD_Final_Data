@@ -2,7 +2,7 @@ import os
 import json
 import pandas as pd
 
-folder_name = "data" # ou -- "data_pour_TD_final"
+folder_name = "data" #data_pour_TD_final" #"data" # ou -- 
 
 # convert CVSS score to severity level
 def gravite_from_cvss(cvss):
@@ -49,7 +49,7 @@ def consolidate_data():
                     break
             if not date and revisions:
                 date = revisions[0].get("revision_date", "")
-            lien = bulletin.get("url", "")
+            lien = bulletin.get("$ref", "")
 
             cve_list = []
             if "cves" in bulletin:

@@ -2,8 +2,8 @@ import os
 import json
 import pandas as pd
 
-folder_name = "data" #"data_pour_TD_final" #data_pour_TD_final" #"data" # ou -- 
-
+folder_name = "data_pour_TD_final" #"data_pour_TD_final" #data_pour_TD_final" #"data" # ou -- 
+ 
 # convert CVSS score to severity level
 def gravite_from_cvss(cvss):
     if cvss is None or cvss == "Non disponible":
@@ -63,14 +63,43 @@ def consolidate_data():
                 with open(mitre_path, encoding="utf-8") as f:
                     mitre = json.load(f)
 
-                description = mitre.get("description", "")
-                cvss = mitre.get("cvss_score", None)
-                cwe = mitre.get("cwe_id", "Non disponible")
+                description = ""
+                cna = mitre.get("containers", {}).get("cna", {})
+                adp = mitre.get("containers", {}).get("adp", [])
+
+                
+                if cna.get("descriptions"):
+                    description = cna["descriptions"][0].get("value", "")
+                elif adp and adp[0].get("descriptions"):
+                    description = adp[0]["descriptions"][0].get("value", "")
+
+                cvss = None
+                metrics_sources = [cna] + adp
+                for source in metrics_sources:
+                    for metric in source.get("metrics", []):
+                        if "cvssV3_1" in metric:
+                            cvss = metric["cvssV3_1"].get("baseScore")
+                            break
+                    if cvss is not None:
+                        break
+
+                cwe = "Non disponible"
+                for source in metrics_sources:
+                    for ptype in source.get("problemTypes", []):
+                        for desc in ptype.get("descriptions", []):
+                            if "cweId" in desc:
+                                cwe = desc["cweId"]
+                                break
                 gravite = gravite_from_cvss(cvss)
 
-                affected = mitre.get("affected_products", [])
+                affected = []
+                if "affected" in cna:
+                    affected = cna["affected"]
+                elif adp and "affected" in adp[0]:
+                    affected = adp[0]["affected"]
+
                 if not affected:
-                    affected = [{"vendor": "", "product": "", "versions": []}]
+                    affected = [{"vendor": "N/A", "product": "N/A", "versions": []}]
 
                 # load CVE data from EPSS (FIRST)
                 epss = ""
@@ -95,7 +124,8 @@ def consolidate_data():
                         "Description": description,
                         "Éditeur": produit.get("vendor", ""),
                         "Produit": produit.get("product", ""),
-                        "Versions affectées": ", ".join(produit.get("versions", []))
+                        "Versions affectées": ", ".join([v.get("version", "") for v in produit.get("versions", []) if isinstance(v, dict)])
+
                     })
 
     # convert into a DataFrame and export to CSV

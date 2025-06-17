@@ -2,7 +2,7 @@
 
 Analyse des Avis et Alertes ANSSI avec Enrichissement des CVE
 
-# Extraction des donnèes
+# Extraction des données
 
 Les données RSS sont extraites grace au script **extracting_RSS.py**
 Elle sont sauvegardés dans le dossier **data**

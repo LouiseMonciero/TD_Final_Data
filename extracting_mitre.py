@@ -10,16 +10,16 @@ def get_mitre_data(cve_id):
         response.raise_for_status()
         data = response.json()
 
-        # Vérification minimale que la structure est conforme à MITRE v5.1
+        # Basic check to ensure the structure matches MITRE v5.1
         if data.get("dataType") != "CVE_RECORD" or data.get("dataVersion") != "5.1":
             print(f"Structure inattendue pour {cve_id}")
             return
 
-        # Création du dossier de destination si nécessaire
+        # Create the destination folder if it doesn't exist
         os.makedirs("./data/mitre", exist_ok=True)
         path = f"./data/mitre/{cve_id}.json"
 
-        # Sauvegarde brute du JSON
+        # Save the raw JSON response
         with open(path, "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=4)
 

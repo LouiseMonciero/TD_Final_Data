@@ -5,7 +5,7 @@ import os
 import time
 from datetime import datetime, timedelta
 
-# Liste des produits du client à surveiller
+# List of client's products to monitor
 CLIENT_PRODUCTS = ["Linux", "Microsoft"]
 
 def send_email(subject, body, to_email=TO_EMAIL):
@@ -39,9 +39,9 @@ def verifier_alertes_et_envoyer_emails(dossier_alertes=".data/avis"):
         if fichier.endswith(".json"):
             chemin = os.path.join(dossier_alertes, fichier)
             if os.path.isfile(chemin):
-            # Vérifie si le fichier a été modifié il y a moins d'une heure
+                # Check if the file was modified less than an hour ago
                 if maintenant - os.path.getmtime(chemin) < une_heure:
-                    # Traiter l'alerte et envoyer l'email
+                    # Process the alert and send the email
                     with open(chemin, "r", encoding="utf-8") as f:
                         data = f.read()
                     if produit_concerne(data, CLIENT_PRODUCTS):

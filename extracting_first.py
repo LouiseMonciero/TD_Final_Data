@@ -20,7 +20,7 @@ def get_first_data(cve_id):
         date = epss_entry.get("date", "Non disponible")
         cve = epss_entry.get("cve", cve_id)
 
-        # Résultat structuré
+        # Structured result
         result = {
             "cve_id": cve,
             "epss_score": epss_score,
@@ -28,7 +28,7 @@ def get_first_data(cve_id):
             "date": date
         }
 
-        # Création du dossier et sauvegarde
+        # Create directory and save file
         os.makedirs("./data/first", exist_ok=True)
         output_file = f"./data/first/{cve}.json"
 

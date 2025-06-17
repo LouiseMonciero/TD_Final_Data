@@ -124,7 +124,9 @@ def consolidate_data():
                         "Description": description,
                         "Éditeur": produit.get("vendor", ""),
                         "Produit": produit.get("product", ""),
-                        "Versions affectées": ", ".join([v.get("version", "") for v in produit.get("versions", []) if isinstance(v, dict)])
+                        "Versions affectées": ", ".join([v.get("version", "") for v in produit.get("versions", []) if isinstance(v, dict)]),
+                        "Remote exploitable": "remote" in description,
+                        "Longueur description": len(description) if isinstance(description, str) else 0,
 
                     })
 

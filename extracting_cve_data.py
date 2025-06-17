@@ -7,7 +7,7 @@ from extracting_mitre import get_mitre_data
 from extracting_first import get_first_data
 
 def extract_cves_from_avis():
-    all_cves = set()
+    all_cves = set() #sert à quoi ?????
     avis_folder = "./data/avis"
 
     for filename in os.listdir(avis_folder):

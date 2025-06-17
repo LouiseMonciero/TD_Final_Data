@@ -1,56 +1,39 @@
-import feedparser
-import ssl
-import time
 import requests
 import os
 import json
-import random
+import time
 
-url = "https://cert.ssi.gouv.fr/avis/feed/"
+def scrap_RSS_items(prefix, start_year, start_index, end_year=2025, folder="data", sleep_between=0.2):
+    """ Scrappe les JSON de 'https://www.cert.ssi.gouv.fr/' pour un type (alerte ou avis par exemple) 
+    et à partir d'un code donné (CERTFR-2022-0232 par exemple) jusqu'au plus récent. 
+    """
+    os.makedirs(folder, exist_ok=True)
+    for year in range(start_year, end_year + 1):
+        i = start_index
+        misses = 0
+        while misses < 5:  # stop après 5 échecs consécutifs (saut d'alerte de 1 toléré)
+            code = f"CERTFR-{year}-{'AVI' if(prefix == 'avis') else 'ALE'}-{str(i).zfill(4)}"
+            url = f"https://www.cert.ssi.gouv.fr/{prefix}/{code}/json/"
+            print(f"Trying: {url}")
+            response = requests.get(url)
+            if response.status_code == 200:
+                try:
+                    myjson = response.json()
+                    with open(f"{folder}/{code}.json", "w", encoding="utf-8") as f:
+                        json.dump(myjson, f, indent=4, ensure_ascii=False)
+                    misses = 0
+                except ValueError as e:
+                    #print(f" JSON invalide pour {code} — {e}")
+                    misses += 1
+            else:
+                print(f"Miss: {code} - {r.status_code}")
+                misses += 1
+            i += 1
+            time.sleep(sleep_between)
 
-if hasattr(ssl, '_create_unverified_context'):
-    ssl._create_default_https_context = ssl._create_unverified_context
-rss_feed = feedparser.parse(url)
-#print(len(rss_feed.entries))
+# Pour scrapper tous les avis à partir de 2023
+scrap_RSS_items("avis", 2023, 392, folder="data/avis")
 
-for i in range(0, len(rss_feed.entries)):
+# Pour scrapper toutes les alertes à partir de 2021
+scrap_RSS_items("alertes", 2021, 1, folder="data/alerte")
 
-    url_avis = rss_feed.entries[i].link
-    response = requests.get(url_avis.rstrip('/') + '/json/')
-
-    if response.status_code == 200:
-        avis_json = response.json()
-
-        reference = avis_json.get("reference", "avis_sans_ref")
-
-        os.makedirs("./data/avis", exist_ok=True)
-
-        with open(f"./data/avis/{reference}.json", "w", encoding='utf-8') as f:
-            json.dump(avis_json, f, ensure_ascii=False, indent=4)
-    else:
-        print(f"Erreur lors de l'accès au JSON : {response.status_code} – {response.text}")
-
-    time.sleep(random.randint(90, 140)) if (i%7 == 0) else time.sleep(random.randint(3, 8))
-    i+=1
-    print(i)
-print(i)
-
-url_alerte = "https://cert.ssi.gouv.fr/alerte/feed/"
-rss_feed_alerte = feedparser.parse(url_alerte)
-
-
-for i in range(0, len(rss_feed_alerte.entries)):
-    url = rss_feed_alerte.entries[i].link
-    response = requests.get(url.rstrip('/') + '/json/')
-
-    if response.status_code == 200:
-        alerte_json = response.json()
-        reference = alerte_json.get("reference", "alerte_sans_ref")
-        os.makedirs("./data/alertes", exist_ok=True)
-        with open(f"./data/alertes/{reference}.json", "w", encoding='utf-8') as f:
-            json.dump(alerte_json, f, ensure_ascii=False, indent=4)
-    else:
-        print(f"Erreur lors de l'accès au JSON (alerte) : {response.status_code} – {response.text}")
-
-    time.sleep(random.randint(90, 140)) if (i % 7 == 0) else time.sleep(random.randint(3, 8))
-    

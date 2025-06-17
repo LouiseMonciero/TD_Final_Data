@@ -1,0 +1,95 @@
+{
+    "$ref": "https://www.cert.ssi.gouv.fr/openapi.json",
+    "affected_systems": [
+        {
+            "description": "Mattermost Server versions 10.7.x antérieures à 10.7.3",
+            "product": {
+                "name": "Mattermost Server",
+                "vendor": {
+                    "name": "Mattermost",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Mattermost Server versions 9.11.x antérieures à 9.11.16",
+            "product": {
+                "name": "Mattermost Server",
+                "vendor": {
+                    "name": "Mattermost",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Mattermost Server versions 10.6.x antérieures à 10.6.6",
+            "product": {
+                "name": "Mattermost Server",
+                "vendor": {
+                    "name": "Mattermost",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Mattermost Server versions 10.8.x antérieures à 10.8.1",
+            "product": {
+                "name": "Mattermost Server",
+                "vendor": {
+                    "name": "Mattermost",
+                    "scada": false
+                }
+            }
+        },
+        {
+            "description": "Mattermost Server versions 10.5.x antérieures à 10.5.6",
+            "product": {
+                "name": "Mattermost Server",
+                "vendor": {
+                    "name": "Mattermost",
+                    "scada": false
+                }
+            }
+        }
+    ],
+    "affected_systems_content": "",
+    "content": "## Solutions\n\nSe référer au bulletin de sécurité de l'éditeur pour l'obtention des correctifs (cf. section Documentation).",
+    "cves": [],
+    "links": [],
+    "reference": "CERTFR-2025-AVI-0453",
+    "revisions": [
+        {
+            "description": "Version initiale",
+            "revision_date": "2025-05-27T00:00:00.000000"
+        }
+    ],
+    "risks": [
+        {
+            "description": "Non spécifié par l'éditeur"
+        }
+    ],
+    "summary": "De multiples vulnérabilités ont été découvertes dans les produits Mattermost. Elles permettent à un attaquant de provoquer un problème de sécurité non spécifié par l'éditeur.",
+    "title": "Multiples vulnérabilités dans les produits Mattermost",
+    "vendor_advisories": [
+        {
+            "published_at": "2025-05-21",
+            "title": "Bulletin de sécurité Mattermost MMSA-2025-00461",
+            "url": "https://mattermost.com/security-updates/"
+        },
+        {
+            "published_at": "2025-05-26",
+            "title": "Bulletin de sécurité Mattermost MMSA-2024-00389",
+            "url": "https://mattermost.com/security-updates/"
+        },
+        {
+            "published_at": "2025-05-26",
+            "title": "Bulletin de sécurité Mattermost MMSA-2025-00446",
+            "url": "https://mattermost.com/security-updates/"
+        },
+        {
+            "published_at": "2025-05-21",
+            "title": "Bulletin de sécurité Mattermost MMSA-2024-00375",
+            "url": "https://mattermost.com/security-updates/"
+        }
+    ]
+}

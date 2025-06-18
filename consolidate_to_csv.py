@@ -56,7 +56,7 @@ def consolidate_data():
                 cve_list = [c.get("name") for c in bulletin["cves"] if c.get("name", "").startswith("CVE-")]
 
             for cve in cve_list:
-                # load CVE data from MITRE
+                # load CVE data depuis MITRE
                 mitre_path = os.path.join(mitre_dir, f"{cve}.json")
                 if not os.path.exists(mitre_path):
                     continue
@@ -101,7 +101,7 @@ def consolidate_data():
                 if not affected:
                     affected = [{"vendor": "N/A", "product": "N/A", "versions": []}]
 
-                # load CVE data from EPSS (FIRST)
+                # load CVE data depuis EPSS (FIRST)
                 epss = ""
                 epss_path = os.path.join(first_dir, f"{cve}.json")
                 if os.path.exists(epss_path):
@@ -113,7 +113,7 @@ def consolidate_data():
                             if "data" in epss_data and len(epss_data["data"]) > 0:
                                 epss = epss_data["data"][0].get("epss", "")
 
-                for produit in affected:  # 1 row = 1 affected product-version
+                for produit in affected:  # 1 ligne = 1 product-version affecté
                     rows.append({
                         "ID_ANSSI": id_anssi,
                         "Titre": titre,
@@ -134,7 +134,7 @@ def consolidate_data():
 
                     })
 
-    # convert into a DataFrame and export to CSV
+    # convertir en DataFrame et exporter en CSV
     df = pd.DataFrame(rows)
     os.makedirs(folder_name, exist_ok=True)
     df.to_csv(f"{folder_name}/data.csv", index=False, encoding="utf-8")

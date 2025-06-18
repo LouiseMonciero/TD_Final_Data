@@ -2,12 +2,12 @@ import os
 import json
 import re
 
-# Import functions from other files
+# Importation de fonctions à partir d'autres fichiers
 from extracting_mitre import get_mitre_data
 from extracting_first import get_first_data
 
 def extract_cves_from_avis():
-    all_cves = set() # Set used to store unique CVE IDs found
+    all_cves = set() # Set utilisé pour stocker les identifiants CVE uniques trouvés
     avis_folder = "./data/avis"
 
     for filename in os.listdir(avis_folder):
@@ -17,14 +17,14 @@ def extract_cves_from_avis():
                 with open(filepath, "r", encoding="utf-8") as f:
                     data = json.load(f)
 
-                # Extraction using the "cves" key
+                # Extraction à l'aide de la clé « cves »
                 if "cves" in data:
                     for cve_item in data["cves"]:
                         name = cve_item.get("name")
                         if name and name.startswith("CVE-"):
                             all_cves.add(name)
 
-                # Extraction using regex
+                # Extraction à l'aide de regex
                 content_str = json.dumps(data)
                 found = re.findall(r"CVE-\d{4}-\d{4,7}", content_str)
                 all_cves.update(found)

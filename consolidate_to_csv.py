@@ -2,7 +2,7 @@ import os
 import json
 import pandas as pd
 
-folder_name = "data_pour_TD_final" #"data_pour_TD_final" #data_pour_TD_final" #"data" # ou -- 
+folder_name = "data" #"data_pour_TD_final" #data_pour_TD_final" #"data" # ou -- 
  
 # convert CVSS score to severity level
 def gravite_from_cvss(cvss):
@@ -107,7 +107,11 @@ def consolidate_data():
                 if os.path.exists(epss_path):
                     with open(epss_path, encoding="utf-8") as f:
                         epss_data = json.load(f)
-                        epss = epss_data.get("epss_score", "")
+                        if (folder_name == 'data') : 
+                            epss = epss_data.get("epss_score", "")
+                        elif (folder_name == 'data_pour_TD_final') : 
+                            if "data" in epss_data and len(epss_data["data"]) > 0:
+                                epss = epss_data["data"][0].get("epss", "")
 
                 for produit in affected:  # 1 row = 1 affected product-version
                     rows.append({

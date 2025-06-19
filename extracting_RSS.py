@@ -34,6 +34,6 @@ def scrap_RSS_items(prefix, start_year, start_index, end_year=2025, folder="data
 # Pour récupérer tous les avis à partir de 2023
 scrap_RSS_items("avis", 2023, 392, folder="data/avis")
 
-# To scrape all alerts starting from 2021
+# Pour récupérer les alertes à partir de 2021
 scrap_RSS_items("alertes", 2021, 1, folder="data/alerte")
 

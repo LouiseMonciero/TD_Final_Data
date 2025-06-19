@@ -4,7 +4,7 @@ import pandas as pd
 
 folder_name = "data" #"data_pour_TD_final" #data_pour_TD_final" #"data" # ou -- 
  
-# convert CVSS score to severity level
+# convertir un score CVSS numérique en niveau de gravité 
 def gravite_from_cvss(cvss):
     if cvss is None or cvss == "Non disponible":
         return None
@@ -23,7 +23,7 @@ def gravite_from_cvss(cvss):
 
 
 def consolidate_data():
-    rows = []  # list that collects each row of the future CSV
+    rows = []  # liste qui contiendra toutes les lignes du futur fichier CSV
     mitre_dir = f"./{folder_name}/mitre"
     first_dir = f"./{folder_name}/first"
     bulletins_dirs = [
@@ -31,6 +31,7 @@ def consolidate_data():
         (f"./{folder_name}/alertes", "Alerte")
     ]
 
+    # parcours de tous les fichiers JSON dans les dossiers avis et alertes
     for folder_path, type_bulletin in bulletins_dirs:
         for filename in os.listdir(folder_path):
             if not filename.endswith(".json"):
@@ -39,6 +40,7 @@ def consolidate_data():
             with open(os.path.join(folder_path, filename), encoding="utf-8") as f:
                 bulletin = json.load(f)
 
+            # extraction des informations de base du bulletin ANSSI
             id_anssi = bulletin.get("reference", "")
             titre = bulletin.get("title", "")
             revisions = bulletin.get("revisions", [])
@@ -56,7 +58,7 @@ def consolidate_data():
                 cve_list = [c.get("name") for c in bulletin["cves"] if c.get("name", "").startswith("CVE-")]
 
             for cve in cve_list:
-                # load CVE data depuis MITRE
+                # chargement du fichier JSON MITRE correspondant à la CVE
                 mitre_path = os.path.join(mitre_dir, f"{cve}.json")
                 if not os.path.exists(mitre_path):
                     continue
@@ -101,7 +103,7 @@ def consolidate_data():
                 if not affected:
                     affected = [{"vendor": "N/A", "product": "N/A", "versions": []}]
 
-                # load CVE data depuis EPSS (FIRST)
+                # chargement du score EPSS (depuis les fichiers FIRST)
                 epss = ""
                 epss_path = os.path.join(first_dir, f"{cve}.json")
                 if os.path.exists(epss_path):
@@ -113,7 +115,7 @@ def consolidate_data():
                             if "data" in epss_data and len(epss_data["data"]) > 0:
                                 epss = epss_data["data"][0].get("epss", "")
 
-                for produit in affected:  # 1 ligne = 1 product-version affecté
+                for produit in affected:  # 1 ligne = 1 produit/version affecté
                     rows.append({
                         "ID_ANSSI": id_anssi,
                         "Titre": titre,
